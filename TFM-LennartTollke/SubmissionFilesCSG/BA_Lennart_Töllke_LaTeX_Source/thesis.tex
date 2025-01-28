@@ -1,0 +1,212 @@
+\documentclass[12pt,a4paper,english,twoside]{book}
+\usepackage[german,english]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{epsfig}
+\usepackage{moreverb}
+\usepackage{rotating}
+\usepackage{enumerate}
+\usepackage{graphics, graphicx,wrapfig}
+\usepackage{fancybox}
+\usepackage{picinpar,varioref,floatflt}
+\usepackage{ae}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{url}
+\usepackage{unizhdt}
+% newly added
+\usepackage{listings}
+\usepackage{hyperref}
+%\usepackage{parskip}
+\usepackage{array}
+\usepackage{csquotes}
+
+\makeatletter
+\newenvironment{CenteredBox}{% 
+\begin{Sbox}}{% Save the content in a box
+\end{Sbox}\centerline{\parbox{\wd\@Sbox}{\TheSbox}}}% And output it centered
+\makeatother
+
+\usepackage{color}
+\usepackage[table,xcdraw]{xcolor}
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+\definecolor{darkgreen}{RGB}{30, 142, 20}
+
+% \lstdefinelanguage{JavaScript}{
+% 	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, let, var, if, in, while, do, else, case, break, async, await, const},
+% 	keywordstyle=\color{purple}\bfseries,
+% 	ndkeywords={class, export, boolean, throw, implements, import, this},
+% 	ndkeywordstyle=\color{darkgray}\bfseries,
+% 	identifierstyle=\color{black},
+% 	sensitive=false,
+% 	comment=[l]{//},
+% 	morecomment=[s]{/*}{*/},
+% 	commentstyle=\color{darkgreen}\ttfamily,
+% 	stringstyle=\color{darkgreen}\ttfamily,
+% 	morestring=[b]',
+% 	morestring=[b]"
+% }
+
+% \lstset{
+% 	language=JavaScript,
+% 	extendedchars=true,
+% 	basicstyle=\footnotesize\ttfamily,
+% 	showstringspaces=false,
+% 	showspaces=false,
+% 	numbers=left,
+% 	numberstyle=\footnotesize,
+% 	numbersep=9pt,
+% 	tabsize=2,
+% 	breaklines=true,
+% 	showtabs=false,
+% 	captionpos=b
+% }
+
+
+% Personal additions regarding code listings
+\lstdefinelanguage{Python}{
+    keywords={False, None, True, and, as, assert, async, await, break,
+              class, continue, def, del, elif, else, except, finally,
+              for, from, global, if, import, in, is, lambda, nonlocal,
+              not, or, pass, raise, return, try, while, with, yield},
+    sensitive=true,
+    comment=[l]{\#},
+    morecomment=[s]{"""}{"""},
+    morecomment=[s]{'''}{'''}, 
+    string=[b]{"},
+    string=[b]{'},
+    morestring=[b]{"},
+    morestring=[b]{'},
+    alsoletter={_},
+}
+
+% Define colors for syntax highlighting
+\definecolor{docstringcolor}{rgb}{0.0, 0.5, 0.0}
+\definecolor{keywordcolor}{rgb}{0.0, 0.0, 1.0}
+\definecolor{functioncolor}{rgb}{0.7, 0.2, 0.2}
+
+% Set up listings
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{keywordcolor},
+    commentstyle=\color{darkgreen},
+    stringstyle=\color{docstringcolor},
+    numbers=left,
+    numberstyle=\footnotesize,
+    stepnumber=1,
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{white},
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Bibliography management
+\usepackage[style=numeric-comp,backend=bibtex,urldate=comp,doi=false,isbn=false]{biblatex}
+\setcounter{secnumdepth}{3}
+\addbibresource{references.bib}
+\AtEveryBibitem{
+ \clearlist{language}
+ \clearfield{note}
+ \clearlist{publisher}
+ \clearlist{location}
+ \clearfield{eprinttype}
+ \clearfield{eprint}
+ \ifentrytype{misc}{}{
+  \clearfield{url}
+  \clearfield{urlyear}
+ }
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define the language of the diploma thesis
+\selectlanguage{english}
+%\selectlanguage{german}
+
+\pagestyle{headings}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define the author printed on the cover page
+\author{Lennart T\"ollke}
+% Define the city and country of the author
+\authorcity{Zurich, Switzerland}
+% Define the student ID (Matrikelnummer)
+\studentid{21-701-735}
+% Define the title with optional subtitle
+\title{A Solution based on Brain-Computer Interfaces to Mitigate
+Cognitive Warfare}
+% Define the supervisors
+\supervisors{ Dr. Alberto Huertas Celdr\'an, Chao Feng, Dr. Sergio L\'opez Bernal, Victoria L\'opez Madejska, Prof. Dr. Burkhard Stiller}
+% Define the submission date
+\submissiondate{September 11, 2024}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Make the title page
+\maketitle
+
+% Make the imprint on the back of the cover page
+\makeimprint
+
+\pagenumbering{roman}
+
+% Include the files of the diploma thesis
+%\cleardoublepage
+\input{chapters/0 - Declaration of Independence}
+\input{abstract.tex}
+%\cleardoublepage
+\input{acknowledgments.tex}
+\tableofcontents
+\cleardoublepage
+\pagenumbering{arabic}
+% --------------
+% Body
+% --------------
+\input{chapters/1 - Introduction}
+\input{chapters/2 - Background}
+\input{chapters/3 - Related Work}
+\input{chapters/4 - Design}
+\input{chapters/5 - Implementation}
+\input{chapters/6 - Evaluation}
+\input{chapters/7 - Considerations}
+% --------------
+% End
+% --------------
+\input{bibliography.tex}
+% --------------
+\input{abbreviations.tex}
+% \input{glossary.tex}  <- optional
+% --------------
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\addcontentsline{toc}{chapter}{List of Listings}
+\lstlistoflistings
+
+
+
+%\input{appendix.tex}
+
+\end{document}

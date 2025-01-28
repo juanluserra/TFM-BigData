@@ -1,0 +1,1473 @@
+%%% ====================================================================
+%%%  BibTeX-file{
+%%%     Author          = "Gerry Murray",
+%%%     version         = "1.2",
+%%%     date            = "2 April 2012",
+%%%     filename        = "acmsmall-sample-bibfile.bib",
+%%%     address         = "ACM, NY",
+%%%     email           = "murray at hq.acm.org",
+%%%     codetable       = "ISO/ASCII",
+%%%     keywords        = "ACM Reference Format, bibliography, citation, references",
+%%%     supported       = "yes",
+%%%     docstring       = "This BibTeX database file contains 'bibdata' entries
+%%%                        that 'match' the examples provided in the Specifications Document
+%%%                        AND, also, 'legacy'-type bibs. It should assist Authors in
+%%%                        choosing the 'correct' at-bibtype and necessary bib-fields
+%%%                        so as to obtain the appropriate ACM Reference Format output.
+%%%                        It also contains many 'Standard Abbreviations'. "
+%%%  }
+%%% ====================================================================
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+%Entries
+% ------------------------------------------------------------
+% Paste the BibTeX of your reference here 
+@misc{thebrainwebsite,
+    author = "Bruno Dubuc",
+    title = "The Brain From Top To Bottom",
+    howpublished = {\url{https://thebrain.mcgill.ca/index.php}, Accessed: 2024-04-15}
+}
+
+@misc{thebrain-SimpleToComplex-neuroAnatomy-b,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Neurological Anatomy, Beginner",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/d/d_01/d_01_cr/d_01_cr_ana/d_01_cr_ana.html}, Accessed: 2024-04-15}
+}
+
+@misc{thebrain-SimpleToComplex-neuroAnatomy-i,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Neurological Anatomy, Intermediate",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/i/i_01/i_01_cr/i_01_cr_ana/i_01_cr_ana.html}, Accessed: 2024-04-18}
+}
+
+@misc{thebrain-SimpleToComplex-neuroFunction-b,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Neurological Function, Beginner",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/d/d_01/d_01_cr/d_01_cr_fon/d_01_cr_fon.html}, Accessed: 2024-04-18}
+}
+
+@misc{thebrain-SimpleToComplex-cellularAnatomy-i,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Cellular Anatomy, Intermediate",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/i/i_01/i_01_cl/i_01_cl_ana/i_01_cl_ana.html}, Accessed: 2024-04-19}
+}
+
+@misc{thebrain-SimpleToComplex-cellularAnatomy-a,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Cellular Anatomy, Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_01/a_01_cl/a_01_cl_ana/a_01_cl_ana.html}, Accessed: 2024-04-19}
+}
+
+@misc{thebrain-SimpleToComplex-cellularFunction-b,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Cellular Function, Beginner",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/d/d_01/d_01_cl/d_01_cl_fon/d_01_cl_fon.html}, Accessed: 2024-04-19}
+}
+
+@misc{thebrain-SimpleToComplex-cellularFunction-i,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Cellular Function, Intermediate",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/i/i_01/i_01_cl/i_01_cl_fon/i_01_cl_fon.html}, Accessed: 2024-04-19}
+}
+
+@misc{thebrain-SimpleToComplex-cellularFunction-a,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Cellular Function, Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_01/a_01_cl/a_01_cl_fon/a_01_cl_fon.html}, Accessed: 2024-04-19}
+}
+
+@misc{thebrain-SimpleToComplex-mollecularAnatomy-b,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Molecular Anatomy, Beginner",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/d/d_01/d_01_m/d_01_m_ana/d_01_m_ana.html}, Accessed: 2024-04-23}
+}
+
+@misc{thebrain-SimpleToComplex-mollecularFunction-i,
+    author = "Bruno Dubuc",
+    title = "From the Simple to the Complex, Molecular Function, Intermediate",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/i/i_01/i_01_m/i_01_m_fon/i_01_m_fon.html}, Accessed: 2024-04-23}
+}
+
+@misc{thebrain-emotions-mollecular-a,
+    author = "Bruno Dubuc",
+    title = "Emotions and the Brain, Fear Anxiety and Anguish, Molecular Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_04/a_04_m/a_04_m_peu/a_04_m_peu.html}, Accessed: 2024-05-04}
+}
+
+@misc{thebrain-memory-psychological-a,
+    author = "Bruno Dubuc",
+    title = "Memory and the Brain, How Memory works, Psychological Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_07/a_07_p/a_07_p_tra/a_07_p_tra.html}, Accessed: 2024-06-16}
+}
+
+@misc{thebrain-memory-neurological-a,
+    author = "Bruno Dubuc",
+    title = "Memory and the Brain, How Memory works, Neurological Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_07/a_07_cr/a_07_cr_tra/a_07_cr_tra.html}, Accessed: 2024-06-16}
+}
+
+@misc{thebrain-memory-Cellular-a,
+    author = "Bruno Dubuc",
+    title = "Memory and the Brain, How Memory works, Cellular Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_07/a_07_cl/a_07_cl_tra/a_07_cl_tra.html}, Accessed: 2024-06-16}
+}
+
+@misc{thebrain-memory-molecular-a,
+    author = "Bruno Dubuc",
+    title = "Memory and the Brain, How Memory works, Molecular Advanced",
+    howpublished = {\url{https://thebrain.mcgill.ca/flash/a/a_07/a_07_m/a_07_m_tra/a_07_m_tra.html}, Accessed: 2024-06-16}
+}
+
+@misc{LobesOfBrain,
+    author = "The University of Queensland",
+    title = "The Lobes of the brain",
+    howpublished = {\url{https://qbi.uq.edu.au/brain/brain-anatomy/lobes-brain}, Accessed: 2024-04-17}
+}
+
+@misc{LimbicSystem,
+    author = "Sanat Pai Raikar",
+    title = "limbic system",
+    howpublished = {\url{https://www.britannica.com/science/limbic-system}, Accessed: 2024-04-18}
+}
+
+@misc{Brian2,
+    author = "Brian authors",
+    title = "Brian 2 documentation",
+    howpublished = {\url{https://brian2.readthedocs.io/en/stable}, Accessed: 2024-08-11}
+}
+
+@misc{HippSimModel.1,
+    author = {Aussel, Am{\'e}lie and Buhry, Laure and Ranta, Radu},
+    title = "Model of the hippocampus over the sleep-wake cycle using Hodgkin-Huxley neurons",
+    howpublished = {\url{https://modeldb.science/243350}, Accessed: 2024-08-19}
+}
+
+@misc{HippSimModel.2,
+    author = {Aussel, Am{\'e}lie},
+    title = "Healthy and Epileptic Hippocampal Circuit",
+    howpublished = {\url{https://modeldb.science/266796}, Accessed: 2024-08-19}
+}
+
+
+
+
+@phdthesis{AmelieAussel.2020,
+ author = {{Am{\'e}lie Aussel}},
+ year = {13/01/2020},
+ title = {Computational modeling of healthy and epileptic hippocampal oscillations},
+ school = {{Universit{\'e} de Lorraine}},
+}
+
+
+@book{Banich.2018,
+ author = {Banich, Marie T. and Compton, Rebecca J.},
+ year = {2018},
+ title = {Cognitive neuroscience},
+ address = {Cambridge United Kingdom and New York NY},
+ edition = {Fourth edition},
+ publisher = {{Cambridge University Press}},
+ isbn = {9781107158443}
+}
+
+
+@article{.2022,
+ author = {محوب, حسن and شکوری, سعید},
+ year = {2022},
+ title = {نگ‌شناختی مدرن: از شناخت در رزم تا عرصه نگ‌شناختی},
+ volume = {12},
+ number = {2},
+ journal = {مطالعات منابع انسانی},
+ doi = {10.22034/jhrs.2022.158895},
+}
+
+
+@book{Backes.2019,
+ author = {Backes, Oliver and Swab, Andrew},
+ year = {2019},
+ title = {Cognitive Warfare: The Russian Threat to Election Integrity in the Baltic States},
+ keywords = {Disinformation (as type of Coginitive Warfare)},
+ publisher = {{Belfer Center for Science and International Affairs}},
+}
+
+
+@article{Bartholomew.2024,
+ author = {Bartholomew, Robert E. and Baloh, Robert W.},
+ year = {2024},
+ title = {{\textquotedbl}Havana Syndrome{\textquotedbl}: A post mortem},
+ pages = {402--405},
+ volume = {70},
+ number = {2},
+ journal = {The International journal of social psychiatry},
+ doi = {10.1177/00207640231208374},
+}
+
+
+@article{Claverie.2022,
+  title={The Cognitive Warfare Concept},
+  author={Claverie, Bernard and Du Cluzel, Fran{\c{c}}ois},
+  journal={Innovation Hub Sponsored by NATO Allied Command Transformation},
+  volume={2},
+  year={2022}
+}
+
+
+@misc{EADS.2023,
+ author = {Eads, LJ and Clarke, Ryan and {Sean Lin}, Xiaoxu and McCreight, Robert},
+ date = {2023},
+ title = {Warfare in the Cognitive Age: NeuroStrike and the PLA's Advanced Psychological Weapons {\&} Tactics},
+}
+
+
+
+@article{Hu.2021,
+ author = {Hu, Cuicui and Zuo, Hongyan and Li, Yang},
+ year = {2021},
+ title = {Effects of Radiofrequency Electromagnetic Radiation on Neurotransmitters in the Brain},
+ pages = {691880},
+ volume = {9},
+ journal = {Frontiers in public health},
+ doi = {10.3389/fpubh.2021.691880},
+}
+
+
+@article{MAKSYMENKO.2023,
+ abstract = {effects of coginitive warfare in Ukrainien war},
+ author = {Maksymenko, Serhii Dmytrovich and Derkach, Lidiya Mykolayevna},
+ year = {2023},
+ title = {Understanding modern cognitive war in the global dimension, its genesis in the Ukrainian context},
+ pages = {126--148},
+ volume = {23},
+ number = {1},
+ issn = {12146463},
+ journal = {Obrana a strategie (Defence and Strategy)},
+ doi = {10.3849/1802-7199.23.2023.01.126-148},
+}
+
+
+@article{McCreight.2024,
+ abstract = {Relevance of cognitive warfare},
+ author = {McCreight, Robert},
+ year = {2024},
+ title = {The war inside your mind: unprotected brain battlefields and neuro-vulnerability},
+ issn = {2837-4010},
+ journal = {Academia Biology},
+ doi = {10.20935/AcadBiol6156},
+}
+
+
+@article{Miller.2023,
+  title={Cognitive warfare: an ethical analysis},
+  author={Miller, Seumas},
+  journal={Ethics and Information Technology},
+  volume={25},
+  number={3},
+  pages={46},
+  year={2023},
+  publisher={Springer}
+}
+
+@incollection{Krch.2011,
+ author = {Krch, Denise},
+ title = {Cognitive Processing},
+ pages = {627},
+ publisher = {Springer},
+ isbn = {978-0-387-79947-6},
+ editor = {Kreutzer, Jeffrey S. and Caplan, Bruce and DeLuca, John},
+ booktitle = {Encyclopedia of clinical neuropsychology},
+ year = {2011},
+ address = {New York and London},
+ doi = {\url{10.1007/978-0-387-79948-3{\textunderscore }1443}}
+}
+
+
+@article{Steimer.2002,
+ author = {Steimer, Thierry},
+ year = {2002},
+ title = {The biology of fear- and anxiety-related behaviors},
+ pages = {231--249},
+ volume = {4},
+ number = {3},
+ issn = {1294-8322},
+ journal = {Dialogues in clinical neuroscience},
+ doi = {\url{10.31887/DCNS.2002.4.3/tsteimer}},
+}
+
+@article{kj.1995,
+  title={Environmental factors in the etiology of anxiety},
+  author={Craig, KJ and Brown, KJ and Baum, A},
+  journal={Psychopharmacology: The fourth generation of progress},
+  pages={1325--1339},
+  year={1995},
+  publisher={Raven}
+}
+
+
+@article{Barlow.2000,
+ author = {Barlow, D. H.},
+ year = {2000},
+ title = {Unraveling the mysteries of anxiety and its disorders from the perspective of emotion theory},
+ pages = {1247--1263},
+ volume = {55},
+ number = {11},
+ issn = {0003-066X},
+ journal = {American Psychologist},
+ doi = {\url{10.1037//0003-066x.55.11.1247}}
+}
+
+
+@article{LeDoux.2000,
+ author = {LeDoux, J. E.},
+ year = {2000},
+ title = {Emotion circuits in the brain},
+ pages = {155--184},
+ volume = {23},
+ ISSN = {0147-006X},
+ journal = {Annual review of neuroscience},
+ doi = {\url{10.1146/annurev.neuro.23.1.155}}
+}
+
+
+@article{Phelps.2006,
+ author = {Phelps, Elizabeth A.},
+ year = {2006},
+ title = {Emotion and cognition: insights from studies of the human amygdala},
+ pages = {27--53},
+ volume = {57},
+ issn = {0066-4308},
+ journal = {Annual review of psychology},
+ doi = {\url{10.1146/annurev.psych.56.091103.070234}}
+}
+
+
+@article{panksepp.1998,
+  title={The sources of fear and anxiety in the brain},
+  author={Panksepp, Jack},
+  journal={Affective Neuroscience},
+  pages={206--222},
+  year={1998},
+  publisher={Oxford University Press}
+}
+
+
+@book{Ferry.2017,
+ year = {2017},
+ title = {The Amygdala: Where Emotions Shape Perception, Learning and Memories},
+ address = {},
+ publisher = {IntechOpen},
+ isbn = {9789535132509},
+ editor = {Ferry, Barbara},
+}
+
+
+
+@article{Kim.2011,
+ author = {Kim, M. Justin and Loucks, Rebecca A. and Palmer, Amy L. and Brown, Annemarie C. and Solomon, Kimberly M. and Marchante, Ashley N. and Whalen, Paul J.},
+ year = {2011},
+ title = {The structural and functional connectivity of the amygdala: from normal emotion to pathological anxiety},
+ pages = {403--410},
+ volume = {223},
+ number = {2},
+ journal = {Behavioural brain research},
+ doi = {\url{10.1016/j.bbr.2011.04.025}},
+}
+
+
+@article{McDonald.1982,
+ author = {McDonald, A. J.},
+ year = {1982},
+ title = {Cytoarchitecture of the central amygdaloid nucleus of the rat},
+ pages = {401--418},
+ volume = {208},
+ number = {4},
+ issn = {0021-9967},
+ journal = {The Journal of comparative neurology},
+ doi = {\url{10.1002/cne.902080409}}
+}
+
+
+
+@article{Davis.2001,
+ author = {Davis, M. and Whalen, P. J.},
+ year = {2001},
+ title = {The amygdala: vigilance and emotion},
+ pages = {13--34},
+ volume = {6},
+ number = {1},
+ issn = {1359-4184},
+ journal = {Molecular psychiatry},
+ doi = {\url{10.1038/sj.mp.4000812}}
+}
+
+
+
+@article{Bernal.2021,
+ author = {Bernal, Sergio L{\'o}pez and Celdr{\'a}n, Alberto Huertas and P{\'e}rez, Gregorio Mart{\'i}nez and Barros, Michael Taynnan and Balasubramaniam, Sasitharan},
+ year = {2021},
+ title = {Security in Brain-Computer Interfaces},
+ pages = {1--35},
+ volume = {54},
+ number = {1},
+ issn = {0360-0300},
+ journal = {ACM Computing Surveys},
+ doi = {\url{10.1145/3427376}},
+}
+
+
+@article{Bernal.2023,
+ author = {Bernal, Sergio L{\'o}pez and Celdr{\'a}n, Alberto Huertas and P{\'e}rez, Gregorio Mart{\'i}nez},
+ year = {2023},
+ title = {Eight Reasons to Prioritize Brain-Computer Interface Cybersecurity},
+ pages = {68--78},
+ volume = {66},
+ number = {4},
+ issn = {0001-0782},
+ journal = {Communications of the ACM},
+ doi = {\url{10.1145/3535509}},
+}
+
+
+@article{Musk.2019,
+ author = {Musk, Elon},
+ year = {2019},
+ title = {An Integrated Brain-Machine Interface Platform With Thousands of Channels},
+ pages = {e16194},
+ volume = {21},
+ number = {10},
+ journal = {Journal of medical Internet research},
+ doi = {\url{10.2196/16194}}
+}
+
+
+@article{NicolasAlonso.2012,
+ author = {Nicolas-Alonso, Luis Fernando and Gomez-Gil, Jaime},
+ year = {2012},
+ title = {Brain computer interfaces, a review},
+ pages = {1211--1279},
+ volume = {12},
+ number = {2},
+ journal = {Sensors (Basel, Switzerland)},
+ doi = {\url{10.3390/s120201211}},
+}
+
+
+@article{Rao.2019,
+ author = {Rao, Rajesh Pn},
+ year = {2019},
+ title = {Towards neural co-processors for the brain: combining decoding and encoding in brain-computer interfaces},
+ pages = {142--151},
+ volume = {55},
+ journal = {Current opinion in neurobiology},
+}
+
+
+@inproceedings{WilliamJ.Tyler.2017,
+  title={Non-invasive neural stimulation},
+  author={Tyler, William J and Sanguinetti, Joseph L and Fini, Maria and Hool, Nicholas},
+  booktitle={Micro-and Nanotechnology Sensors, Systems, and Applications IX},
+  volume={10194},
+  pages={280--290},
+  year={2017},
+  organization={SPIE}
+}
+
+
+@article{Baillet.2001,
+ author = {Baillet, S. and Mosher, J. C. and Leahy, R. M.},
+ year = {2001},
+ title = {Electromagnetic brain mapping},
+ pages = {14--30},
+ volume = {18},
+ number = {6},
+ issn = {1053-5888},
+ journal = {IEEE Signal Processing Magazine},
+ doi = {\url{10.1109/79.962275}}
+}
+
+
+@book{Laureys.2014,
+ author = {Laureys, Steven and Tononi, Giulio},
+ year = {2014},
+ title = {The neurology of consciousness: Cognitive Neuroscience and Neuropathology},
+ address = {Oxford},
+ publisher = {{Elsevier Science}},
+ isbn = {9780080921020},
+}
+
+@article{Luan.2014,
+ author = {Luan, Song and Williams, Ian and Nikolic, Konstantin and Constandinou, Timothy G.},
+ year = {2014},
+ title = {Neuromodulation: present and emerging methods},
+ pages = {27},
+ volume = {7},
+ issn = {1662-6443},
+ journal = {Frontiers in neuroengineering},
+ doi = {\url{10.3389/fneng.2014.00027 }},
+}
+
+
+@article{Lebedev.2006,
+ author = {Lebedev, Mikhail A. and Nicolelis, Miguel A. L.},
+ year = {2006},
+ title = {Brain-machine interfaces: past, present and future},
+ pages = {536--546},
+ volume = {29},
+ number = {9},
+ issn = {0166-2236},
+ journal = {Trends in neurosciences},
+ doi = {\url{10.1016/j.tins.2006.07.004 }}
+}
+
+
+@article{deCharms.2004,
+ author = {deCharms, R. Christopher and Christoff, Kalina and Glover, Gary H. and Pauly, John M. and Whitfield, Susan and Gabrieli, John D. E.},
+ year = {2004},
+ title = {Learned regulation of spatially localized brain activation using real-time fMRI},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S1053811903005500}},
+ pages = {436--443},
+ volume = {21},
+ number = {1},
+ issn = {1053-8119},
+ journal = {NeuroImage},
+ doi = {\url{10.1016/j.neuroimage.2003.08.041 }}
+}
+
+
+@article{Tyler.2008,
+ author = {Tyler, William J. and Tufail, Yusuf and Finsterwald, Michael and Tauchmann, Monica L. and Olson, Emily J. and Majestic, Cassondra},
+ year = {2008},
+ title = {Remote excitation of neuronal circuits using low-intensity, low-frequency ultrasound},
+ url = {\url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0003511}},
+ pages = {e3511},
+ volume = {3},
+ number = {10},
+ issn = {1932-6203},
+ journal = {PLOS ONE},
+ doi = {\url{10.1371/journal.pone.0003511}},
+}
+
+
+@article{Kennedy.2000,
+ author = {Kennedy, P. R. and Bakay, R. A. and Moore, M. M. and Adams, K. and Goldwaithe, J.},
+ year = {2000},
+ title = {Direct control of a computer from the human central nervous system},
+ pages = {198--202},
+ volume = {8},
+ number = {2},
+ issn = {1063-6528},
+ journal = {IEEE transactions on rehabilitation engineering : a publication of the IEEE Engineering in Medicine and Biology Society},
+ doi = {\url{10.1109/86.847815}}
+}
+
+
+@article{Ball.2009,
+ author = {Ball, Tonio and Kern, Markus and Mutschler, Isabella and Aertsen, Ad and Schulze-Bonhage, Andreas},
+ year = {2009},
+ title = {Signal quality of simultaneously recorded invasive and non-invasive EEG},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S1053811909001827}},
+ pages = {708--716},
+ volume = {46},
+ number = {3},
+ issn = {1053-8119},
+ journal = {NeuroImage},
+ doi = {\url{10.1016/j.neuroimage.2009.02.028}}
+}
+
+@article{Schalk.2007,
+ author = {Schalk, G. and Kub{\'a}nek, J. and Miller, K. J. and Anderson, N. R. and Leuthardt, E. C. and Ojemann, J. G. and Limbrick, D. and Moran, D. and Gerhardt, L. A. and Wolpaw, J. R.},
+ year = {2007},
+ title = {Decoding two-dimensional movement trajectories using electrocorticographic signals in humans},
+ pages = {264--275},
+ volume = {4},
+ number = {3},
+ issn = {1741-2560},
+ journal = {Journal of neural engineering},
+ doi = {\url{10.1088/1741-2560/4/3/012}}
+}
+
+
+@article{Polikov.2005,
+ author = {Polikov, Vadim S. and Tresco, Patrick A. and Reichert, William M.},
+ year = {2005},
+ title = {Response of brain tissue to chronically implanted neural electrodes},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0165027005002931}},
+ pages = {1--18},
+ volume = {148},
+ number = {1},
+ issn = {0165-0270},
+ journal = {Journal of Neuroscience Methods},
+ doi = {\url{10.1016/j.jneumeth.2005.08.015}}
+}
+
+
+
+@article{Benabid.2003,
+ author = {Benabid, Alim Louis},
+ year = {2003},
+ title = {Deep brain stimulation for Parkinson's disease},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0959438803001739}},
+ pages = {696--706},
+ volume = {13},
+ number = {6},
+ journal = {Current opinion in neurobiology},
+ doi = {\url{10.1016/j.conb.2003.11.001}}
+}
+
+
+@article{Zhao.2023,
+ author = {Zhao, Zhi-Ping and Nie, Chuang and Jiang, Cheng-Teng and Cao, Sheng-Hao and Tian, Kai-Xi and Yu, Shan and Gu, Jian-Wen},
+ year = {2023},
+ title = {Modulating Brain Activity with Invasive Brain-Computer Interface: A Narrative Review},
+ url = {\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9856340/        }},
+ volume = {13},
+ number = {1},
+ journal = {Brain Sciences},
+ doi = {\url{10.3390/brainsci13010134}},
+}
+
+
+@article{Flesher.2021,
+ author = {Flesher, Sharlene N. and Downey, John E. and Weiss, Jeffrey M. and Hughes, Christopher L. and Herrera, Angelica J. and Tyler-Kabara, Elizabeth C. and Boninger, Michael L. and Collinger, Jennifer L. and Gaunt, Robert A.},
+ year = {2021},
+ title = {A brain-computer interface that evokes tactile sensations improves robotic arm control},
+ pages = {831--836},
+ volume = {372},
+ number = {6544},
+ journal = {Science (New York, N.Y.)},
+ doi = {\url{10.1126/science.abd0380}},
+}
+
+
+@article{Vidal.2016,
+ author = {Vidal, Gabriel W. Vattendahl and Rynes, Mathew L. and Kelliher, Zachary and Goodwin, Shikha Jain},
+ year = {2016},
+ title = {Review of Brain-Machine Interfaces Used in Neural Prosthetics with New Perspective on Somatosensory Feedback through Method of Signal Breakdown},
+ pages = {8956432},
+ volume = {2016},
+ issn = {2090-908X},
+ journal = {Scientifica},
+ doi = {\url{10.1155/2016/8956432}},
+}
+
+
+@article{Kim.2013,
+ author = {Kim, Dongbeom and Par{\'e}, Denis and Nair, Satish S.},
+ year = {2013},
+ title = {Mechanisms contributing to the induction and storage of Pavlovian fear memories in the lateral amygdala},
+ pages = {421--430},
+ volume = {20},
+ number = {8},
+ journal = {Learning {\&} memory (Cold Spring Harbor, N.Y.)},
+ doi = {\url{10.1101/lm.030262.113}},
+}
+
+
+@article{Repa.2001,
+ author = {Repa, J. C. and Muller, J. and Apergis, J. and Desrochers, T. M. and Zhou, Y. and LeDoux, J. E.},
+ year = {2001},
+ title = {Two different lateral amygdala cell populations contribute to the initiation and storage of memory},
+ url = {\url{https://www.nature.com/articles/nn0701_724}},
+ pages = {724--731},
+ volume = {4},
+ number = {7},
+ issn = {1546-1726},
+ journal = {Nature Neuroscience},
+ doi = {\url{10.1038/89512}},
+}
+
+
+@article{Spera.2016,
+ author = {Spera, Emiliano and Migliore, Michele and Unsworth, Nash and Tegolo, Domenico},
+ year = {2016},
+ title = {On the cellular mechanisms underlying working memory capacity in humans},
+ pages = {335--350},
+ volume = {26},
+ number = {4},
+ issn = {12100552},
+ journal = {Neural Network World},
+}
+
+
+@article{Aussel.2018,
+ author = {Aussel, Am{\'e}lie and Buhry, Laure and Tyvaert, Louise and Ranta, Radu},
+ year = {2018},
+ title = {A detailed anatomical and mathematical model of the hippocampal formation for the generation of sharp-wave ripples and theta-nested gamma oscillations},
+ pages = {207--221},
+ volume = {45},
+ number = {3},
+ journal = {Journal of computational neuroscience},
+ file = {s10827-018-0704-x:Attachments/s10827-018-0704-x.pdf:application/pdf}
+}
+
+
+@article{McDougal.2017,
+ author = {McDougal, Robert A. and Morse, Thomas M. and Carnevale, Ted and Marenco, Luis and Wang, Rixin and Migliore, Michele and Miller, Perry L. and Shepherd, Gordon M. and Hines, Michael L.},
+ year = {2017},
+ title = {Twenty years of ModelDB and beyond: building essential modeling tools for the future of neuroscience},
+ url = {\url{https://link.springer.com/article/10.1007/s10827-016-0623-7}}              ,
+ pages = {1--10},
+ volume = {42},
+ number = {1},
+ issn = {1573-6873},
+ journal = {Journal of Computational Neuroscience},
+ doi = {\url{10.1007/s10827-016-0623-7}},
+}
+
+
+@book{Pavlin.2020,
+ year = {2020},
+ title = {An Assessment of Illness in U.S. Government Employees and Their Families at Overseas Embassies},
+ address = {Washington (DC)},
+ isbn = {9780309681377},
+ editor = {Pavlin, Julie A. and Relman, David A.},
+ publisher={National Academies Press}
+}
+
+
+@article{McCreight.2022,
+ author = {McCreight, R},
+ year = {2022},
+ title = {Neuro-Cognitive Warfare: Inflicting Strategic Impact via Non-Kinetic Threat},
+ url = {\url{https://smallwarsjournal.com/jrnl/art/neuro-cognitive-warfare-inflicting-strategic-impact-non-kinetic-threat}},
+ urldate = {2022-05-16},
+ journal = {Small Wars Jurnal}
+}
+
+
+@article{Axmacher.2010,
+ author = {Axmacher, Nikolai and Henseler, Melanie M. and Jensen, Ole and Weinreich, Ilona and Elger, Christian E. and Fell, Juergen},
+ year = {2010},
+ title = {Cross-frequency coupling supports multi-item working memory in the human hippocampus},
+ pages = {3228--3233},
+ volume = {107},
+ number = {7},
+ issn = {0027-8424},
+ journal = {Proceedings of the National Academy of Sciences of the United States of America},
+ doi = {\url{10.1073/pnas.0911531107}},
+}
+
+
+@article{Girardeau.2011,
+ author = {Girardeau, Gabrielle and Zugaro, Micha{\"e}l},
+ year = {2011},
+ title = {Hippocampal ripples and memory consolidation},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0959438811000316}},
+ pages = {452--459},
+ volume = {21},
+ number = {3},
+ journal = {Current opinion in neurobiology},
+ doi = {\url{10.1016/j.conb.2011.02.005}}
+}
+
+
+@article{Okano.2000,
+ author = {Okano, H. and Hirano, T. and Balaban, E.},
+ year = {2000},
+ title = {Learning and memory},
+ pages = {12403--12404},
+ volume = {97},
+ number = {23},
+ issn = {0027-8424},
+ journal = {Proceedings of the National Academy of Sciences of the United States of America},
+ doi = {\url{10.1073/pnas.210381897}},
+}
+
+
+
+@book{.1994,
+ editor = {Lin, James C.},
+ year = {1994},
+ title = {Advances in Electromagnetic Fields in Living Systems},
+ publisher = {{Springer, Boston, MA}},
+ isbn = {978-1-4615-2542-4}
+}
+
+
+
+@article{DAndrea.1999,
+ author = {D'Andrea, John A.},
+ year = {1999},
+ title = {Behavioral evaluation of microwave irradiation},
+ pages = {64--74},
+ volume = {20},
+ number = {S4},
+ issn = {1521-186X},
+ journal = {Bioelectromagnetics},
+ doi = {\url{10.1002/(SICI)1521-186X(1999)20:4}},
+}
+
+
+@article{Huber.2005,
+ author = {Huber, R. and Treyer, V. and Schuderer, J. and Berthold, T. and Buck, A. and Kuster, N. and Landolt, H. P. and Achermann, P.},
+ year = {2005},
+ title = {Exposure to pulse-modulated radio frequency electromagnetic fields affects regional cerebral blood flow},
+ pages = {1000--1006},
+ volume = {21},
+ number = {4},
+ issn = {0953-816X},
+ journal = {The European journal of neuroscience},
+ doi = {\url{10.1111/j.1460-9568.2005.03929.x}},
+}
+
+
+@article{Kereya.2018,
+ author = {Kereya, A. V. and Zharkova, L. P. and Bolshakov, M. A. and Kutenkov, O. P. and Rostov, V. V.},
+ year = {2018},
+ title = {Some biological reactions of the organism after exposure to nanosecond repetitive pulsed microwaves},
+ pages = {022015},
+ volume = {1115},
+ issn = {1742-6588},
+ journal = {Journal of Physics: Conference Series},
+ doi = {\url{10.1088/1742-6596/1115/2/022015}},
+}
+
+
+@article{Kumar.2016,
+ author = {Kumar, Manoj and Singh, Surya P. and Chaturvedi, Chandra M.},
+ year = {2016},
+ title = {Chronic Nonmodulated Microwave Radiations in Mice Produce Anxiety-like and Depression-like Behaviours and Calcium- and NO-related Biochemical Changes in the Brain},
+ pages = {318--327},
+ volume = {25},
+ number = {6},
+ issn = {1226-2560},
+ journal = {Experimental neurobiology},
+ doi = {\url{10.5607/en.2016.25.6.318}},
+}
+
+
+@incollection{Lai.1994,
+ author = {Lai, Henry},
+ title = {Neurological Effects of Radiofrequency Electromagnetic Radiation},
+ url = {\url{https://link.springer.com/chapter/10.1007/978-1-4615-2542-4_2}}  ,
+ pages = {27--80},
+ publisher = {{Springer, Boston, MA}},
+ isbn = {978-1-4615-2542-4},
+ booktitle = {Advances in Electromagnetic Fields in Living Systems},
+ year = {1994},
+ doi = {\url{10.1007/978-1-4615-2542-4{\textunderscore }2}},
+}
+
+
+@article{Lin.2021,
+ author = {Lin, Yanyun and Gao, Peng and Guo, Yichen and Chen, Qin and Lang, Haiyang and Guo, Qiyan and Miao, Xia and Li, Jing and Zeng, Lihua and Guo, Guozhen},
+ year = {2021},
+ title = {Effects of Long-Term Exposure to L-Band High-Power Microwave on the Brain Function of Male Mice},
+ pages = {2237370},
+ volume = {2021},
+ journal = {BioMed research international},
+ doi = {\url{10.1155/2021/2237370}},
+}
+
+
+@article{Narayanan.2019,
+ author = {Narayanan, Sareesh Naduvil and Jetti, Raghu and Kesari, Kavindra Kumar and Kumar, Raju Suresh and Nayak, Satheesha B. and Bhat, P. Gopalakrishna},
+ year = {2019},
+ title = {Radiofrequency electromagnetic radiation-induced behavioral changes and their possible basis},
+ pages = {30693--30710},
+ volume = {26},
+ number = {30},
+ journal = {Environmental science and pollution research international},
+ doi = {\url{10.1007/s11356-019-06278-5}},
+}
+
+
+@article{Tan.2017,
+ author = {Tan, Shengzhi and Wang, Hui and Xu, Xinping and Zhao, Li and Zhang, Jing and Dong, Ji and Yao, Binwei and Wang, Haoyu and Zhou, Hongmei and Gao, Yabing and Peng, Ruiyun},
+ year = {2017},
+ title = {Study on dose-dependent, frequency-dependent, and accumulative effects of 1.5 GHz and 2.856 GHz microwave on cognitive functions in Wistar rats},
+ url = {\url{https://www.nature.com/articles/s41598-017-11420-9}},
+ pages = {10781},
+ volume = {7},
+ number = {1},
+ issn = {2045-2322},
+ journal = {Scientific Reports},
+ doi = {\url{10.1038/s41598-017-11420-9}},
+}
+
+
+@article{Zhi.2017,
+ author = {Zhi, Wei-Jia and Wang, Li-Feng and Hu, Xiang-Jun},
+ year = {2017},
+ title = {Recent advances in the effects of microwave radiation on brains},
+ pages = {29},
+ volume = {4},
+ number = {1},
+ journal = {Military Medical Research},
+ doi = {\url{10.1186/s40779-017-0139-0}},
+}
+
+
+@article{calvente2016does,
+  title={Does exposure to environmental radiofrequency electromagnetic fields cause cognitive and behavioral effects in 10-year-old boys?},
+  author={Calvente, Irene and P{\'e}rez-Lobato, Roc{\'\i}o and N{\'u}{\~n}ez, Mar{\'\i}a-Isabel and Ramos, Rosa and Guxens, M{\`o}nica and Villalba, Juan and Olea, Nicol{\'a}s and Fern{\'a}ndez, Mariana F},
+  journal={Bioelectromagnetics},
+  volume={37},
+  number={1},
+  pages={25--36},
+  year={2016},
+  publisher={Wiley Online Library}
+}
+
+@article{seaman1978slow,
+  title={Slow and Rapid Response to CW and Pulsed Microwave Radiation by Individual Aplysis Pacemakers},
+  author={Seaman, RL and Wachtel, H},
+  journal={Journal of Microwave Power},
+  volume={13},
+  number={1},
+  pages={77--86},
+  year={1978},
+  publisher={Taylor \& Francis}
+}
+
+@article{wachtel1975effects,
+  title={Effects of low-intensity microwaves on isolated neurons},
+  author={Wachtel, Howard and Seaman, Ronald and Joines, William},
+  journal={Annals of the New York Academy of Sciences},
+  volume={247},
+  number={1},
+  pages={46--62},
+  year={1975},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{dumansky1974biologic,
+  title={The biologic action and hygienic significance of electromagnetic fields of super high and ultra high frequencies in densely populated areas},
+  author={Dumansky, JD and Shandala, MG},
+  booktitle={Biologic Effects and Health Hazards of Microwave Radiation: Proceedings of an International Symposium. Edited by P. Czerski, et al. Polish Medical Publishers, Warsaw},
+  year={1974}
+}
+
+
+@article{Aussel.2022,
+ author = {Aussel, Am{\'e}lie and Ranta, Radu and Aron, Olivier and Colnat-Coulbois, Sophie and Maillard, Louise and Buhry, Laure},
+ year = {2022},
+ title = {Cell to network computational model of the epileptic human hippocampus suggests specific roles of network and channel dysfunctions in the ictal and interictal oscillations},
+ url = {\url{https://link.springer.com/article/10.1007/s10827-022-00829-5}},
+ pages = {519--535},
+ volume = {50},
+ number = {4},
+ issn = {1573-6873},
+ journal = {Journal of Computational Neuroscience},
+ doi = {\url{10.1007/s10827-022-00829-5}},
+}
+
+@article{BUZSAKI1989551,
+title = {Two-stage model of memory trace formation: A role for “noisy” brain states},
+journal = {Neuroscience},
+volume = {31},
+number = {3},
+pages = {551-570},
+year = {1989},
+issn = {0306-4522},
+doi = {https://doi.org/10.1016/0306-4522(89)90423-5},
+url = {https://www.sciencedirect.com/science/article/pii/0306452289904235},
+author = {G. Buzsáki},
+keywords = {CA, EEG, EPSP, IPSP, LTP, NMDA, RSA, SPW},
+}
+
+
+@inproceedings{Liu.2015,
+  author={Liu, Yu-Ting and Lin, Yang-Yin and Wu, Shang-Lin and Hsieh, Tsung-Yu and Lin, Chin-Teng},
+  booktitle={2015 IEEE International Conference on Systems, Man, and Cybernetics}, 
+  title={Assessment of Mental Fatigue: An EEG-Based Forecasting System for Driving Safety}, 
+  year={2015},
+  volume={},
+  number={},
+  pages={3233-3238},
+  keywords={Electroencephalography;Fatigue;Firing;Fuzzy neural networks;Vehicles;Safety;Road transportation;Electroencephalography (EEG);functional-link recurrent self-evolving fuzzy neural network (FL-RSEFNN);braincomputer interface (BCI);driving safety},
+  doi={10.1109/SMC.2015.561}}
+
+
+@incollection{Summerer.2009,
+ author = {Summerer, Leopold and Izzo, Dario and Rossini, Luca},
+ title = {Chapter 16 Brain--Machine Interfaces for Space Applications---Research, Technological Development, and Opportunities},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0074774209860169}},
+ pages = {213--223},
+ volume = {86},
+ publisher = {{Academic Press}},
+ isbn = {0074-7742},
+ booktitle = {International Review of Neurobiology},
+ year = {2009},
+ doi = {\url{10.1016/S0074-7742(09)86016-9}},
+}
+
+
+@article{Brocal.2023,
+ author = {Brocal, F.},
+ year = {2023},
+ title = {Brain-computer interfaces in safety and security fields: Risks and applications},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0925753522003903}},
+ pages = {106051},
+ volume = {160},
+ issn = {0925-7535},
+ journal = {Safety Science},
+ doi = {\url{10.1016/j.ssci.2022.106051}},
+}
+
+
+@article{Einevoll.2019,
+ author = {Einevoll, Gaute T. and Destexhe, Alain and Diesmann, Markus and Gr{\"u}n, Sonja and Jirsa, Viktor and de Kamps, Marc and Migliore, Michele and Ness, Torbj{\o}rn V. and Plesser, Hans E. and Sch{\"u}rmann, Felix},
+ year = {2019},
+ title = {The Scientific Case for Brain Simulations},
+ pages = {735--744},
+ volume = {102},
+ number = {4},
+ journal = {Neuron},
+ doi = {\url{10.1016/j.neuron.2019.03.027}},
+}
+
+
+@article{Hubel.1959,
+ author = {Hubel, D. H. and Wiesel, T. N.},
+ year = {1959},
+ title = {Receptive fields of single neurones in the cat's striate cortex},
+ pages = {574--591},
+ volume = {148},
+ number = {3},
+ issn = {0022-3751},
+ journal = {The Journal of physiology},
+ doi = {\url{10.1113/jphysiol.1959.sp006308}}
+}
+
+
+@article{Stimberg.20.8.2019,
+ author = {Stimberg, Marcel and Brette, Romain and Goodman, Dan Fm},
+ year = {20.8.2019},
+ title = {Brian 2, an intuitive and efficient neural simulator},
+ url = {\url{https://elifesciences.org/articles/47314}},
+ urldate = {2024-08-15},
+ journal = {eLife Sciences Publications, Ltd},
+}
+
+
+@article{Hines.1997,
+ author = {Hines, M. L. and Carnevale, N. T.},
+ year = {1997},
+ title = {The NEURON simulation environment},
+ pages = {1179--1209},
+ volume = {9},
+ number = {6},
+ issn = {0899-7667},
+ journal = {Neural computation},
+}
+
+
+@ARTICLE{Gewaltig:NEST,
+  author  = {Marc-Oliver Gewaltig and Markus Diesmann},
+  title   = {NEST (NEural Simulation Tool)},
+  journal = {Scholarpedia},
+  year    = {2007},
+  volume  = {2},
+  pages   = {1430},
+  number  = {4}
+}
+
+
+@article{Aussel.2021,
+ author = {Aussel, Am{\'e}lie and Buhry, Laure and Ranta, Radu},
+ year = {2021},
+ title = {Design of Experiments and Sobol' sensitivity analysis of a hippocampus computational model},
+ pages = {6146--6150},
+ volume = {2021},
+ journal = {Annual International Conference of the IEEE Engineering in Medicine and Biology Society. IEEE Engineering in Medicine and Biology Society. Annual International Conference},
+}
+
+
+@article{Minotti.2018,
+ author = {Minotti, Lorella and Montavont, Alexandra and Scholly, Julia and Tyvaert, Louise and Taussig, Delphine},
+ year = {2018},
+ title = {Indications and limits of stereoelectroencephalography (SEEG)},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0987705317302885}},
+ pages = {15--24},
+ volume = {48},
+ number = {1},
+ journal = {Neurophysiologie clinique = Clinical neurophysiology},
+ doi = {\url{10.1016/j.neucli.2017.11.006}},
+}
+
+
+@article{Liu.2022,
+ author = {Liu, Anli A. and Henin, Simon and Abbaspoor, Saman and Bragin, Anatol and Buffalo, Elizabeth A. and Farrell, Jordan S. and Foster, David J. and Frank, Loren M. and Gedankien, Tamara and Gotman, Jean and Guidera, Jennifer A. and Hoffman, Kari L. and Jacobs, Joshua and Kahana, Michael J. and Li, Lin and Liao, Zhenrui and Lin, Jack J. and Losonczy, Attila and Malach, Rafael and {van der Meer}, Matthijs A. and McClain, Kathryn and McNaughton, Bruce L. and Norman, Yitzhak and Navas-Olive, Andrea and de {La Prida}, Liset M. and Rueckemann, Jon W. and Sakon, John J. and Skelin, Ivan and Soltesz, Ivan and Staresina, Bernhard P. and Weiss, Shennan A. and Wilson, Matthew A. and Zaghloul, Kareem A. and Zugaro, Micha{\"e}l and Buzs{\'a}ki, Gy{\"o}rgy},
+ year = {2022},
+ title = {A consensus statement on detection of hippocampal sharp wave ripples and differentiation from other fast oscillations},
+ url = {\url{https://www.nature.com/articles/s41467-022-33536-x}},
+ pages = {6000},
+ volume = {13},
+ number = {1},
+ issn = {2041-1723},
+ journal = {Nature Communications},
+ doi = {\url{10.1038/s41467-022-33536-x}},
+}
+
+
+@article{Buzsaki.2015,
+ author = {Buzs{\'a}ki, Gy{\"o}rgy},
+ year = {2015},
+ title = {Hippocampal sharp wave-ripple: A cognitive biomarker for episodic memory and planning},
+ url = {\url{https://onlinelibrary.wiley.com/doi/pdf/10.1002/hipo.22488}},
+ pages = {1073--1188},
+ volume = {25},
+ number = {10},
+ issn = {1098-1063},
+ journal = {Hippocampus},
+ doi = {\url{10.1002/hipo.22488}},
+}
+
+
+@article{Samanta.2023,
+ author = {Samanta, Anumita and Aleman-Zapata, Adrian and Agarwal, Kopal and {\"O}zsezer, Pelin and Alonso, Alejandra and {van der Meij}, Jacqueline and Rayan, Abdelrahman and Navarro-Lobato, Irene and Genzel, Lisa},
+ year = {2023},
+ title = {CBD lengthens sleep but shortens ripples and leads to intact simple but worse cumulative memory},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S2589004223024045}},
+ pages = {108327},
+ volume = {26},
+ number = {11},
+ issn = {2589-0042},
+ journal = {iScience},
+ doi = {\url{10.1016/j.isci.2023.108327}},
+}
+
+
+@article{Zhou.2023,
+ author = {Zhou, Zhiwen and Norimoto, Hiroaki},
+ year = {2023},
+ title = {Sleep sharp wave ripple and its functions in memory and synaptic plasticity},
+ pages = {20--28},
+ volume = {189},
+ issn = {0168-0102},
+ journal = {Neuroscience Research},
+}
+
+
+
+@article{vanQuyen.2010,
+ author = {{van Quyen}, Michel and Staba, Richard and Bragin, Anatol and Dickson, Clayton and Valderrama, Mario and Fried, Itzhak and Engel, Jerome},
+ year = {2010},
+ title = {Large-scale microelectrode recordings of high-frequency gamma oscillations in human cortex during sleep},
+ pages = {7770--7782},
+ volume = {30},
+ number = {23},
+ journal = {The Journal of neuroscience : the official journal of the Society for Neuroscience},
+ doi = {\url{10.1523/JNEUROSCI.5049-09.2010}},
+}
+
+
+@book{glaser.2012,
+  title={Principles of neurobiological signal analysis},
+  author={Glaser, Edmund},
+  year={2012},
+  publisher={Elsevier}
+}
+
+
+@article{Shahin.2015,
+ author = {Shahin, Saba and Banerjee, Somanshu and Singh, Surya Pal and Chaturvedi, Chandra Mohini},
+ year = {2015},
+ title = {2.45 GHz Microwave Radiation Impairs Learning and Spatial Memory via Oxidative/Nitrosative Stress Induced p53-Dependent/Independent Hippocampal Apoptosis: Molecular Basis and Underlying Mechanism},
+ pages = {380--399},
+ volume = {148},
+ number = {2},
+ journal = {Toxicological sciences : an official journal of the Society of Toxicology},
+ doi = {\url{10.1093/toxsci/kfv205}},
+}
+
+
+@article{Xu.2006,
+ author = {Xu, Shujun and Ning, Wei and Xu, Zhengping and Zhou, Suya and Chiang, Huai and Luo, Jianhong},
+ year = {2006},
+ title = {Chronic exposure to GSM 1800-MHz microwaves reduces excitatory synaptic activity in cultured hippocampal neurons},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S0304394006000152}},
+ pages = {253--257},
+ volume = {398},
+ number = {3},
+ issn = {0304-3940},
+ journal = {Neuroscience Letters},
+ doi = {\url{10.1016/j.neulet.2006.01.004}},
+}
+
+
+@article{Fujiwara.1978,
+ author = {Fujiwara, M. and Watanabe, Y. and Katayama, Y. and Shirakabe, Y.},
+ year = {1978},
+ title = {Application of high-powered microwave irradiation for acetylcholine analysis in mouse brain},
+ pages = {299--301},
+ volume = {51},
+ number = {3},
+ issn = {0014-2999},
+ journal = {European Journal of Pharmacology},
+}
+
+
+@article{Altun.2017,
+ author = {Altun, Gamze and Kaplan, Suleyman and Deniz, Omur Gulsum and Kocacan, Suleyman Emre and Canan, Sinan and Davis, Devra and Marangoz, Cafer},
+ year = {2017},
+ title = {Protective effects of melatonin and omega-3 on the hippocampus and the cerebellum of adult Wistar albino rats exposed to electromagnetic fields},
+ url = {\url{https://www.sciencedirect.com/science/article/pii/S2213879X17300445}},
+ pages = {230--241},
+ volume = {5},
+ number = {4},
+ issn = {2213-879X},
+ journal = {Journal of Microscopy and Ultrastructure},
+ doi = {\url{10.1016/j.jmau.2017.05.006}},
+}
+
+
+
+@article{Hasselmo.1999,
+ author = {Hasselmo, M. E.},
+ year = {1999},
+ title = {Neuromodulation: acetylcholine and memory consolidation},
+ url = {\url{https://www.cell.com/AJHG/fulltext/S1364-6613(99)01365-0}},
+ pages = {351--359},
+ volume = {3},
+ number = {9},
+ issn = {1879-307X},
+ journal = {Trends in Cognitive Sciences},
+ doi = {\url{10.1016/S1364-6613(99)01365-0}},
+}
+
+
+
+@article{BORTKIEWICZ.2019, 
+ author = {Bortkiewicz, Alicja},
+ year = {2019},
+ title = {Health effects of Radiofrequency Electromagnetic Fields (RF EMF)},
+ pages = {403--405},
+ volume = {57},
+ number = {4},
+ issn = {0019-8366},
+ journal = {Industrial Health},
+ doi = {\url{10.2486/indhealth.57{\textunderscore }400}},
+}
+
+@book{van1995python,
+  title={Python tutorial},
+  author={Van Rossum, Guido and Drake Jr, Fred L},
+  volume={620},
+  year={1995},
+  publisher={Centrum voor Wiskunde en Informatica Amsterdam, The Netherlands}
+}
+
+
+% ------------------------------------------------------------
+@article{zargar2013survey,
+  Title={{A Survey of Defense Mechanisms against Distributed Denial of Service (DDoS) flooding attacks}},
+  Author={Zargar, Saman Taghavi and Joshi, James and Tipper, David},
+  journal={IEEE communications surveys \& tutorials},
+  volume={15},
+  number={4},
+  pages={2046--2069},
+  Year={2013},
+  publisher={IEEE}
+}
+
+@INPROCEEDINGS{mannhart2018towardmaas, 
+Author={S. {Mannhart} and B. {Rodrigues} and E. {Scheid} and S. S. {Kanhere} and B. {Stiller}}, 
+Booktitle={2018 IEEE 4th Intl Conf on Big Data Intelligence and Computing and Cyber Science and Technology Congress (CyberSciTech 2018)}, 
+Title={{Toward Mitigation-as-a-Service in Cooperative Network Defenses}}, 
+Year={2018}, 
+note={Athens, Greece},
+volume={}, 
+number={}, 
+pages={pp. 362-367}, 
+ISSN={}, 
+month={Aug},}
+
+
+
+
+

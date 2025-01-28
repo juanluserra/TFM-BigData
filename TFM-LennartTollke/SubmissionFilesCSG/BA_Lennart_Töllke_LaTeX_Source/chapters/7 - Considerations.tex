@@ -1,0 +1,79 @@
+\chapter{Final Considerations}
+\label{chap:considerations}
+
+%Regarding Final Considerations:
+% I. Some teachers and/or methods use the term Conclusion for a text at the end of the paper that aims to expose the results achieved, this term is not incorrect, but many of the works are bibliographical reviews where in the end no conclusion is obtained and yes Several considerations that were found in the development of written work. Therefore, in each project should be considered/weighted if there will be a Conclusion or Final Considerations. Usually what else happens is that you have Final Considerations. The Final Considerations of a paper aims to show if the goal sought for the project was achieved, as well as give a view of the most important considerations and conclusions on the subject addressed, among other aspects. This should include:
+%Summary
+%1. An explanation stating clearly whether or not it has achieved the stated objectives (a subdivision between general objectives and specific objectives can also be made here). In each case the reasons must be explained:
+%The. If you have achieved the objectives: inform the main factors that contributed to the success, describing them briefly, but do not leave doubts;
+%B. If you have not met the objectives: inform how much of the objective has been achieved and cite the factors that contributed to the failure, describing them briefly, but that leaves no doubt.
+%Considerations
+%2. Describe the main considerations and conclusions that were obtained as a result of the execution of the work. Here should not be repeated text already in the work, but write the impressions of these considerations and how they contributed to the implementation and achieved the goal;
+%3. Name and describe the main difficulties encountered in the execution of the work and project. All the work developed means an evolution for the student, and to reach this evolution, it has had to overcome a series of obstacles. Reporting obstacles and overcoming (or not overcoming) helps to dignify and show the merit of the work itself to the reader/evaluator. It is also a contribution, in the sense that once problems and solutions are exposed, readers/evaluators learn/know ways of solving or approaching such problems;
+%4. Discuss whether modifications occurred during the execution of the work within the scope defined in the Project phase and in what was developed. It should be explained what generated those modifications, substantiating and justifying such changes.
+%5. The relationship between the proposed schedule and the work schedule can be described. This allows the reader/evaluator to learn from the indicated distortions/hits.
+%Future Work
+%6. Describe or cite future work that may be done based on this work. During the execution of work, it is sought to reach a defined objective in the project. However, several interesting subjects of research are revealed (being that the same ones are not treated/researched in the work because they do not match the objective and scope of the work). The description of such subjects/themes/research demonstrates the students' perception of development as well as their vision of objectivity in the execution of this work.
+
+%II. Conclusion / Final Considerations aim to show the reader/evaluator the student's perception of the work done. In this way, it is not advisable to do citations and references because theoretically everything that was necessary to quote and refer should already be done within the content of the work. Only in some very specific cases/situations can you make referrals or citations in this part of the work (this should be discussed thoroughly with the supervisor/teacher).
+
+%III. Looking at the described items that should compose the Conclusion / Final Considerations, it is difficult to imagine that this part of the work has less than one page;
+
+This final chapter supplies a conclusive overview, of the performed work. First, providing a comprehensive \textit{Summary} that elaborates on the research process and aims to show the evolution of the work. Then the encountered \textit{Limitations} are revealed before the thesis goals and related insights are discussed in the \textit{Conclusions}. Finally, some opportunities for \textit{Future Work} are presented. 
+ 
+
+
+\section{Summary}
+% I did this in this way, that in that way... and so on
+The core contribution of this work is the identification of potential underlying mechanisms of Electromagnetic attacks. A technological form of cognitive warfare, that has gained a lot of relevance in recent years. Since there even exists a series of health incidents that are associated with such attacks, the importance of a suitable countermeasure is apparent. To propose such a solution based on BCIs was therefore part of the initial goals of the thesis. Due to the extreme novelty of the topic, as well as the simulation nature of the research, it was however not possible to achieve this goal.
+
+This work required background knowledge in a large field of topics, ranging from purely biological subjects to very technical ones. Performing a thorough review of them already revealed a limited amount of literature in the realm of \textit{Cognitive Warfare}, but especially regarding its technological form. This lack of previous work, became even more evident when more specific related work was explored. Against initial expectations, no literature on the underlying mechanisms of electromagnetic attacks (or "NeuroStrikes") could be identified. This led to a shift in the research goal, as such specifics were necessary to develop a countermeasure. Especially since the investigations were performed with the help of simulations, at least a somewhat validated hypothesis on the involved mechanisms and their implementation, was a requirement for any further work.\\
+Additional investigations were therefore performed on the technological basis of electromagnetic attacks, which is considered to be radio-frequency electromagnetic radiation. Setting a special focus on its effects on the brain. This revealed a set of neurological alterations that could be responsible for cognitive impairments that were observed in the context of Neurostrikes.
+
+Due to the scale of this work, it was only feasible to investigate the impairment and potential causes, of a single cognitive process. In parts, because the identification and configuration of a simulation model, related to a relevant cognitive process, is very time-consuming. It was nonetheless possible, to identify a suitable model of the hippocampus, that enabled investigations of memory consolidation. To produce realistic brain activity with this model, it was however necessary to further provide a realistic simulation input. But also the development of an output analysis was required, to evaluate the simulated performance of memory consolidation. These two aspects bear enough complexity to perform dedicated research on them, and therefore could not be investigated to their full extent.\\
+A synthetic approach to the input generation was nonetheless explored, which turned out to be quite difficult if realism is of concern. Fortunately, it was possible to obtain EEG files from the model creator, which allowed for a realistic representation of the input activity. Also regarding the output analysis, a general approach could be derived from previous work on the model. This established the necessary foundation to utilize the simulation model, for the investigations of interest. 
+
+ To assess the potential underlying mechanisms of electromagnetic attacks, simulations were performed in two stages. First, the healthy model behavior was observed and documented, to establish reference values for the relevant output aspects. Then a series of potentially attack-related alterations were integrated into the model, which had a large impact on the analyzed behavior. Yielding values, that in most cases showed a clear disruption of healthy memory consolidation activities.
+
+
+\section{Limitations}
+% General research:
+% Too far of a step, outside of work done so far
+        % Too many aspects needed for the work are still not established -> difficult to establish solid research foundation
+It has to be considered that this thesis explored a very novel and poorly researched subject. The lack of related work, sometimes only could be supplemented with literature and findings, that were derived from different contexts. This required assumptions regarding their validity across contexts and made it a complex task to establish a solid research foundation.
+
+% Simulations:
+% limitations regarding Output analysis
+    % Many parameter definitions vary massively
+    % Depending on parameters, very different results
+    % optimization and evaluation is a work of its own
+% Constraint of Computing Power
+Further, some limitations regarding the simulation work must be stated. Even though the influence of the output analysis on the result values is large, it was not possible to validate the developed approach to the full extent. This makes claims about its accuracy difficult. Additionally due to inconsistent definitions in the literature, regarding key aspects of the analyzed output (like the ripple frequency range), the comparability to other results might be limited.
+
+
+\section{Conclusions}
+% Lessons learned
+This section concludes the work, by elaborating on the initially defined objectives, to show what was achieved and learned in the process.
+
+% Simulator
+Throughout the work, it was possible to identify and configure, a suitable \textbf{simulation model} that produced mostly realistic behavior in its healthy state. It must however be stated that this process came with a lot of obstacles and uncertainties that were not anticipated. Already the identification of an appropriate model proved to be challenging. Above all,  obtaining a realistic input posed a complex problem, which without the support and provision of EEG files by the model creator would have been difficult to solve reliably. Overall, it should not be underestimated how time-consuming the work with brain simulators can be.
+
+% Electromagnetic attack mechanisms
+In the context of \textbf{electromagnetic attacks} and their underlying mechanisms, some promising findings could be made. The simulated increase of acetylcholine, as well as the structural damage to the hippocampus, led to remarkable alterations in the observed activity patterns associated with memory consolidation. These mechanisms, and especially their combination, could therefore be involved in attack-related impairments and should consequently also be considered in the development of a countermeasure.
+
+% Countermeasures
+Whilst it was not possible, to address the subject of a \textbf{countermeasure} in the scope of this thesis, some initial findings could be made that might contribute to their future development. This includes observations regarding the relationship between brain stimulation and cognitive processes. Most importantly, however, this work contributes to a better understanding of electromagnetic attacks, to help mitigate them. 
+
+
+\section{Future Work}
+As stated in the summary already, especially two topics were encountered throughout the work, that hold the potential for further work.
+% Realistic synthetic input
+Including first of all the synthetic input generation. As documented, the input has a large influence on the simulation behavior and needs to be realistic to produce relevant activity. Such works could for example explore different input equations or integration methods.\\
+% Optimize Sharp Wave ripple identification
+As a further research topic, the output analysis was identified. Specifically, the automated detection of sharp-wave ripples in local field potential recordings lacks a solid research foundation and would benefit from a more sophisticated and validated procedure.\\
+% Countermeasures based on Brain computer interfaces
+    % Mention why it could have potential and might help
+Lastly, the original goal of this work, a countermeasure for electromagnetic attacks, remains a mostly unexplored but relevant topic. It does however still require a better understanding of the mechanisms involved in electromagnetic attacks. Even though, this work was able to perform explorations in the realm of memory consolidation, many more cognitive aspects are affected by the attacks. Further research should therefore be conducted to develop a more comprehensive understanding of their mechanisms, such that a countermeasure can be designed appropriately. 
+
+    
+   

@@ -1,0 +1,81 @@
+\chapter{Introduction}
+%
+% Use thesis description
+%
+%The. Introduction:
+%I. The introduction of a paper aims to show the objectives, the work and give a view of the subject addressed. This should include:
+%1. Contextualisation of the work as a whole. Within this context can be placed the justifications or motivations for the execution of the work (must be consistent with the arguments defined in the project);
+%2. An overview of the whole subject matter at work, without going into details or drawing conclusions. This is intended to give an overview of all the content addressed;
+%3. Definition of the objectives to be achieved with the work (they must be by what was defined in the project). In some cases (completion work or have 40 pages of content) it is recommended to subdivide the objectives into two categories:
+%The. General objective: it is normally defined objective in the project with a bit more complementary information;
+%B. Specific objectives: There are several intermediate objectives that must be achieved so that when all of these are achieved, it is possible to meet the general objective.
+%4. Explain how the work is organised. This is not to describe the content of the chapter as it is in the index/summary, but to say how and why the work was organised and created in the way it is. It seeks to show the reader the logical meaning of evolution and allow it to judge the best way to read the work;
+%5. Explain the method of performing the work. To carry out the work, the student can use several methods of work such as research / bibliographic review, field research, experimentation (empirical or not), etc. It is important to inform about the method because it indicates the reasoning and type of work performed.
+%
+%II. Looking at the described items that should compose the introduction, it's hard to imagine that it has less than one page;
+%
+% Cognitive Warfare
+    % interference with decision-making process 
+        % employing different means
+            % Information / disinformation
+            % Physical/Technological ones
+    % Electromagnetic radiation
+        % constitutes the form of interest for this thesis
+    % Are associated with Havanna syndrome
+        % can cause a wide range of cognitive impairments
+% Brain Computer interfaces
+    % Enable direct communication between brain/computer
+        % through capabilities of detection and stimulation
+    % could be used to mitigate effects
+The term \textit{cognitive warfare} refers to the practice of interfering with the cognition of human targets \cite{Claverie.2022}. This includes information-based techniques, where with the help of disinformation or propaganda, the victims' beliefs are manipulated \cite{Backes.2019}. But also more fundamental attacks that physiologically interfere with the targets' brain \cite{EADS.2023}.\\
+The latter one, and specifically \textit{electromagnetic attacks}, are what this thesis focuses on. Such attacks employ Electromagnetic Radiation (EMR) to alter neurological activity and are associated with the Havana syndrome \cite{Pavlin.2020}. In this context, they led to a range of symptoms including headaches or dizziness, but also persisting impairments in memory and concentration.\\
+With the help of \textit{Brain-Computer Interfaces} (BCIs), information can be transferred directly between the brain and devices, which bears a lot of potential for medical applications \cite{NicolasAlonso.2012}. Their advanced capabilities to detect and influence brain activity could however also be used to identify and mitigate electromagnetic attacks \cite{Bernal.2021} \cite{Bernal.2023}.
+
+
+\section{Motivation}
+% Why perform this work
+    % What makes it valuable or necessary
+% derive from Cognitive warfare/Relevance
+Considering, that cognitive warfare is practiced by many states and institutions \cite{Claverie.2022} \cite{Backes.2019}, and that already a series of health incidents were attributed to electromagnetic attacks \cite{Pavlin.2020}, the threat imposed by such technologies should not be underestimated. It is therefore advisable to investigate the topic and related technologies, to be prepared for this imminent threat. Especially since with BCIs, a powerful tool and potential solution could be identified.
+% Identification research gap
+
+
+\section{Thesis Goals}
+% What are the objectives of the work
+% Countermeasure  based on BCI to mitigate cognitive effects of electromagnetic attacks
+    % Requires:
+    % Identification, and configuration of suitable simulation model
+        % employing realistic topology
+        % Produce somewhat realistic healthy behavior
+        % representing a cognitive process
+    % Integration of electromagnetic attack into the simulation
+        % by identifying underlying mechanisms
+        % implement them
+        % producing significantly altered behavior
+    % Development of countermeasure algorithm, that respects the capabilities of BCIs
+        % Which can mitigate the effect of attacks
+The general goal of this thesis is to design and evaluate a countermeasure, based on BCIs to mitigate the impact of electromagnetic attacks on cognitive processes. To achieve this, intermediate goals were defined, which can be chronologically summarized as follows:
+\begin{description}
+    \item[The identification of a suitable simulation model:] This model should employ a realistic topology and be related to a relevant cognitive process. It should allow for the simulation of realistic brain activity which provides a measure of performance in the cognitive process.
+    \item[The integration of an electromagnetic attack:] This requires a review of the literature on electromagnetic attacks, to identify their underlying mechanisms. Then an attack should be designed based on these mechanisms and integrated into the simulation model. Yielding an altered simulation behavior and output.
+    \item[The development of a countermeasure:] Based on the observed effects of electromagnetic attacks, a countermeasure shall be designed, implemented, and evaluated. This countermeasure must respect the capabilities of BCIs and should alleviate the impact of the attack.
+\end{description}
+
+
+\section{Methodology}
+% As mentioned research is performed with simulations
+    % Where the healthy base case simulation results are compared to alterations like attacks
+    % Allowing to observe changes evaluate impact
+As mentioned above, the research of this thesis will incorporate multiple methodologies. First, a literature review will be performed to explore realistic neural typologies and electromagnetic attacks.\\
+Then a series of experiments will be performed with the help of brain simulations. Their objective will mainly be to observe how the model behavior changes in response to alterations. For example when an electromagnetic attack is integrated. 
+
+
+\section{Thesis Outline}
+% General structure of work
+% Intention of structure
+    % First present fundamentals and clarify key concepts
+    % Identify whats there and the exact research gap
+    % Present approach to research and explain theoretical basis of design choices
+    % show and explain the implementations that were necessary to perform the research
+    % Present the results of simulations and evaluate theri meaning in the large context
+The general structure of this thesis is as follows. Starting with chapter \ref{chap:background}, the most important concepts are clarified to establish a theoretical basis for the following work. In chapter \ref{chap:related-work}, these concepts are expanded and specified for the subsequent research, employing simulations. All the necessary information about the more practical simulation work, are however elaborated and summarized in chapter \ref{chap:design}. This includes details regarding the approach and environment of the simulations as well as the theoretical basis for any implementations. After that, the written code, relevant to the contribution of this work is presented and explained in chapter \ref{chap:implementation}. Subsequently, the simulation results are shown and evaluated in chapter \ref{chap:evaluation}. Leaving only the final chapter \ref{chap:considerations}, in which a conclusive overview of the performed work is supplied.
