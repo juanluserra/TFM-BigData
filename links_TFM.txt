@@ -3,13 +3,13 @@ ENLACES USADOS EN EL TFM
 #########################
 
 -----------------------------------------------------------------------
-Github del TFM de Lennart:
+# Github del TFM de Lennart:
 -----------------------------------------------------------------------
 - https://github.com/LexuTros/BA_BCIs-to-Mitigate-Cognitive-Warfare.git
 -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------------
-Revisiones generales:
+# Revisiones generales:
 ------------------------------------------------------------------------------------------------------------------------------------
 - https://univmurcia-my.sharepoint.com/personal/victoriamagdalena_lopezm_um_es/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fvictoriamagdalena%5Flopezm%5Fum%5Fes%2FDocuments%2FNeuroscience%5Fvideos&ct=1738056469615&or=Teams%2DHL&ga=1&LOF=1
 - https://thebrain.mcgill.ca/intermediaire.php
