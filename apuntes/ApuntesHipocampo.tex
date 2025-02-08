@@ -1,0 +1,76 @@
+
+% Clase de documento
+\documentclass[12pt, letterpaper]{article}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{biblatex}
+\usepackage{datetime}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+
+%------------ 
+% Decoración
+%------------
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header
+\fancyhead[L]{\textsc{\doctitle}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead[R]{\textit{\nouppercase{\rightmark}}}
+
+% Footer
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[C]{Página \thepage}
+
+% Título
+\newcommand{\doctitle}{Apuntes Hipocampo}
+\title{\doctitle}
+\author{Juan Luis Serradilla Tormos}
+\date{\monthname[\month] de \the\year}
+
+% Eliminar sangría
+\setlength{\parindent}{0pt}
+
+% Aumentar la separación entre párrafos
+\setlength{\parskip}{1em plus 0.5em minus 0.2em}
+
+
+%-----------
+% Documento
+%-----------
+\begin{document}
+
+% Mostrar el título
+\maketitle
+
+% Índice
+\newpage
+\tableofcontents
+
+% Contenido
+\newpage
+\section{Introducción}
+El hipocampo es una estructura  situada al lado del tálamo, debajo de la amígdala. El hipocampo viene en pareja, por lo que hay un hipocampo en cada lado del cerebro, dispuestos de forma simétrica.
+
+El hipocampo es una pieza fundamental para transformar la memoria a corto plazo a memoria a largo plazo. Además, está directamente conectado a la corteza visual y tiene un papel importante en la orientación espacial y la navegación.
+
+El hipocampo es una de las únicas dos zonas donde ocurre la neurogénesis, es decir, la formación de nuevas neuronas. No se sabe mucho como esto afecta a la memoria, peor se cree que puede tener un papel importante en la formación de nuevas memorias, sustituyendo las memorias antiguas.
+
+\subsection{Caso de H.M.}
+H.M. fue un paciente que sufrió de epilepsia y fue sometido a una operación quirúrgica para extirpar el hipocampo. Tras la operación, H.M. perdió la capacidad de formar nuevas memorias a largo plazo, aunque su memoria a corto plazo seguía intacta.
+
+Por otro lado, como los ganglios basales no se vieron afectados, H.M. podía aprender tareas procedurales, por ejemplo, aprender a tocar un instrumento musical. Sin embargo, no podía recordar haber aprendido a tocar el instrumento, aunque cada vez que repetía la tarea lo hacía mejor.
+
+
+\newpage
+\section{Anatomía del Hipocampo}
+
+
+
+\end{document}
