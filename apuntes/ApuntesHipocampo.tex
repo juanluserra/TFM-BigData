@@ -16,10 +16,9 @@
 %------------ 
 % Decoración
 %------------
-\fancyhf{}
 \setlength{\headheight}{15.71667pt}
 \addtolength{\topmargin}{-3.71667pt}
-\fancyhf{}
+\pagestyle{fancy}
 
 % Header
 \fancyhead[L]{\textsc{\doctitle}}
@@ -47,6 +46,9 @@
 % Documento
 %-----------
 \begin{document}
+
+% Mostrar header y footer
+\pagestyle{fancy}
 
 % Mostrar el título
 \maketitle
