@@ -1,0 +1,388 @@
+0
+00:00:00,287 --> 00:00:02,370
+DR. DAVID COX: So we've talked about motor memory.
+
+1
+00:00:02,370 --> 00:00:04,830
+And we've talked about emotional memory.
+
+2
+00:00:04,830 --> 00:00:07,290
+But the kind of memory we're probably most familiar with
+
+3
+00:00:07,290 --> 00:00:09,000
+is declarative memory--
+
+4
+00:00:09,000 --> 00:00:12,850
+the recall of stored facts and experiences.
+
+5
+00:00:12,850 --> 00:00:15,300
+These kinds of memory are thought to be subserved
+
+6
+00:00:15,300 --> 00:00:18,960
+by another subcortical structure, the hippocampus.
+
+7
+00:00:18,960 --> 00:00:22,420
+Like the amygdalae, the hippocampi come in a pair.
+
+8
+00:00:22,420 --> 00:00:25,260
+Your two hippocampi sit on either side of the thalamus just
+
+9
+00:00:25,260 --> 00:00:26,850
+below the amygdalae.
+
+10
+00:00:26,850 --> 00:00:29,900
+In Greek, hippocampus means seahorse.
+
+11
+00:00:29,900 --> 00:00:32,130
+And the hippocampus does look a bit like a seahorse.
+
+12
+00:00:32,130 --> 00:00:35,310
+Its tail curled at the very base of the brain.
+
+13
+00:00:35,310 --> 00:00:37,140
+The hippocampus is reciprocally connected
+
+14
+00:00:37,140 --> 00:00:40,590
+to both the cortex and subcortical structures.
+
+15
+00:00:40,590 --> 00:00:44,250
+Activity in the hippocampus is necessary for converting short-term memories
+
+16
+00:00:44,250 --> 00:00:45,750
+into long-term memories.
+
+17
+00:00:45,750 --> 00:00:49,770
+Consolidating an experience or fact held in short-term memory
+
+18
+00:00:49,770 --> 00:00:52,740
+into long-term storable code.
+
+19
+00:00:52,740 --> 00:00:55,680
+The hippocampus is also directly connected to the visual cortex,
+
+20
+00:00:55,680 --> 00:00:59,760
+and it plays a significant role in spatial navigation and memory.
+
+21
+00:00:59,760 --> 00:01:02,700
+Individuals with extensive damage to the hippocampus
+
+22
+00:01:02,700 --> 00:01:05,519
+have been occasionally reported throughout history.
+
+23
+00:01:05,519 --> 00:01:10,020
+One particularly famous case is that of Henry Molaison, a man who was
+
+24
+00:01:10,020 --> 00:01:13,500
+known as H.M. until his death in 2008.
+
+25
+00:01:13,500 --> 00:01:17,910
+In the 1950s, as a young man with intractable epilepsy, H.M.
+
+26
+00:01:17,910 --> 00:01:21,600
+had his hippocampi bilaterally removed, along with a large swath
+
+27
+00:01:21,600 --> 00:01:23,340
+of the adjacent brain.
+
+28
+00:01:23,340 --> 00:01:26,430
+At the time, doctors didn't know the critical function of the hippocampus
+
+29
+00:01:26,430 --> 00:01:28,177
+and consolidating memory.
+
+30
+00:01:28,177 --> 00:01:30,510
+They had recently found that removing parts of the brain
+
+31
+00:01:30,510 --> 00:01:32,790
+could relieve epilepsy.
+
+32
+00:01:32,790 --> 00:01:37,710
+Taking out a H.M.'s hippocampi did in fact decrease his epileptic seizures.
+
+33
+00:01:37,710 --> 00:01:41,250
+But it also left him with devastating memory impairments.
+
+34
+00:01:41,250 --> 00:01:46,050
+Specifically, H.M. could not form any new memories for facts or events--
+
+35
+00:01:46,050 --> 00:01:49,180
+a phenomenon known as anterograde amnesia.
+
+36
+00:01:49,180 --> 00:01:53,220
+He could only remember events from before his surgery.
+
+37
+00:01:53,220 --> 00:01:57,420
+Understandably, H.M. became the subject of many, many experiments
+
+38
+00:01:57,420 --> 00:01:59,930
+to study his condition.
+
+39
+00:01:59,930 --> 00:02:02,010
+Every day experimenters would come to him
+
+40
+00:02:02,010 --> 00:02:05,310
+and run experiments to try and understand his memory function.
+
+41
+00:02:05,310 --> 00:02:08,850
+Each day however, he would have to be introduced to his caretakers
+
+42
+00:02:08,850 --> 00:02:12,120
+again and again and again because he couldn't remember the new people.
+
+43
+00:02:12,120 --> 00:02:16,710
+Meanwhile, H.M.'s basal ganglia were left completely intact.
+
+44
+00:02:16,710 --> 00:02:20,550
+Accordingly, he had no difficulty learning new procedural tasks.
+
+45
+00:02:20,550 --> 00:02:25,200
+Every time researchers gave him a new task, for instance a tracing task,
+
+46
+00:02:25,200 --> 00:02:27,030
+they would have to re-explain it.
+
+47
+00:02:27,030 --> 00:02:30,630
+He insisted that he had never performed the task before, yet each time he did
+
+48
+00:02:30,630 --> 00:02:33,060
+the task, he'd get a little bit better.
+
+49
+00:02:33,060 --> 00:02:37,530
+As such, H.M. was able to form the procedural subconscious memory required
+
+50
+00:02:37,530 --> 00:02:41,970
+to learn a new task, but not the declarative conscious memory
+
+51
+00:02:41,970 --> 00:02:46,110
+needed to remember the experience of having performed the task.
+
+52
+00:02:46,110 --> 00:02:48,250
+What happened to H.M. was terrible.
+
+53
+00:02:48,250 --> 00:02:51,600
+But as some small silver lining, our understanding of the hippocampus
+
+54
+00:02:51,600 --> 00:02:56,010
+has been completely transformed by the research his condition enabled.
+
+55
+00:02:56,010 --> 00:02:58,620
+In addition to declarative memory, the hippocampus
+
+56
+00:02:58,620 --> 00:03:02,280
+also appears to play an important role in spatial navigation.
+
+57
+00:03:02,280 --> 00:03:06,360
+In 2014, the Nobel Prize in physiology and medicine
+
+58
+00:03:06,360 --> 00:03:08,550
+was awarded to three researchers who discovered
+
+59
+00:03:08,550 --> 00:03:12,630
+that cells in the hippocampus, and also in neighboring entorhinal cortex,
+
+60
+00:03:12,630 --> 00:03:16,230
+constitute a sort of positioning system in the brain.
+
+61
+00:03:16,230 --> 00:03:20,370
+These cells appear to create a dynamic map of the environment that
+
+62
+00:03:20,370 --> 00:03:23,320
+shifts as we move from place to place, and encodes
+
+63
+00:03:23,320 --> 00:03:26,220
+our specific location at all times.
+
+64
+00:03:26,220 --> 00:03:29,790
+The spatial navigation system is an area of ongoing research.
+
+65
+00:03:29,790 --> 00:03:32,920
+We still don't understand much about how it functions.
+
+66
+00:03:32,920 --> 00:03:36,240
+However, studies in rats have shown that between the entorhinal cortex
+
+67
+00:03:36,240 --> 00:03:40,590
+and the hippocampus, the brain forms a sort of topographic map.
+
+68
+00:03:40,590 --> 00:03:42,630
+Neurons, in the region of the map corresponding
+
+69
+00:03:42,630 --> 00:03:45,570
+to a particular place in the environment, fire as rats
+
+70
+00:03:45,570 --> 00:03:48,220
+move through that particular place.
+
+71
+00:03:48,220 --> 00:03:52,470
+This spatial navigation role and memory role in the hippocampus
+
+72
+00:03:52,470 --> 00:03:56,320
+may not be so different or dissociated from one another.
+
+73
+00:03:56,320 --> 00:03:58,795
+For instance, particularly if you're a rat,
+
+74
+00:03:58,795 --> 00:04:01,170
+most declarative memories-- things you need to remember--
+
+75
+00:04:01,170 --> 00:04:03,390
+are associated with particular places.
+
+76
+00:04:03,390 --> 00:04:06,180
+So there's a sense in which the hippocampus, perhaps, represents
+
+77
+00:04:06,180 --> 00:04:08,910
+context more than anything else.
+
+78
+00:04:08,910 --> 00:04:12,460
+How the hippocampus uses this context to consolidate memories though,
+
+79
+00:04:12,460 --> 00:04:14,410
+is still largely unknown.
+
+80
+00:04:14,410 --> 00:04:18,300
+However, it seems to involve LTP, or long term potentiation,
+
+81
+00:04:18,300 --> 00:04:21,600
+which we encountered in earlier modules of this course.
+
+82
+00:04:21,600 --> 00:04:25,020
+Specifically, LTP may allow the hippocampus to preferentially
+
+83
+00:04:25,020 --> 00:04:27,530
+strengthen certain patterns of neuronal firing,
+
+84
+00:04:27,530 --> 00:04:30,990
+and these patterns may encode those memories.
+
+85
+00:04:30,990 --> 00:04:34,230
+Interestingly, the hippocampus' plasticity, or its ability
+
+86
+00:04:34,230 --> 00:04:36,720
+to change its strength of his neuronal connections,
+
+87
+00:04:36,720 --> 00:04:39,480
+may also extend beyond LTP.
+
+88
+00:04:39,480 --> 00:04:41,640
+The hippocampus is one of only two regions
+
+89
+00:04:41,640 --> 00:04:45,510
+where neurogenesis, the birth and migration of new neurons,
+
+90
+00:04:45,510 --> 00:04:48,360
+has been found to occur in the adult brain.
+
+91
+00:04:48,360 --> 00:04:52,080
+We don't know much about how neurogenesis affects memory.
+
+92
+00:04:52,080 --> 00:04:54,930
+One hypothesis is that increased neurogenesis
+
+93
+00:04:54,930 --> 00:04:59,490
+makes it easier for the brain to write over previous memories.
+
+94
+00:04:59,490 --> 00:05:01,630
+This is supported by the fact that infants,
+
+95
+00:05:01,630 --> 00:05:06,130
+who show very high neurogenesis, are prodigious forgetters.
+
+96
+00:05:06,130 --> 00:05:10,440
+They don't form declarative memories for the first two years at least.
+

@@ -1,0 +1,454 @@
+1
+00:00:06,106 --> 00:00:10,553
+The hippocampus facilitated many
+discoveries, due to its particular
+
+2
+00:00:10,613 --> 00:00:16,381
+structure and properties. First of all,
+it has a relatively simple and ordered
+
+3
+00:00:16,401 --> 00:00:21,709
+structures, with four layers, where
+excitatory cells populate only one
+
+4
+00:00:21,79 --> 00:00:27,238
+layer. The different hippocampal fields
+are connected almost unidirectionally,
+
+5
+00:00:27,638 --> 00:00:32,826
+and fibers travel orthogonally to the
+main dendritic axis of the pyramidal
+
+6
+00:00:32,886 --> 00:00:39,527
+cells. Furthermore, the synapses are
+highly plastic, so that they can change
+
+7
+00:00:39,567 --> 00:00:44,132
+their strength in response to the pre- and
+post-synaptic cells' behavior.
+
+8
+00:00:45,413 --> 00:00:52,221
+Finally, neurons can be grown in culture,
+and acute occulturate slices survive in
+
+9
+00:00:52,281 --> 00:00:58,167
+vitro for a long time. Here, I would like to
+present you a selection of key
+
+10
+00:00:58,187 --> 00:01:02,772
+discoveries made in the hippocampus,
+which can be generalized to other brain
+
+11
+00:01:02,832 --> 00:01:10,072
+regions. In 1959, George Gray described
+two types of synapses in cortex with
+
+12
+00:01:10,152 --> 00:01:15,459
+electron microscopy. Type I synapses
+were more heavily stained, and the
+
+13
+00:01:15,499 --> 00:01:19,484
+synaptic specializations were
+asymmetrical, in that the presynaptic
+
+14
+00:01:19,524 --> 00:01:24,95
+density was less intensely stained than
+the postsynaptic density. Type I
+
+15
+00:01:25,01 --> 00:01:31,502
+synapses were usually associated with
+androidic spines. Type II synapses had
+
+16
+00:01:31,662 --> 00:01:36,728
+pre- and post-synaptic density with the
+same moderate staining intensity, and
+
+17
+00:01:36,768 --> 00:01:42,074
+they were found mainly in association
+with dendritic shaft and neural somata.
+
+18
+00:01:43,636 --> 00:01:49,403
+The two types of synapses also exist in the
+hippocampus, and the hippocampus was
+
+19
+00:01:49,603 --> 00:01:56,126
+used to identify the nature of those
+synapse types. Using a combination of
+
+20
+00:01:56,226 --> 00:02:01,095
+intracellular and intracellular
+recordings and staining technique, it
+
+21
+00:02:01,135 --> 00:02:07,606
+became clear that gray type 2 synapses are
+inhibitory synapses mediated by GABA-A
+
+22
+00:02:07,686 --> 00:02:14,96
+receptors. Similarly, it was found that
+type 1 synapses are excitatory synapses
+
+23
+00:02:15,08 --> 00:02:20,271
+mediated by AMPA receptors.
+Furthermore, all the main hippocampus
+
+24
+00:02:20,291 --> 00:02:25,327
+pathways, the 3-synaptic loop I
+mentioned in the previous lecture, were
+
+25
+00:02:25,448 --> 00:02:31,841
+found to be of type 1. The term synaptic
+plasticity was introduced by Konofsky to
+
+26
+00:02:31,901 --> 00:02:37,133
+describe the changes in synaptic
+efficacy that is assumed to be the basis of
+
+27
+00:02:37,233 --> 00:02:44,75
+information storage in the brain. In
+1949, Hebb proposed a hypothesis on how
+
+28
+00:02:44,81 --> 00:02:50,651
+this synaptic change can take place.
+According to Ebb's famous postulate,
+
+29
+00:02:51,052 --> 00:02:56,44
+when an axon of cell A is near enough to
+excite a cell B and repeatedly and
+
+30
+00:02:56,5 --> 00:03:02,21
+persistently takes part in fighting it,
+some growth process and metabolic change
+
+31
+00:03:02,25 --> 00:03:10,383
+takes place in one or both cells, such that
+A's efficacy as one of the cells fighting B
+
+32
+00:03:10,763 --> 00:03:16,966
+is increased. Neuroscientists then
+began to look for experimental evidence
+
+33
+00:03:17,106 --> 00:03:23,545
+to support Ebb's hypothesis.
+Post-tetanic potentiation, or PTP, was a
+
+34
+00:03:23,605 --> 00:03:30,016
+candidate for a number of years. PTP
+appeared as an enhanced synaptic
+
+35
+00:03:30,096 --> 00:03:34,562
+responses following a period of high
+frequency stimulation of afferent
+
+36
+00:03:34,642 --> 00:03:41,231
+fibers. The main weakness of PTP is an
+adequate mechanism for behavioral
+
+37
+00:03:41,311 --> 00:03:48,18
+learning, but it's limited duration. In
+1996, LOMO reported that higher
+
+38
+00:03:48,22 --> 00:03:53,287
+stimulation frequencies and repeated
+tetany can trigger longer lasting
+
+39
+00:03:53,367 --> 00:04:00,906
+enhancement. This observation allowed
+Brice Lomo in 1970 to describe long-term
+
+40
+00:04:00,926 --> 00:04:07,974
+potentiation, or LTP, which can last for
+hours and more. If activity-dependent
+
+41
+00:04:08,014 --> 00:04:12,619
+plasticity operated only to a
+non-synaptic weights, saturation of
+
+42
+00:04:12,659 --> 00:04:17,284
+synaptic efficacy would eventually
+occur, and a network with maximal
+
+43
+00:04:17,304 --> 00:04:22,518
+synaptic weights is incapable of
+learning. Although potentiated
+
+44
+00:04:22,558 --> 00:04:27,885
+synapses may eventually decay to
+baseline with time, an activity-driven
+
+45
+00:04:27,985 --> 00:04:33,572
+mechanism to allow the potentiation of
+LFTP would enhance the computational
+
+46
+00:04:33,632 --> 00:04:40,361
+capability of the network. In addition,
+long-term depression, or LTD, from
+
+47
+00:04:40,441 --> 00:04:45,427
+baseline values of synaptic efficacy
+would further enhance the flexibility of
+
+48
+00:04:45,487 --> 00:04:52,658
+the system and increase its storage
+capacity. Finally, having mechanism for
+
+49
+00:04:52,738 --> 00:04:58,126
+both potentiation and depression of
+synaptic efficacy can tune the balance of
+
+50
+00:04:58,166 --> 00:05:04,154
+excitation and inhibition, which in turn
+determines the overall stability of the
+
+51
+00:05:04,234 --> 00:05:13,948
+network. Danwiddi and Lynch report in
+1978 the first evidence that LTD could be
+
+52
+00:05:14,048 --> 00:05:19,161
+achieved with low frequency
+stimulation. However, several years
+
+53
+00:05:19,201 --> 00:05:25,109
+later, Judek and Beer found that
+prolonged strain of low frequency
+
+54
+00:05:25,149 --> 00:05:33,08
+stimulation can produce a reliable LTD.
+Judek and Beer went on to develop the
+
+55
+00:05:33,14 --> 00:05:38,735
+notion of graded bidirectional synaptic
+modifiability. In this model, with
+
+56
+00:05:38,775 --> 00:05:43,56
+appropriate high or low frequency
+simulation, a synapse could be
+
+57
+00:05:43,621 --> 00:05:49,307
+potentiated or depotentiated, thus
+allow its efficacy to be set anywhere
+
+58
+00:05:49,748 --> 00:05:57,437
+within a range of approximately 50% of its
+base value. Adult neurogenesis, the
+
+59
+00:05:57,477 --> 00:06:01,923
+maturation of new neurons in the adult
+brain, can be considered a form of
+
+60
+00:06:01,943 --> 00:06:07,9
+structural plasticity. In the 60s,
+Altman et al. first reported annulled
+
+61
+00:06:08,0 --> 00:06:13,147
+neurogenesis in dentate gyrus and
+olfactory bulb, the only two regions
+
+62
+00:06:13,547 --> 00:06:20,096
+where adult neurogenesis is widely
+recognized. In the dentate gyrus, new
+
+63
+00:06:20,156 --> 00:06:26,484
+cells originate from progenitor cells
+located in the subgranular zone, a region
+
+64
+00:06:26,585 --> 00:06:32,924
+between the granule cell layers and the
+ilus. Cells in this region divide,
+
+65
+00:06:33,124 --> 00:06:37,851
+presumably asymmetrically, to produce
+some daughter cells that retain the
+
+66
+00:06:37,871 --> 00:06:45,943
+ability to divide and other cells that
+became either neurons or glia. The new
+
+67
+00:06:46,124 --> 00:06:51,272
+cells migrate a short distance to the
+granule cell layers and differentiate
+
+68
+00:06:51,332 --> 00:06:58,022
+into neurons. The extent of the process is
+quite impressive. And for example, in a
+
+69
+00:06:58,123 --> 00:07:05,895
+young adult rat, several thousands of new
+neurons are formed every day. Anyway,
+
+70
+00:07:05,915 --> 00:07:12,206
+substantial death of granule cells
+results in a near static total population
+
+71
+00:07:12,246 --> 00:07:19,549
+of neurons. The role of neurogenesis in
+the adult brain is still not completely
+
+72
+00:07:19,649 --> 00:07:25,208
+understood. It's the subject of an
+intense experimental and theoretical
+
+73
+00:07:25,308 --> 00:07:34,059
+work. Few years after Berger described
+the human EEG in 1924, Jung and Kohlmuller
+
+74
+00:07:34,279 --> 00:07:39,486
+found a prominent oscillatory activity
+in the rabbit hippocampus, a frequency
+
+75
+00:07:39,566 --> 00:07:45,454
+between four and seven hertz, called
+theta range. From these observations,
+
+76
+00:07:45,614 --> 00:07:50,4
+researchers started to correlate theta
+activity with behavior. In the image
+
+77
+00:07:50,42 --> 00:07:56,328
+here, you can appreciate the extent of
+this research. Today, we know that not
+
+78
+00:07:56,468 --> 00:08:01,832
+only TID activity is important for the
+hippocampus function, but other types of
+
+79
+00:08:01,932 --> 00:08:07,257
+oscillation has been described and
+associated with behavior. The
+
+80
+00:08:07,277 --> 00:08:12,002
+hippocampus has served as a test bench for
+the development of a variety of new
+
+81
+00:08:12,022 --> 00:08:17,328
+methodology, such as novel recording
+techniques. For example, in the
+
+82
+00:08:17,348 --> 00:08:21,392
+hippocampus, we have the first use of
+microelectrodes for extracellular
+
+83
+00:08:21,412 --> 00:08:26,533
+recording of a single neuron discharge.
+The extracellular recordings were used
+
+84
+00:08:26,573 --> 00:08:31,324
+fruitfully in the hippocampus to
+characterize the two types of synapses as
+
+85
+00:08:31,384 --> 00:08:37,196
+we saw previously. Also intracellular
+recordings were successful in the
+
+86
+00:08:37,236 --> 00:08:41,566
+hippocampus, and the first
+comprehensive intracellular study used
+
+87
+00:08:41,606 --> 00:08:46,631
+the hippocampal pyramidal cells.
+Finally, I would like to mention the
+
+88
+00:08:46,691 --> 00:08:51,8
+development of recording techniques
+with two or four electrodes, called
+
+89
+00:08:51,92 --> 00:08:58,711
+respectively stereotrophs and
+tetrophs. Those allow the study of neuron
+
+90
+00:08:58,731 --> 00:09:04,04
+ensemble and therefore phenomena that
+occur more at the level of networks than
+
+91
+00:09:04,081 --> 00:09:04,962
+single cell.
+

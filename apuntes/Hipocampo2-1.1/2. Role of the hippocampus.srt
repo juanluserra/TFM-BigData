@@ -1,0 +1,400 @@
+1
+00:00:05,38 --> 00:00:11,4
+The role of hippocampus plays a key role in
+several brain functions. Here I select
+
+2
+00:00:11,5 --> 00:00:20,408
+three of the most prominent ones. Memory,
+perception of space and time. Between the
+
+3
+00:00:20,468 --> 00:00:26,454
+late 19th century and early 20th century,
+scientists started to localize memory in
+
+4
+00:00:26,494 --> 00:00:31,74
+the brain. The easiest way to do that was to
+correlate memory deficits with
+
+5
+00:00:31,82 --> 00:00:37,666
+physiological pathologies. In
+particular, growing evidence showed a
+
+6
+00:00:37,727 --> 00:00:42,812
+correlation between memory and temporal
+lobe, where the hippocampus is located.
+
+7
+00:00:43,096 --> 00:00:48,843
+The first tuning point happened with the
+work of Scoville and Milner, published in
+
+8
+00:00:48,863 --> 00:00:55,612
+1957, and the famous patient Ernie
+Mollison, who for decades was known as the
+
+9
+00:00:55,672 --> 00:01:03,322
+patient H.M. to protect his privacy. H.M.
+was severely epileptic and his seizures
+
+10
+00:01:03,722 --> 00:01:09,066
+were resistant to anti-epileptic drugs.
+In an attempt to alleviate the seizures,
+
+11
+00:01:09,306 --> 00:01:15,855
+the patient underwent a bilateral medial
+temporal lobe resection. The operation
+
+12
+00:01:16,236 --> 00:01:22,985
+did reduce the seizure, but left the
+patient with a profound amnesia. He could
+
+13
+00:01:23,045 --> 00:01:28,393
+not remember episodes after the
+operation, anterograde amnesia, and
+
+14
+00:01:28,453 --> 00:01:35,479
+just before the surgery, retrograde
+amnesia. During the 60s, the case of HM
+
+15
+00:01:36,019 --> 00:01:41,585
+promoted the quest for animal model of
+amnesia, but the first attempts were not
+
+16
+00:01:41,665 --> 00:01:49,374
+completely successful. Around 1970,
+several important developments took
+
+17
+00:01:49,474 --> 00:01:55,48
+place that improved the situation. First
+of all, researchers developed
+
+18
+00:01:55,52 --> 00:02:00,762
+behavioral tests that were more
+selective for the hippocampus. In
+
+19
+00:02:00,782 --> 00:02:07,49
+parallel, it became clear that there were
+several forms of memory and only a subset
+
+20
+00:02:07,55 --> 00:02:14,879
+of them depends on the hippocampus. In
+fact, we can distinguish a declarative
+
+21
+00:02:14,979 --> 00:02:19,365
+memory, which is a conscious
+recollection of concepts and epithets
+
+22
+00:02:19,705 --> 00:02:24,951
+can be described in words, and a
+procedural memory, which includes motor
+
+23
+00:02:24,971 --> 00:02:33,129
+skills and doesn't require a conscious
+control and attention. Declarative
+
+24
+00:02:33,209 --> 00:02:38,916
+memory can be further divided in episodic
+memory, which stores specific personal
+
+25
+00:02:38,997 --> 00:02:47,147
+experiences, and semantic memory, which
+stores factual information. We now know
+
+26
+00:02:47,668 --> 00:02:54,605
+that the hippocampus is involved mostly
+in episodic memory. Episodic memory is
+
+27
+00:02:54,645 --> 00:03:00,972
+the memory of episodes which occur in time
+and space. So, does the hippocampus
+
+28
+00:03:01,193 --> 00:03:09,522
+specifically encode space and time? In
+1971, O'Keefe and Dostrosky published a
+
+29
+00:03:09,582 --> 00:03:15,009
+short communication documenting the
+first clear evidence on how hippocampal
+
+30
+00:03:15,049 --> 00:03:21,507
+cells represent space. In this classical
+experiment, rats had microelectrodes
+
+31
+00:03:21,647 --> 00:03:25,772
+implanted in their brains, which
+recorded the activity of several
+
+32
+00:03:25,792 --> 00:03:30,397
+hippocampal neurons while the animal
+could move freely in an environment.
+
+33
+00:03:32,359 --> 00:03:38,747
+O'Keefe and Dostrosky observed that
+eight electrodes over 76 correlated with
+
+34
+00:03:38,787 --> 00:03:44,574
+the position and direction of the animal.
+They first described what we now call
+
+35
+00:03:44,914 --> 00:03:52,291
+place cells. This discovery simulated
+O'Keefe and Nadel to formulate the first
+
+36
+00:03:52,371 --> 00:03:57,897
+of many special theories of the
+hippocampus, which was described in the
+
+37
+00:03:57,937 --> 00:04:06,728
+influential book, Hippocampus as a
+Cognitive Map, in 1978. In the following
+
+38
+00:04:06,808 --> 00:04:12,675
+years, researchers discovered other
+cells that encode the relationship
+
+39
+00:04:12,815 --> 00:04:19,305
+between the animal and its location in
+space. For example, in the 80s, Rank
+
+40
+00:04:19,625 --> 00:04:25,892
+discovered A-direction cells, which
+encode where the animal is facing. At the
+
+41
+00:04:25,953 --> 00:04:31,158
+beginning of the new century, Edward and
+May Britt Moser's group discovered grid
+
+42
+00:04:31,178 --> 00:04:38,527
+cells, which represent space in an
+hexagonal coordinate system. Few years
+
+43
+00:04:38,567 --> 00:04:44,293
+later, Neil Burge's group discovered
+boundary cells, which are sensitive to
+
+44
+00:04:44,373 --> 00:04:50,749
+boundaries. This line of research has
+been so important for modern
+
+45
+00:04:50,829 --> 00:04:58,321
+neuroscience that in 2014, John O'Keefe
+and May Britain Edward Moser received a
+
+46
+00:04:58,401 --> 00:05:05,131
+Nobel Prize in Physiology and Medicine.
+Convincing evidence that the
+
+47
+00:05:05,151 --> 00:05:10,419
+hippocampus encodes time is most recent,
+also due to difficulty in designing
+
+48
+00:05:10,519 --> 00:05:15,677
+unambiguous experiments. The
+perception of time is a perception of an
+
+49
+00:05:15,817 --> 00:05:20,464
+order of sequence in time. So, if the
+animal experiences a sequence of
+
+50
+00:05:20,624 --> 00:05:25,791
+stimuli, it perceives that a stimulus
+occurred before, after, or at the same
+
+51
+00:05:25,872 --> 00:05:31,299
+time as another. To test if the animal
+perceives the order of a sequence, the
+
+52
+00:05:31,46 --> 00:05:39,566
+animal is tested for the memory of this
+order. Early evidence show how damage to
+
+53
+00:05:39,586 --> 00:05:45,959
+the hippocampus impairs memory of the
+temporal order of events in both human and
+
+54
+00:05:46,16 --> 00:05:52,292
+animals. Other early studies associated
+the activation of the human hippocampus
+
+55
+00:05:52,733 --> 00:06:00,02
+with encoding a recall of a sequence of
+events. At the cellular level, initial
+
+56
+00:06:00,06 --> 00:06:05,827
+studies showing an association between
+cell filings and time could not exclude a
+
+57
+00:06:05,867 --> 00:06:12,836
+special component. The work of Mann et al.
+in 2007 described some of the first
+
+58
+00:06:12,896 --> 00:06:18,483
+convincing evidence for such an
+association. In the experiment and the
+
+59
+00:06:18,523 --> 00:06:24,571
+encoding phase, rats alternated between
+two sides of a testing enclosure as they
+
+60
+00:06:24,651 --> 00:06:32,262
+sampled a unique sequence of five odors.
+At a subsequent test phase, rats were
+
+61
+00:06:32,322 --> 00:06:39,033
+presented with a randomly selected pairs
+of non-adjacent sample odors and were
+
+62
+00:06:39,073 --> 00:06:45,564
+rewarded for choosing the odor that they
+had appeared early in that sample phase.
+
+63
+00:06:47,266 --> 00:06:53,597
+The rat performed almost 80% correct,
+showing they could track the order of
+
+64
+00:06:53,697 --> 00:07:00,954
+stimuli. The alternation of the location
+of the odors allowed experimenters to
+
+65
+00:07:01,014 --> 00:07:09,39
+distinguish special clues from temporal
+clues. In 2011, McDonald et al.
+
+66
+00:07:09,41 --> 00:07:15,862
+characterized cells in CN1 and named them
+time cells, stressing an analogy with the
+
+67
+00:07:15,922 --> 00:07:23,222
+place cells. In fact, as play cells define
+sequences in a spatial dimension, time
+
+68
+00:07:23,282 --> 00:07:29,308
+cells define sequences in a temporal
+dimension. As you see, memory, space and
+
+69
+00:07:29,388 --> 00:07:35,634
+time are probably three phases of the same
+phenomenon. In other words, the
+
+70
+00:07:35,654 --> 00:07:42,661
+hippocampus can bind stimuli to their
+spatial temporal context, a form and a
+
+71
+00:07:42,681 --> 00:07:49,27
+methodic memory trace. The hippocampus
+has an important regions also when we talk
+
+72
+00:07:49,33 --> 00:07:54,879
+about some types of pathologies. For
+example, in the Alzheimer's disease, the
+
+73
+00:07:54,92 --> 00:07:59,988
+hippocampus has received substantial
+attentions since initial alteration of
+
+74
+00:08:00,048 --> 00:08:05,337
+the pathology seems to start here before
+spreading eventually to the rest of the
+
+75
+00:08:05,377 --> 00:08:12,617
+brain. Another important example is
+epilepsy. As in the case of patient HM, the
+
+76
+00:08:12,677 --> 00:08:17,706
+temporal lobe is often the focus of
+seizures, since the hippocampus
+
+77
+00:08:17,767 --> 00:08:23,537
+formation needs considerably less
+current to elicit epileptiform activity
+
+78
+00:08:23,898 --> 00:08:30,712
+compared to other cortical areas.
+Finally, the hippocampus, in particular
+
+79
+00:08:30,772 --> 00:08:37,594
+CA1, is highly vulnerable to ischemic and
+hypoxic insults, making this region
+
+80
+00:08:37,915 --> 00:08:41,286
+critical also in cerebrovascular
+diseases.
+
