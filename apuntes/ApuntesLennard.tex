@@ -1,0 +1,111 @@
+% Clase de documento
+\documentclass[12pt, letterpaper]{article}
+
+% Paquetes
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{biblatex}
+\usepackage{csquotes}
+\usepackage{datetime}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+%------------ 
+% Decoración
+%------------
+\fancyhf{}
+\setlength{\headheight}{15.71667pt}
+\addtolength{\topmargin}{-3.71667pt}
+\fancyhf{}
+
+% Header
+\fancyhead[L]{\textsc{\doctitle}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead[R]{\textit{\nouppercase{\rightmark}}}
+
+% Footer
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyfoot[C]{Página \thepage}
+
+% Título
+\newcommand{\doctitle}{Apuntes del TFM de Lennard}
+\title{\doctitle}
+\author{Juan Luis Serradilla Tormos}
+\date{\monthname[\month] de \the\year}
+
+% Bibliografía
+\addbibresource{test.bib}
+
+% Eliminar sangría
+\setlength{\parindent}{0pt}
+
+% Aumentar la separación entre párrafos
+\setlength{\parskip}{1em plus 0.5em minus 0.2em}
+
+%-----------
+% Documento
+%-----------
+\begin{document}
+
+% Mostrar header y footer
+\pagestyle{fancy}
+
+% Mostrar el título
+\maketitle
+
+% Índice
+\newpage
+\tableofcontents
+
+% Contenido
+\newpage
+\section{Guerra Cognitiva}
+
+\subsection{Caracterización de Guerra Cognitiva}
+
+Hay varias deficiones de guerra cognitiva:
+\begin{itemize}
+    \item ``El arte de usar herramientas tecnológicas para alterar la cognición de los objetivos humanos''.
+    \item ``Alterar a través de medios informativos cómo piensa una población objetivo, y a través de eso, cómo actúan''.
+\end{itemize}
+
+De esta forma tenemos un acercamiento más social, en el cual se busca influir en la población a través de la información y la desinformación, y otro más tecnológico, en el cual se busca influir en la cognición y la mente de las personas a través de tecnologías avanzadas. Este segundo enfoque se denomina ``NeuroStrike'' y es en el que se basa el TFM.\@
+
+\
+\subsection{NeuroStrike y Síndrome de Havana}
+
+El \textbf{Síndrome de La Habana} describe una condición que se originó a partir de una serie de incidentes de salud, los cuales eran distintos a cualquier trastorno neurológico o mental documentado anteriormente. 
+
+El primer caso ocurrió en La Habana en 2016, cuando un miembro de la embajada de EEUU sufrió de un dolor agudo acompañado de un ruido fuerte y deterioro cognitivo, seguido de una serie de síntomas a largo plazo. A lo largo de los siguientes años surgieron casos similares, pero no se realizó una investigación más cercana hasta 2020, cuando la Academia Nacional de Ciencias publicó un informe extenso. Aunque la evaluación fue difícil debido a la falta de datos clínicos completos y uniformes, se sugirió que la fuente más probable de los síntomas era una forma de NeuroStrike (energía de radiofrecuencia dirigida y pulsada). Otros posibles mecanismos, como agentes químicos o infecciosos, fueron considerados altamente improbables, y en el caso de los factores psicológicos y sociales, no podían explicar todo el panorama.\@
+
+Aunque este tema aún está siendo debatido y existen argumentos contradictorios, la mayoría de la literatura sobre la guerra cognitiva técnica considera que este síndrome está relacionado con ella. Con base en esto, la radiación electromagnética de radiofrecuencia pulsada representa una forma relevante de NeuroStrikes, que podría ser responsable del deterioro de varios procesos cognitivos. Sus efectos exactos en el cerebro y cómo podrían mitigarse son el tema de este trabajo.
+
+\subsection{Brain-Computer Interfaces (BCIs)}
+Las BCI son sistemas que permiten la transferencia de información cerebro-computadora. Pueden leer o estimular actividad neurona, y la combinación de estos dos modos produce un sistema bidireccional.
+
+Cuando medimos la actividad neuronal se pueden observar dos fenómenos:
+\begin{itemize}
+    \item \textbf{Actividad electrofísica:} Esta proviene de las corrientes que generan los potenciales de acción.
+    \item \textbf{Acitivdad hemodinámica:} Esta actividad proviene del consumo de glucosa y oxígeno en el cerebro generado por las propias neuronas.
+\end{itemize}
+
+Podemos clasificar las BCIs dependiendo de su grado de invasividad en el sujeto.
+
+\subsubsection{BCI no invasivas}
+Los métodos no invasivos tienen la ventaja de no requerir cirugía ya que operan fuera del cráneo. Sin embargo, tienen menor resolución a la hora de grabar la actividad neuronal.
+
+\textbf{Métodos de grabación:}
+\begin{itemize}
+    \item \textbf{Electroencefalografía (EEG):} Se mide la actividad electrofísica del cerebro. Es especialmente sensible a corrientes extracelulares. Es un método sencillo y mut usado, pero tiene una resolución muy limitada debido a la cantidad de ruido.
+    \item \textbf{Resonancia magnética funcional (fMRI):} Se mide la actividad hemodinámica del cerebro. Tiene lecturas muy precisas, pudiendo identificar muy bien las regiones activas del cerebro.
+\end{itemize}
+
+\textbf{Métodos de estimulación:}
+\begin{itemize}
+    \item \textbf{Neuroestimulación eléctrica transcutánea (TENS):} Se colocan electrodos en la piel para transmitir energía eléctrica a través de esta. Aunque no se pueda controlar bien qué neuronas se activan, puede llegar a ser muy efecitvo.
+    \item \textbf{Neuromodulación ultrasónica (UNMOD):} Realiza la estimulación via estímulos mecánicos de ciertos canales de iones, en vez de con energía eléctrica directamente. Como es un método reciente no se tienen resultados concluyentes, pero es un método prometedor.
+\end{itemize}
+
+\end{document}
