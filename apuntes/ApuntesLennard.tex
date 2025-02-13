@@ -108,4 +108,54 @@ Los métodos no invasivos tienen la ventaja de no requerir cirugía ya que opera
     \item \textbf{Neuromodulación ultrasónica (UNMOD):} Realiza la estimulación via estímulos mecánicos de ciertos canales de iones, en vez de con energía eléctrica directamente. Como es un método reciente no se tienen resultados concluyentes, pero es un método prometedor.
 \end{itemize}
 
+\subsubsection{Seguridad}
+Las BCIs tienen el potencial de ser tanto una fuente de riesgos como una fuente preventiva de estos.
+
+Respecto a los riesgos de seguridad de los BCI, en diversos estudios se ha visto que hasta los ciberataques más simples pueden suponer un riesgo importante para las BCI, ya que la ciberseguridad aún no ha madurado lo suficiente en este campo.
+
+Por otro lado, hay otros enfoques que utilizan las BCIs para reducir riesgos, como por ejemplo la detección de fatiga.
+
+\subsection{Simulaciones cerebrales}
+A día de hoy no entendemos completamente el funcionamiento del cerebro en su totalidad. Las simulaciones pueden ayudar a estudiar este comportamiento. Sin embargo, estas simulaciones son un campo aún nada maduro, debido al hecho de que hasta una simulación de una pequeña parte del cerebro involucra miles y miles de neuronas.
+
+Vamos a definir bien dos términos:
+\begin{itemize}
+    \item \textbf{Modelo:} Es la hipótesis que representa la estructura cerebral.
+    \item \textbf{Simulador:} Es lo que permitirá probar la hipótesis (el modelo).
+\end{itemize}
+
+
+\subsubsection{Brian2}
+Brian2 es un simulador que trabaja con abstracciones matemáticas. Permite simulaciones de redes neuronales con ``spikes'' mientras se mantiene un alto nivel de flexibilidad. Esta flexibilidad la consigue basando los modelos solo en ecuaciones matemáticas, de forma que no requieren una implementación de programación de bajo nivel. Además está programado en Python, lo que aumenta más su flexibilidad.
+
+\subsubsection{NEURON}
+Al contrario que Brian2, NEURON utiliza la precisión biológica de los modelos neuronales, enfatizando en el realismo de las transmisiones químicas y eléctricas. Debido a este alto nivel de detalle funciona mejor en simulaciones de redes neuronales pequeñas. Proporciona una interfaz gráfica para facilitar el ajuste de los parámetros y, para investigar nuevos modelos, proporciona un lenguaje de modelado específico (NMODL).
+
+\subsubsection{NEST}
+El simulator NEST utiliza simplificaciones de las representaciones neuronales. Esto hace que pierda precisión en simular el comportamiento individual de las neuronas, pero aumenta en gran medida simulando el comportamiento conjunto de grandes grupos neuronales. El entorno de simulación es flexible, permitiendo tanto Python como su lenguaje propio SLI.\@ Gracias a su estructura modulas, se pueden añadir no solo nuevos modelos, sino nuevos mecanismos y extensiones.
+
+
+\section{Trabajos relacionados}
+
+\subsection{Modelos para la Simulación de Procesos Cognitivos}
+Los criterios necesarios para elegir un buen modelo en nuestro caso de uso son:
+\begin{enumerate}
+    \item Tiene que representar una zona del cerebro relacionada con los procesos cognitivos.
+    \item Tiene que permitir una simulación de procesos cognitivos de una forma entendible y medible.
+    \item Tanto el modelo como el simulator asociado deben facilitar la integración de ataques y contramedidas a la simulación.
+    \item Debe ser lo más realista posible.
+\end{enumerate}
+
+Por ahora, los tres simuladores presentados anteriormente (Brian2, NEURON y NEST) cumplen estos criterios.
+
+\subsubsection{Una red de 1000 células para la amígdala lateral}
+Este modelo representa la parte dorsal del lateral de la amígdala y se escribe en NEURON.\@ Su propósito es diferencias los factores que intervienen en el sentimiento de miedo. Los factores a evaluar son:
+\begin{itemize}
+    \item El incremento de la capacidad de respuesta de las neuronas que se proyectan en el LA.\@
+    \item La plasticidad sináptica de estas neuronas.
+    \item La plasticidad sináptica interna del LA.\@
+\end{itemize}
+
+El modelo estaba escalado en una proporción 30:1, consistiendo en 1000 neuronas con 40000 sinapsis. Las neuronas tenían diferentes comportamientos y diferentes frecuencias de disparo. 
+
 \end{document}
