@@ -158,4 +158,67 @@ Este modelo representa la parte dorsal del lateral de la amígdala y se escribe 
 
 El modelo estaba escalado en una proporción 30:1, consistiendo en 1000 neuronas con 40000 sinapsis. Las neuronas tenían diferentes comportamientos y diferentes frecuencias de disparo. 
 
+\subsubsection{Modelo de actividad del CA1 durante tarea de memoria de trabajo}
+Este modelo representa algunas neuronas del hipocampo, específicamente neuronas piramidales de la región CA1. También está escrito en NEURON, centrado en investigar la capacidad de la memoria de trabajo (WMC) de un solo nivel neuronal.
+
+Los principales parámetros ajustables del modelo son la cantidad de dendritas que son simuladas y el nivel de ruido de fondo. 
+
+\subsubsection{Modelo del hipocampo sobre el ciclo del sueño-vigilia usando neuronas Hodgkin-Huxley}
+Este es un modelo muy detallado, que representa anatómicamente fiel la corteza entorrinal. Está escrito en Brian2 (en Python) para analizar los efectos de diferentes cambios en la red que aparecen en el ciclo sueño-vigilia. 
+
+Cada neurona se ha simulado de acuerdo al modelo de Hodgkin-Huxley como bloque individual y basado en la conductancia. En total se usaron 30000 neuronas para representar la formación del hipocampo y la corteza entorrinal. La formación del hipocampo se dividió en giro dentado, CA1 y Ca3.
+
+También se copió la organización espacial de los humanos para ser más realista. Además, el modelo permite ajustar muchos parámetros relacionados con la conductancia y otros más generales.
+
+\subsubsection{Comparación y conclusión}
+Basándonos en los criterios mencionados al principio de la sección:
+\begin{itemize}
+    \item El modelo del hipocampo es el que mejor se ajusta a los objetivos de la tesis.
+    \item El modelo de la amígdala lateral no permite realizar procesos cognitivos de alto nivel.
+    \item El modelo de la memoria de trabajo es muy simple y le falta realismo.
+\end{itemize}
+
+\subsection{Simulación de Neuroestrikes}
+Para simular el impacto de un neurostrike en el cerebro, primero se tienen que conocer y entender bien los efectos que tiene en el cerebro. Esta sección trata de resumir la literatura actual sobre los neurostrikes y sus efectos.
+
+\subsubsection{Neutrostrikes}
+Dado que el Síndrome de Havana ha sido el caso mejor documento de un supuesto neurostrike, va a ser el primero que vamos a analizar. 
+
+Los síntomas que fueron reportados en este caso se pueden dividir en síntomas inciales y en síntomas persistentes.
+\begin{itemize}
+    \item \textbf{Síntomas iniciales:} Se empieza con la percepción de un sonido fuerte (como un chirrido), acompañado de un sentimiento de vibración o presión y dolor en la cabeza. Las víctimas suelen describir como si las sensaciones sentidas viniesen de una misma dirección. Menos comunes fueron los síntomas de acúfenos, pérdida de audición maremos, caminata inestable y alteraciones visuales.
+    \item \textbf{Síntomas persistentes:} Los síntomas a largo plazo eran en su mayoría diferentes. Los mareos persistían en muchos individuos, pero los dolores de cabeza se volvían persistentes en solo algunos pacientes. Otros síntomas fueron fatiga, desequilibrios, fallos de concentración y memoria, depresiones e insomnio.
+\end{itemize}
+
+\subsubsection{Radiación electromagnética}
+No hay literatura sobre simulaciones de ataques EMR al cerebro. Por lo tanto, se intentará prestar atención a la supuesta tecnología subyacente a los neurostrikes (la RM EMR pausada) y los hallazgos generales sobre los efectos de la EMR (realizados en animales).
+
+Se ha estudiado que la EMR suele tener efectos negativos en el cerebro, pero estos efectos varían dependiendo de sus parámetros: intensidad, frecuencia y modulación (en el caso de pulsos de radiofrecuencia modulada -RM EMR-), entre otros. 
+
+Desde una perspectiva de alto nivel, los efectos incluyen la aparición de miedo o ansiedad, dificultades de aprendizaje y memoria, dolores de cabeza, etc. Todos estos síntomas son muy similares a los de NeuroStrikes. 
+
+Volviendo a los efectos de bajo nivel y las posibles causas de estos impedimentos, se han observado diferentes alteraciones en el cerebro. Se ha puesto el foco en la alteración de la memoria, ya que se usará la simulación del hipocampo. Algunos alteraciones vistas han sido:
+\begin{itemize}
+    \item Daños estructurales en ciertas áreas del cerebro.
+    \item Alto rango de cambios en neurotransmisores.
+    \item Cambios generales en al actividad electrofísica.
+\end{itemize}
+
+\section{Diseño}
+
+
+Este capítulo proporciona primero una visión general del entorno de simulación y cómo se realizaron las simulaciones. A continuación, se discuten en detalle las decisiones de diseño relacionadas con la entrada de la simulación, el análisis de salida y el ataque electromagnético. El enfoque se centra en establecer conexiones con la base teórica expuesta en el capítulo anterior.
+
+\subsection{Escenario de investigación}
+
+\subsubsection{Modelo de simulación}
+Brian2 se ha usado para correr todas las simulaciones de la tesis. Este modelo se ha creado con Python y permite simulaciones de neuronas ``spike''. El modelo trabaja con abstracciones matemáticas de neuronas y sinapsis en vez de crear estructuras precisas y realistas. Esto permite una simulación rápida y flexible.
+
+Con Brian2 es posible crear grandes simulaciones sin requerimientos de superordenadores, cosa que útil para el modelo del hipocampo, ya que contiene 30000 neuronas. 
+
+Todas las neuronas y los parámetros relacionados con la sinapsis pueden ser ajustdos para explorar los efectos en la actividad neuronal. En las versiones más nuevas, se pueden ajustar fácilmente aspectos más generales del modelo.
+
+\subsubsection{Proceso de simulación}
+
+
 \end{document}
