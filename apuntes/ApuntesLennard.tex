@@ -11,10 +11,36 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor} 
 
 %------------ 
 % Decoración
 %------------
+
+% Configuración de colores de python
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true
+}
+
+\lstset{
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'\i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+             {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+             {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+             {¡}{{!`}}1 {¿}{{?`}}1 % Añade caracteres especiales en español
+}
+
+% Configuración de header y footer
 \fancyhf{}
 \setlength{\headheight}{15.71667pt}
 \addtolength{\topmargin}{-3.71667pt}
@@ -216,9 +242,150 @@ Brian2 se ha usado para correr todas las simulaciones de la tesis. Este modelo s
 
 Con Brian2 es posible crear grandes simulaciones sin requerimientos de superordenadores, cosa que útil para el modelo del hipocampo, ya que contiene 30000 neuronas. 
 
-Todas las neuronas y los parámetros relacionados con la sinapsis pueden ser ajustdos para explorar los efectos en la actividad neuronal. En las versiones más nuevas, se pueden ajustar fácilmente aspectos más generales del modelo.
+Todas las neuronas y los parámetros relacionados con la sinapsis pueden ser ajustados para explorar los efectos en la actividad neuronal. En las versiones más nuevas, se pueden ajustar fácilmente aspectos más generales del modelo.
 
 \subsubsection{Proceso de simulación}
+Una vez están los parámetros de la red configurados, se tiene que observar la actividad de las neuronas corriendo la simulación. 
+
+Una vez todo listo se ``inyecta'' el input a la red, que representa la estimulación del hipocampo por otras áreas del cerebro. Dado que la mayoría de la estimulación llega al hipocampo a partir de la corteza entorrinal, el modelo solo aplica la simulación del input a esta estrucura. Después, la señal se propaga a otras áreas.
+
+La actividad de cada neurona es simulada durante ventanas de 100ms. Después de cada ventana, se calula y se guarda el potencial dentro de la red.
+
+Los valore de salida que se recopilan son potenciales de campo local (LFP). Este output puede usarse para identificar patrones de actividad de mayores poblaciones de neuronas, que es lo que se busca en el trabajo.
+
+\subsubsection{Ajustes y configuración del modelo}
+Como se menciona anteriormnete, existen dos versiones diferentes del código del modelo:
+\begin{itemize}
+    \item Una sacada en 2018 siguiendo el paper de Aussel et al.\@ para la intestigación de los ciclos de sueño-vigilia.
+    \item La segunda versión sacada en 2022, centrada en explorar los mecanismos envueltos en la epilepsia.
+\end{itemize}
+
+Inicialmente se empezó a usar el primero modelo ya que parecía que era el que más se ajustaba a los objetivos de la tesis. Sin embargo, después de que se proporcionaran los archivos EEG necesarios y se probara el segundo modelo, se vio que este era una versión mejorada del primero. Por lo tanto, se decidió usar el segundo modelo, que permitía un entorno de simulación más realista y optimizado para la investigación de ataques EMR.\@ 
+
+En la simulación se decidió que el estado base iba a ser el estado de sueño, ya que es cuando se consolida la memoria.
+
+\subsection{Input de la simulación}
+El input de la simulación es un parámetro necesario para estimular la actividad relevante en el modelo. Hay dos formas posibles de aplicar el input:
+\begin{itemize}
+    \item Utilizando archivos EEG.\@
+    \item Creando un input artificial.
+\end{itemize}
+
+En el trabajo se exploraron las dos formas de inputs. 
+
+\subsubsection{Entrada sintética}
+El input artificial utilizado utiliza una onda cuadrática $I_{stime}$ que se aplica a la corteza entorrinal. Se define como:
+\begin{align}
+    I_{\text{stim}}(t) = 
+    \begin{cases}
+        A_1 & \text{si ${t > t_0  y\ \sin(2\pi f_1(t-t_0)) \geq 0}$} \\
+        0   & \text{en otro caso}
+    \end{cases}
+\end{align}
+
+donde $t$ es el tiempo de la simulación y $t_0$ instante inicial.
+
+Tras recrear el modelo de Aussel et al.\@, se tuvo que añadir un parámetro $w$, que defina la distancia entre ondas. La ecuación ajustada es:
+\begin{align}
+    I_{\text{stim}}(t) = 
+    \begin{cases}
+        A_1 & \text{si ${t > t_0\ y\ \sin(2\pi f_1(t-t_0)) \geq 0}\ y\ (\lfloor\frac{t-t_0}{T}\rfloor) \mod w = 0$} \\
+        0 & \text{en otro caso}
+    \end{cases}
+\end{align}
+
+donde $T$ es el periodo de la onda definido como $\frac{1}{f_1}$. 
+
+\subsubsection{Entrada realista}
+Para la entrada realista son necesarios los archivos EEG.\@ Se grabó la actividad de ciclos de sueño y vigilia y se identificó la actividad epiléptica. En el trabajo se utilizaron archivos de actividad de sueño sana.
+
+\subsection{Análisis de la salida de la simulación}
+El resultado de la simulación es un archivo de texto con valores de potenciales locales, que imitan el comportamiento de un electrodo en la zona simulada. 
+
+Como el trabajo trata de evaluar la consolidación de la memoria, se necesita una forma de medir esto. Para ello se usa como medida las SWRs (Sharp Wave Ripples).
+
+\subsubsection{Sharp Wave Ripples}
+Las SWRs representan una actividad sincronizada de grupos de neuronas, que son detectadas gracias a os registros LFP.\@ Tienen un papel fundamental en al consolidación de la memoria y se forman por dos eventos:
+\begin{itemize}
+    \item \textbf{Sharp wave:} Representa la desviación en una señal LFP de alta amplitud.
+    \item \textbf{Ripple:} Representa una oscilación de alta frecuencia en la señal LFP.\@
+\end{itemize}
+
+\subsubsection{Detección automática de SWRs}
+Dado que estas SWRs son un indicador de la consolidación de la memoria, su detección automática es muy importante para este trabajo. Sin embargo, no hay un método estándar para detectarlas. En este caso, se realiza una detección de onda aguda seguida de un análisis de frecuencias.
+
+\begin{itemize}
+    \item \textbf{Detección de onda aguda:} Para detectar la onda aguda se realiza un análisis del RMS de la señal. Si en algún momento hay una onda de 3 o más desviaciones estándar por encima del RMS, se considera que hay una onda aguda.
+    \item \textbf{Análisis de frecuencias:} Se realiza un filtrado de entre 30 y 400 Hz, seguido de una extracción de la frecuencia con mayor potencia asociada. Luego se analiza si esta frecuencia puede considerarse un ripple o no.
+\end{itemize}
+
+\subsection{Ataques electromagnéticos}
+Como el campo de investigación de los NeuroStrikes es muy nuevo, no hay un consenso cobre cómo funcionan y cómo simularlos. En este trabajo se han identificado diferentes categorías de mecanismos que pueden estar involucrados en deterioros cognitivos: daño estructural del hipocampo y cambios en los neurotransmisores.
+
+\subsubsection{Cambios en los neurotransmisores}
+Se ha demostrado que la radiación electromagnética de radiofrecuencia (RF EMR) puede tener un impacto en muchos neurotransmisores del cerebro. Concretamente, los niveles de acetilcolina tienen un impacto en la memoria, por lo que los parámetros $gCAN$ y $gACh$ permiten simular estas variaciones de acetilcolina en el hipocampo.
+
+\subsubsection{Daño estructural}
+Los daños estructurales provocados en el hipocampo por ondas electromagnéticas son de vital importancia para este trabajo, ya que se consideran una causa potencial del deterioro de la memoria y el aprendizaje.
+
+Diferentes estudios han demostrado que después de una larga exposición a radiaciones de alta frecuencia ocurre un aumento en la tasa de mortalidad de células neuronales y no neuronales.
+
+Para integrar esto al modelo de usa el parámetro $N$, que define la cantidad máxima de neuronas en los grupos neuronales más grandes. Este parámetro también escala el resto de grupos más pequeños, por lo que si este se reduce un porcentaje también lo harán de forma proporcional el resto de grupos.
+
+\subsubsection{Ataque a gran escala}
+Todos los parámetros y ataques anteriores pueden combinarse para producir un ataque a gran escala. Se definen diferentes valores de intensidad (4 en este caso), de forma que aplicando cada nivel diferente a casa parámetro se pueden definir diferentes consecuencias de ataques, siendo el valor máximo en todos los parámetros el más debastador.
+
+
+\section{Implementación}
+Esta sección trata de realizar una implementación práctica de todo lo anterior.
+
+\subsection{Entrada sintética}
+Es necesario generar una entrada sintética para generar un contexto en la primero versión. Se va a utilizar los métodos explicados anteriormente de ondas cuadradas.
+
+\begin{lstlisting}[caption={Generación de señal artificial}, label={cod:ejemplo}]
+    def generate_input(A1, f1, wave_realization_interval, sim_time):
+        record_dt = 1.0 / 1024 * second  # Sampling interval
+        t0 = 0.250  # Start time of input
+
+        # Array of sample times
+        times = np.arange(0 * second, sim_time, record_dt)
+
+        # Generate square wave
+        input_values = np.zeros_like(times)
+
+        def is_in_correct_cycle(input_frequency, current_time, wave_realization_int):
+            ms_per_cycle = 1 / input_frequency
+            wave_number = int((current_time - t0) / ms_per_cycle)
+            return wave_number % wave_realization_int == 0
+
+        for i, t in enumerate(times):
+            if (
+                t >= t0
+                and np.sin(2 * np.pi * f1 * (t - t0)) >= 0
+                and is_in_correct_cycle(f1, t, wave_realization_interval)
+            ):
+                input_values[i] = A1
+
+        # Normalize values to range [0, 1]
+        input_normalized = (input_values - min(input_values)) / (
+            max(input_values) - min(input_values)
+        )
+
+        # Add noise
+        input_noisy = (5 / 6) * input_normalized + (1 / 6) * np.random.rand(
+            len(input_normalized)
+        )
+
+        # Scale to a maximum frequency of 200 Hz
+        max_rate = 200 * Hz
+        input_scaled = input_noisy * max_rate
+
+        input_timed = TimedArray(input_scaled, dt=record_dt)
+
+        return input_timed
+\end{lstlisting}
+
+\subsection{Análisis de la salida}
 
 
 \end{document}
