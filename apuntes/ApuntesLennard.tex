@@ -108,7 +108,7 @@ El primer caso ocurrió en La Habana en 2016, cuando un miembro de la embajada d
 
 Aunque este tema aún está siendo debatido y existen argumentos contradictorios, la mayoría de la literatura sobre la guerra cognitiva técnica considera que este síndrome está relacionado con ella. Con base en esto, la radiación electromagnética de radiofrecuencia pulsada representa una forma relevante de NeuroStrikes, que podría ser responsable del deterioro de varios procesos cognitivos. Sus efectos exactos en el cerebro y cómo podrían mitigarse son el tema de este trabajo.
 
-\subsection{Brain-Computer Interfaces (BCIs)}
+\section{Brain-Computer Interfaces (BCIs)}
 Las BCI son sistemas que permiten la transferencia de información cerebro-computadora. Pueden leer o estimular actividad neurona, y la combinación de estos dos modos produce un sistema bidireccional.
 
 Cuando medimos la actividad neuronal se pueden observar dos fenómenos:
@@ -119,7 +119,7 @@ Cuando medimos la actividad neuronal se pueden observar dos fenómenos:
 
 Podemos clasificar las BCIs dependiendo de su grado de invasividad en el sujeto.
 
-\subsubsection{BCI no invasivas}
+\subsection{BCI no invasivas}
 Los métodos no invasivos tienen la ventaja de no requerir cirugía ya que operan fuera del cráneo. Sin embargo, tienen menor resolución a la hora de grabar la actividad neuronal.
 
 \textbf{Métodos de grabación:}
@@ -134,14 +134,14 @@ Los métodos no invasivos tienen la ventaja de no requerir cirugía ya que opera
     \item \textbf{Neuromodulación ultrasónica (UNMOD):} Realiza la estimulación via estímulos mecánicos de ciertos canales de iones, en vez de con energía eléctrica directamente. Como es un método reciente no se tienen resultados concluyentes, pero es un método prometedor.
 \end{itemize}
 
-\subsubsection{Seguridad}
+\subsection{}{Seguridad}
 Las BCIs tienen el potencial de ser tanto una fuente de riesgos como una fuente preventiva de estos.
 
 Respecto a los riesgos de seguridad de los BCI, en diversos estudios se ha visto que hasta los ciberataques más simples pueden suponer un riesgo importante para las BCI, ya que la ciberseguridad aún no ha madurado lo suficiente en este campo.
 
 Por otro lado, hay otros enfoques que utilizan las BCIs para reducir riesgos, como por ejemplo la detección de fatiga.
 
-\subsection{Simulaciones cerebrales}
+\section{Simulaciones cerebrales}
 A día de hoy no entendemos completamente el funcionamiento del cerebro en su totalidad. Las simulaciones pueden ayudar a estudiar este comportamiento. Sin embargo, estas simulaciones son un campo aún nada maduro, debido al hecho de que hasta una simulación de una pequeña parte del cerebro involucra miles y miles de neuronas.
 
 Vamos a definir bien dos términos:
@@ -151,13 +151,13 @@ Vamos a definir bien dos términos:
 \end{itemize}
 
 
-\subsubsection{Brian2}
+\subsection{Brian2}
 Brian2 es un simulador que trabaja con abstracciones matemáticas. Permite simulaciones de redes neuronales con ``spikes'' mientras se mantiene un alto nivel de flexibilidad. Esta flexibilidad la consigue basando los modelos solo en ecuaciones matemáticas, de forma que no requieren una implementación de programación de bajo nivel. Además está programado en Python, lo que aumenta más su flexibilidad.
 
-\subsubsection{NEURON}
+\subsection{NEURON}
 Al contrario que Brian2, NEURON utiliza la precisión biológica de los modelos neuronales, enfatizando en el realismo de las transmisiones químicas y eléctricas. Debido a este alto nivel de detalle funciona mejor en simulaciones de redes neuronales pequeñas. Proporciona una interfaz gráfica para facilitar el ajuste de los parámetros y, para investigar nuevos modelos, proporciona un lenguaje de modelado específico (NMODL).
 
-\subsubsection{NEST}
+\subsection{NEST}
 El simulator NEST utiliza simplificaciones de las representaciones neuronales. Esto hace que pierda precisión en simular el comportamiento individual de las neuronas, pero aumenta en gran medida simulando el comportamiento conjunto de grandes grupos neuronales. El entorno de simulación es flexible, permitiendo tanto Python como su lenguaje propio SLI.\@ Gracias a su estructura modulas, se pueden añadir no solo nuevos modelos, sino nuevos mecanismos y extensiones.
 
 
