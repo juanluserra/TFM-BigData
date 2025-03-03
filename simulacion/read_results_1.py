@@ -3,6 +3,8 @@ import numpy as np
 import sys
 import matplotlib.pyplot as plt
 from Event_detection_Toellke import *
+import scipy.signal as signal
+from plotting_Toellke import *
 FILE_PATH: Path = Path(__file__).resolve()
 
 
@@ -37,18 +39,7 @@ def read_results(file_path: Path) -> np.ndarray:
         # Devolver los datos en un array de numpy
         return np.array(data.astype(float))
 
-def main() -> None:
-    # Obtenemos la carpeta principal
-    main_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / 'LennartTollke-repository' / 'hippoSimUpdated' / 'sorted_output'
-    
-    # Obtenemos la dirección de la carpeta del TFM de Lennart
-    tfm_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / 'LennartTollke-repository'
-    
-    # Creamos un diccionario para guardar todos los archivos de texto
-    txt_files = {}
-    for txt_file in main_folder.rglob('*.txt'):
-        txt_files[txt_file.name] = txt_file
-
+def test_plots(txt_files: dict) -> None:
     # Recorremos los archivos de texto con un bucle
     for key, file_path in txt_files.items():
         print(key)
@@ -66,9 +57,122 @@ def main() -> None:
         # Pintamos cada uno de los SWR detectados
         for swr in swrs:
             plt.plot(swr)
+            print(len(swr))
+        plt.show()
+        
+        # Se elimina la media del array de resultados para centrar la señal en cero
+        results = results - np.mean(results)
+        
+        # Se aplica un filtro Savitzky-Golay para suavizar la señal
+        filtered_results = signal.savgol_filter(results, window_length=51, polyorder=3)
+        # Se grafica la señal original y la señal filtrada para comparación
+        plt.plot(results, label='Original', alpha=0.5)
+        plt.plot(filtered_results, label='Filtered', alpha=0.75)
+        plt.legend()
+        plt.title('Original and Savitzky-Golay Filtered Results')
+        plt.show()
+           
+        # Se sustrae la señal filtrada de la señal original para resaltar las diferencias
+        results = results - filtered_results
+        plt.plot(results)
+        plt.title('Filtered Results')
+        plt.show()
+         
+        # Se calcula el espectrograma de la señal resultante utilizando una frecuencia de muestreo de 1024 Hz
+        f, t, Sxx = signal.spectrogram(results, fs=1024, nperseg=50)
+        # Se recalcula el espectrograma sin especificar nperseg para obtener la configuración por defecto
+        # f, t, Sxx = signal.spectrogram(results, fs=1024)
+        # Se imprime la cantidad de frecuencias, tiempos y la forma del espectrograma
+        print(len(f), len(t), Sxx.shape)
+        # Se grafica el espectrograma en dB utilizando el mapa de colores 'seismic'
+        plt.pcolormesh(f, t, 10 * np.log10(Sxx.T), cmap='seismic')
+        plt.ylabel('Time [sec]')
+        plt.xlabel('Frequency [Hz]')
+        plt.title('Spectrogram')
+        plt.colorbar(label='Intensity [dB]')
+        plt.show()
+        
+        # Se calcula la FFT de la suma de la señal original y la filtrada
+        fft_results = np.fft.fft(results + filtered_results)
+        # Se obtiene el vector de frecuencias correspondiente a la FFT
+        fft_freq = np.fft.fftfreq(len(results), d=1/1024)
+        # Se seleccionan solo las frecuencias positivas (hasta la frecuencia de Nyquist)
+        positive_freqs = fft_freq[:len(fft_freq)//2]
+        positive_fft_results = np.abs(fft_results[:len(fft_results)//2])
+        # Se grafica la magnitud de la FFT para las frecuencias positivas
+        plt.plot(positive_freqs, positive_fft_results)
+
+        # Se calcula la FFT exclusivamente de la señal resultante
+        fft_results = np.fft.fft(results)
+        fft_freq = np.fft.fftfreq(len(results), d=1/1024)
+        positive_freqs = fft_freq[:len(fft_freq)//2]
+        positive_fft_results = np.abs(fft_results[:len(fft_results)//2])
+        # Se añade la gráfica de la FFT de la señal resultante a la misma figura
+        plt.plot(positive_freqs, positive_fft_results)
+        
+        # Se configuran el título y las etiquetas de la gráfica de FFT y se muestra
+        plt.title('FFT of Results (0 to Nyquist Frequency)')
+        plt.xlabel('Frequency [Hz]')
+        plt.ylabel('Amplitude')
         plt.show()
         
         break
     
+
+def main() -> None:
+    # Obtenemos la carpeta principal
+    main_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / 'LennartTollke-repository' / 'hippoSimUpdated' / 'sorted_output'
+    
+    # Obtenemos la dirección de la carpeta del TFM de Lennart
+    tfm_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / 'LennartTollke-repository'
+    
+    # Creamos un diccionario para guardar todos los archivos de texto
+    txt_files = {}
+    for txt_file in main_folder.rglob('*.txt'):
+        txt_files[txt_file.name] = txt_file
+    
+    # Probamos algunas gráficas
+    # test_plots(txt_files)
+    
+    # Realizamos las gráficas de Lennart
+    for key, file_path in txt_files.items():
+        # Leemos la señal del archivo
+        signal = read_results(file_path)
+        
+        # Obtenemos las medidas de la señal
+        measures = event_detection(signal)
+        
+        # Dividimos las medidas
+        event_measures = measures[0]
+        swr_measures = measures[1]
+        psd_measures = measures[2]
+        
+        events = event_measures[0]
+        filtered_events = event_measures[1]
+        peaks_events = event_measures[2]
+        duration_of_events = event_measures[3]
+        
+        swrs = swr_measures[0]
+        peaks_swrs = swr_measures[1]
+        duration_of_swrs = swr_measures[2]
+        
+        psd_theta = psd_measures[0]
+        psd_gamma = psd_measures[1]
+        psd_ripple = psd_measures[2]
+        
+        frequency_theta = frequency_band_analysis(signal, 5, 10, 1024)[0]
+        frequency_gamma = frequency_band_analysis(signal, 30, 100, 1024)[0]
+        frequency_ripple = frequency_band_analysis(signal, 100, 250, 1024)[0]
+
+        # Realizamos las gráficas e Lennart
+        single_sim_analysis(str(file_path), True, False)
+        
+        
+        break
+        
+    
+    
+    
+       
 if __name__ == '__main__':
     main()
