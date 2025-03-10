@@ -39,6 +39,7 @@ def read_results(file_path: Path) -> np.ndarray:
         # Devolver los datos en un array de numpy
         return np.array(data.astype(float))
 
+
 def test_plots(txt_files: dict) -> None:
     # Recorremos los archivos de texto con un bucle
     for key, file_path in txt_files.items():
@@ -134,41 +135,21 @@ def main() -> None:
     # Probamos algunas gráficas
     # test_plots(txt_files)
     
+    # Seleccionamos si queremos realizar el bucle o no para leer los resultados de Lennart
+    lennart_results = False
+    
     # Realizamos las gráficas de Lennart
-    for key, file_path in txt_files.items():
-        # Leemos la señal del archivo
-        signal = read_results(file_path)
+    if lennart_results:
+        for key, file_path in txt_files.items():
+            # Realizamos las gráficas e Lennart
+            single_sim_analysis(str(file_path), True, False)
+    
+    # Seleccionamos el archivo de resultados propios
+    folder = 'results_2025-03-10_12.17.36'
+    own_results_path = FILE_PATH.parent.parent / folder / 'LFP.txt'
+    single_sim_analysis(str(own_results_path), True, False)
+    
         
-        # Obtenemos las medidas de la señal
-        measures = event_detection(signal)
-        
-        # Dividimos las medidas
-        event_measures = measures[0]
-        swr_measures = measures[1]
-        psd_measures = measures[2]
-        
-        events = event_measures[0]
-        filtered_events = event_measures[1]
-        peaks_events = event_measures[2]
-        duration_of_events = event_measures[3]
-        
-        swrs = swr_measures[0]
-        peaks_swrs = swr_measures[1]
-        duration_of_swrs = swr_measures[2]
-        
-        psd_theta = psd_measures[0]
-        psd_gamma = psd_measures[1]
-        psd_ripple = psd_measures[2]
-        
-        frequency_theta = frequency_band_analysis(signal, 5, 10, 1024)[0]
-        frequency_gamma = frequency_band_analysis(signal, 30, 100, 1024)[0]
-        frequency_ripple = frequency_band_analysis(signal, 100, 250, 1024)[0]
-
-        # Realizamos las gráficas e Lennart
-        single_sim_analysis(str(file_path), True, False)
-        
-        
-        break
         
     
     
