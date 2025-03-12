@@ -145,7 +145,7 @@ def main() -> None:
             single_sim_analysis(str(file_path), True, False)
     
     # Seleccionamos el archivo de resultados propios
-    folder = 'results_2025-03-10_12.17.36'
+    folder = 'results_2025-03-11_12.39.10'
     own_results_path = FILE_PATH.parent.parent / folder / 'LFP.txt'
     single_sim_analysis(str(own_results_path), True, False)
     
