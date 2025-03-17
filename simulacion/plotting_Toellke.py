@@ -326,7 +326,7 @@ def plot_peak_frequencies(peak_frequencies, parameter_label="", title="", comp_f
         path = 'images'
         if not os.path.exists(path):
             os.makedirs(path)
-        plt.savefig(f'images/{parameter_label}_Frequency_Distribution.png')
+        plt.savefig(f'images/{parameter_label}_Peak_Frequencies.png')
     else:
         plt.show()
 
@@ -477,7 +477,7 @@ def single_sim_analysis(file_path, showLFP, showEventLFP):
 
     # generate plots
     if showLFP:
-        plot_lfp(lfp_recording_sample, f"{sim_label} = {research_param}", save=True)
+        plot_lfp(recordings, f"{sim_label} = {research_param}", save=True)
 
     if showEventLFP:
         for event in sharp_wave_ripples[:2]:

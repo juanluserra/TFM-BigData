@@ -143,11 +143,15 @@ def main() -> None:
         for key, file_path in txt_files.items():
             # Realizamos las gráficas e Lennart
             single_sim_analysis(str(file_path), True, False)
-    
+            
     # Seleccionamos el archivo de resultados propios
-    folder = 'results_2025-03-11_12.39.10'
+    folder = 'results_2025-03-17_13.09.42'
     own_results_path = FILE_PATH.parent.parent / folder / 'LFP.txt'
     single_sim_analysis(str(own_results_path), True, False)
+    
+    # Leemos la señal de los resultados
+    signal = read_results(own_results_path)
+    print(len(signal))
     
         
         
