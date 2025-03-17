@@ -459,7 +459,7 @@ def single_sim_analysis(file_path, showLFP, showEventLFP):
         Returns:
             None: This function does not return a value; it directly creates and displays multiple plots based on the analysis.
     """
-    sim_label, research_param = file_path.split("/")[-3:-1]
+    sim_label, research_param = file_path.split("/")[-2:]
 
     # extract and analyse data
     recordings = create_list_from_timeSeries(file_path)
