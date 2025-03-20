@@ -1,0 +1,765 @@
+Channels:
+ - conda-forge
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: - \ | / - \ done
+Verifying transaction: / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | done
+Executing transaction: - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / done
+Installing pip dependencies: \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ | / - \ Pip subprocess error:
+  ERROR: Command errored out with exit status 1:
+   command: /home/juanluis/miniconda3/envs/hipp_sim/bin/python -u -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/setup.py'"'"'; __file__='"'"'/tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' bdist_wheel -d /tmp/pip-wheel-dbwkhgog
+       cwd: /tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/
+  Complete output (355 lines):
+  running bdist_wheel
+  running build
+  running build_py
+  creating build
+  creating build/lib.linux-x86_64-3.6
+  creating build/lib.linux-x86_64-3.6/brian2
+  copying brian2/hears.py -> build/lib.linux-x86_64-3.6/brian2
+  copying brian2/numpy_.py -> build/lib.linux-x86_64-3.6/brian2
+  copying brian2/__init__.py -> build/lib.linux-x86_64-3.6/brian2
+  copying brian2/only.py -> build/lib.linux-x86_64-3.6/brian2
+  creating build/lib.linux-x86_64-3.6/brian2/spatialneuron
+  copying brian2/spatialneuron/morphology.py -> build/lib.linux-x86_64-3.6/brian2/spatialneuron
+  copying brian2/spatialneuron/spatialneuron.py -> build/lib.linux-x86_64-3.6/brian2/spatialneuron
+  copying brian2/spatialneuron/__init__.py -> build/lib.linux-x86_64-3.6/brian2/spatialneuron
+  creating build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/functions.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/preferences.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/magic.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/network.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/operations.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/core_preferences.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/tracking.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/names.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/__init__.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/variables.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/base.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/clocks.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/namespace.py -> build/lib.linux-x86_64-3.6/brian2/core
+  copying brian2/core/spikesource.py -> build/lib.linux-x86_64-3.6/brian2/core
+  creating build/lib.linux-x86_64-3.6/brian2/random
+  copying brian2/random/__init__.py -> build/lib.linux-x86_64-3.6/brian2/random
+  creating build/lib.linux-x86_64-3.6/brian2/stateupdaters
+  copying brian2/stateupdaters/exponential_euler.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+  copying brian2/stateupdaters/explicit.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+  copying brian2/stateupdaters/exact.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+  copying brian2/stateupdaters/__init__.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+  copying brian2/stateupdaters/base.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+  creating build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/arrays.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/filetools.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/topsort.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/logger.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/__init__.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/stringtools.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  copying brian2/utils/environment.py -> build/lib.linux-x86_64-3.6/brian2/utils
+  creating build/lib.linux-x86_64-3.6/brian2/units
+  copying brian2/units/fundamentalunits.py -> build/lib.linux-x86_64-3.6/brian2/units
+  copying brian2/units/allunits.py -> build/lib.linux-x86_64-3.6/brian2/units
+  copying brian2/units/constants.py -> build/lib.linux-x86_64-3.6/brian2/units
+  copying brian2/units/__init__.py -> build/lib.linux-x86_64-3.6/brian2/units
+  copying brian2/units/unitsafefunctions.py -> build/lib.linux-x86_64-3.6/brian2/units
+  copying brian2/units/stdunits.py -> build/lib.linux-x86_64-3.6/brian2/units
+  creating build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/docscrape.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/generate_reference.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/docscrape_sphinx.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/examplefinder.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/generate_examples.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/briandoc.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  copying brian2/sphinxext/__init__.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+  creating build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/expressions.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/functions.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/statements.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/rendering.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/dependencies.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/__init__.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/sympytools.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  copying brian2/parsing/bast.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+  creating build/lib.linux-x86_64-3.6/brian2/synapses
+  copying brian2/synapses/parse_synaptic_generator_syntax.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+  copying brian2/synapses/synapses.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+  copying brian2/synapses/spikequeue.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+  copying brian2/synapses/__init__.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+  creating build/lib.linux-x86_64-3.6/brian2/input
+  copying brian2/input/spikegeneratorgroup.py -> build/lib.linux-x86_64-3.6/brian2/input
+  copying brian2/input/timedarray.py -> build/lib.linux-x86_64-3.6/brian2/input
+  copying brian2/input/poissongroup.py -> build/lib.linux-x86_64-3.6/brian2/input
+  copying brian2/input/__init__.py -> build/lib.linux-x86_64-3.6/brian2/input
+  copying brian2/input/binomial.py -> build/lib.linux-x86_64-3.6/brian2/input
+  copying brian2/input/poissoninput.py -> build/lib.linux-x86_64-3.6/brian2/input
+  creating build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_poissongroup.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_spatialneuron.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_cpp_standalone.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_utils.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_complex_examples.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_base.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_units.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_variables.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_subgroup.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_codestrings.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_unitarray.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_morphology.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_parsing.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_poissoninput.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_stateupdaters.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_numpy_codegen.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_thresholder.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_codegen.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_synapses.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_equations.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_network.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_devices.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_neurongroup.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_timedarray.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_namespaces.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_spikegenerator.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_monitor.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_functions.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_refractory.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_memory.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_clocks.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_preferences.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  copying brian2/tests/test_spikequeue.py -> build/lib.linux-x86_64-3.6/brian2/tests
+  creating build/lib.linux-x86_64-3.6/brian2/importexport
+  copying brian2/importexport/__init__.py -> build/lib.linux-x86_64-3.6/brian2/importexport
+  copying brian2/importexport/dictlike.py -> build/lib.linux-x86_64-3.6/brian2/importexport
+  copying brian2/importexport/importexport.py -> build/lib.linux-x86_64-3.6/brian2/importexport
+  creating build/lib.linux-x86_64-3.6/brian2/equations
+  copying brian2/equations/refractory.py -> build/lib.linux-x86_64-3.6/brian2/equations
+  copying brian2/equations/__init__.py -> build/lib.linux-x86_64-3.6/brian2/equations
+  copying brian2/equations/codestrings.py -> build/lib.linux-x86_64-3.6/brian2/equations
+  copying brian2/equations/unitcheck.py -> build/lib.linux-x86_64-3.6/brian2/equations
+  copying brian2/equations/equations.py -> build/lib.linux-x86_64-3.6/brian2/equations
+  creating build/lib.linux-x86_64-3.6/brian2/monitors
+  copying brian2/monitors/spikemonitor.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+  copying brian2/monitors/__init__.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+  copying brian2/monitors/ratemonitor.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+  copying brian2/monitors/statemonitor.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+  creating build/lib.linux-x86_64-3.6/brian2/devices
+  copying brian2/devices/__init__.py -> build/lib.linux-x86_64-3.6/brian2/devices
+  copying brian2/devices/device.py -> build/lib.linux-x86_64-3.6/brian2/devices
+  creating build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/templates.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/targets.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/statements.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/optimisation.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/permutation_analysis.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/translation.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/codeobject.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/cpp_prefs.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  copying brian2/codegen/_prefs.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+  creating build/lib.linux-x86_64-3.6/brian2/memory
+  copying brian2/memory/__init__.py -> build/lib.linux-x86_64-3.6/brian2/memory
+  copying brian2/memory/dynamicarray.py -> build/lib.linux-x86_64-3.6/brian2/memory
+  creating build/lib.linux-x86_64-3.6/brian2/groups
+  copying brian2/groups/group.py -> build/lib.linux-x86_64-3.6/brian2/groups
+  copying brian2/groups/__init__.py -> build/lib.linux-x86_64-3.6/brian2/groups
+  copying brian2/groups/subgroup.py -> build/lib.linux-x86_64-3.6/brian2/groups
+  copying brian2/groups/neurongroup.py -> build/lib.linux-x86_64-3.6/brian2/groups
+  creating build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/synapses.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/input.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/speed.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/base.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/monitors.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  copying brian2/tests/features/neurongroup.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+  creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates
+  copying brian2/tests/test_templates/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates
+  creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2
+  copying brian2/tests/test_templates/fake_package_2/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2
+  creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1
+  copying brian2/tests/test_templates/fake_package_1/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1
+  creating build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+  copying brian2/devices/cpp_standalone/__init__.py -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+  copying brian2/devices/cpp_standalone/device.py -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+  copying brian2/devices/cpp_standalone/codeobject.py -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime
+  copying brian2/codegen/runtime/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/generators
+  copying brian2/codegen/generators/numpy_generator.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+  copying brian2/codegen/generators/cpp_generator.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+  copying brian2/codegen/generators/cython_generator.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+  copying brian2/codegen/generators/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+  copying brian2/codegen/generators/base.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+  copying brian2/codegen/runtime/numpy_rt/numpy_rt.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+  copying brian2/codegen/runtime/numpy_rt/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+  copying brian2/codegen/runtime/numpy_rt/synapse_vectorisation.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+  copying brian2/codegen/runtime/cython_rt/extension_manager.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+  copying brian2/codegen/runtime/cython_rt/cython_rt.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+  copying brian2/codegen/runtime/cython_rt/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt
+  copying brian2/codegen/runtime/weave_rt/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt
+  copying brian2/codegen/runtime/weave_rt/weave_rt.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt
+  copying brian2/default_preferences -> build/lib.linux-x86_64-3.6/brian2
+  creating build/lib.linux-x86_64-3.6/brian2/random/randomkit
+  copying brian2/random/randomkit/randomkit.c -> build/lib.linux-x86_64-3.6/brian2/random/randomkit
+  copying brian2/random/randomkit/randomkit.h -> build/lib.linux-x86_64-3.6/brian2/random/randomkit
+  copying brian2/synapses/cythonspikequeue.cpp -> build/lib.linux-x86_64-3.6/brian2/synapses
+  copying brian2/synapses/cspikequeue.cpp -> build/lib.linux-x86_64-3.6/brian2/synapses
+  copying brian2/synapses/stdint_compat.h -> build/lib.linux-x86_64-3.6/brian2/synapses
+  creating build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/README -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/ref_branch.0 -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/ref_cable.0 -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/ref_cable.x -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/ref_axon.x.neuron -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/ref_branch.x -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  copying brian2/tests/rallpack_data/ref_axon.0.neuron -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+  creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/templates
+  copying brian2/tests/test_templates/fake_package_2/templates/D.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/templates
+  copying brian2/tests/test_templates/fake_package_2/templates/A.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/templates
+  creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+  copying brian2/tests/test_templates/fake_package_1/templates/D.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+  copying brian2/tests/test_templates/fake_package_1/templates/B.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+  copying brian2/tests/test_templates/fake_package_1/templates/A.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+  copying brian2/tests/test_templates/fake_package_1/templates/C.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+  creating build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/main.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/group_variable_set.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/run.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/stateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/objects.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/spikemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/group_variable_set_conditional.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/network.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/spatialneuron_prepare.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/synapses_initialise_queue.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/spatialstateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/spikegenerator.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/ratemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/threshold.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/statemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/common_synapses.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/summed_variable.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/common_group.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/reset.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/synapses_push_spikes.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/synapses.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/synapses_create_generator.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/synapses_create_array.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/synapses_classes.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/makefile -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  copying brian2/devices/cpp_standalone/templates/win_makefile -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+  creating build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+  copying brian2/devices/cpp_standalone/brianlib/dynamic_array.h -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+  copying brian2/devices/cpp_standalone/brianlib/clocks.h -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+  copying brian2/devices/cpp_standalone/brianlib/common_math.h -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/spikegenerator.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/threshold.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/statemonitor.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/synapses_create_generator.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/group_variable_set.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/summed_variable.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/group_variable_set_conditional.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/group_variable_get_conditional.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/reset.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/synapses_push_spikes.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/group_variable_get.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/spikemonitor.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/ratemonitor.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/spatialstateupdate.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/stateupdate.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/synapses_initialise_queue.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/synapses_create_array.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/group_get_indices.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/synapses.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  copying brian2/codegen/runtime/numpy_rt/templates/spatialneuron_prepare.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/synapses_create_array.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/reset.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/group_get_indices.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/group_variable_set.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/common.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/group_variable_get.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/spatialneuron_prepare.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/synapses_create_generator.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/stateupdate.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/spatialstateupdate.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/spikemonitor.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/synapses_initialise_queue.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/group_variable_get_conditional.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/synapses.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/group_variable_set_conditional.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/summed_variable.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/statemonitor.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/spikegenerator.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/threshold.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/synapses_push_spikes.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  copying brian2/codegen/runtime/cython_rt/templates/ratemonitor.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+  creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/group_variable_set.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/stateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/spikemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/group_variable_set_conditional.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/spatialneuron_prepare.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/synapses_initialise_queue.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/spatialstateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/group_get_indices.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/spikegenerator.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/group_variable_get.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/ratemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/threshold.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/statemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/group_variable_get_conditional.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/summed_variable.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/common_group.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/reset.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/synapses_push_spikes.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/synapses.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/synapses_create_generator.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/common_macros.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  copying brian2/codegen/runtime/weave_rt/templates/synapses_create_array.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+  Fixing build/lib.linux-x86_64-3.6/brian2/hears.py build/lib.linux-x86_64-3.6/brian2/numpy_.py build/lib.linux-x86_64-3.6/brian2/__init__.py build/lib.linux-x86_64-3.6/brian2/only.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/morphology.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/spatialneuron.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/__init__.py build/lib.linux-x86_64-3.6/brian2/core/functions.py build/lib.linux-x86_64-3.6/brian2/core/preferences.py build/lib.linux-x86_64-3.6/brian2/core/magic.py build/lib.linux-x86_64-3.6/brian2/core/network.py build/lib.linux-x86_64-3.6/brian2/core/operations.py build/lib.linux-x86_64-3.6/brian2/core/core_preferences.py build/lib.linux-x86_64-3.6/brian2/core/tracking.py build/lib.linux-x86_64-3.6/brian2/core/names.py build/lib.linux-x86_64-3.6/brian2/core/__init__.py build/lib.linux-x86_64-3.6/brian2/core/variables.py build/lib.linux-x86_64-3.6/brian2/core/base.py build/lib.linux-x86_64-3.6/brian2/core/clocks.py build/lib.linux-x86_64-3.6/brian2/core/namespace.py build/lib.linux-x86_64-3.6/brian2/core/spikesource.py build/lib.linux-x86_64-3.6/brian2/random/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exponential_euler.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/explicit.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exact.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/base.py build/lib.linux-x86_64-3.6/brian2/utils/arrays.py build/lib.linux-x86_64-3.6/brian2/utils/filetools.py build/lib.linux-x86_64-3.6/brian2/utils/topsort.py build/lib.linux-x86_64-3.6/brian2/utils/logger.py build/lib.linux-x86_64-3.6/brian2/utils/__init__.py build/lib.linux-x86_64-3.6/brian2/utils/stringtools.py build/lib.linux-x86_64-3.6/brian2/utils/environment.py build/lib.linux-x86_64-3.6/brian2/units/fundamentalunits.py build/lib.linux-x86_64-3.6/brian2/units/allunits.py build/lib.linux-x86_64-3.6/brian2/units/constants.py build/lib.linux-x86_64-3.6/brian2/units/__init__.py build/lib.linux-x86_64-3.6/brian2/units/unitsafefunctions.py build/lib.linux-x86_64-3.6/brian2/units/stdunits.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_reference.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape_sphinx.py build/lib.linux-x86_64-3.6/brian2/sphinxext/examplefinder.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_examples.py build/lib.linux-x86_64-3.6/brian2/sphinxext/briandoc.py build/lib.linux-x86_64-3.6/brian2/sphinxext/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/expressions.py build/lib.linux-x86_64-3.6/brian2/parsing/functions.py build/lib.linux-x86_64-3.6/brian2/parsing/statements.py build/lib.linux-x86_64-3.6/brian2/parsing/rendering.py build/lib.linux-x86_64-3.6/brian2/parsing/dependencies.py build/lib.linux-x86_64-3.6/brian2/parsing/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/sympytools.py build/lib.linux-x86_64-3.6/brian2/parsing/bast.py build/lib.linux-x86_64-3.6/brian2/synapses/parse_synaptic_generator_syntax.py build/lib.linux-x86_64-3.6/brian2/synapses/synapses.py build/lib.linux-x86_64-3.6/brian2/synapses/spikequeue.py build/lib.linux-x86_64-3.6/brian2/synapses/__init__.py build/lib.linux-x86_64-3.6/brian2/input/spikegeneratorgroup.py build/lib.linux-x86_64-3.6/brian2/input/timedarray.py build/lib.linux-x86_64-3.6/brian2/input/poissongroup.py build/lib.linux-x86_64-3.6/brian2/input/__init__.py build/lib.linux-x86_64-3.6/brian2/input/binomial.py build/lib.linux-x86_64-3.6/brian2/input/poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_spatialneuron.py build/lib.linux-x86_64-3.6/brian2/tests/test_cpp_standalone.py build/lib.linux-x86_64-3.6/brian2/tests/test_utils.py build/lib.linux-x86_64-3.6/brian2/tests/test_complex_examples.py build/lib.linux-x86_64-3.6/brian2/tests/test_base.py build/lib.linux-x86_64-3.6/brian2/tests/test_units.py build/lib.linux-x86_64-3.6/brian2/tests/test_variables.py build/lib.linux-x86_64-3.6/brian2/tests/test_subgroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_codestrings.py build/lib.linux-x86_64-3.6/brian2/tests/test_unitarray.py build/lib.linux-x86_64-3.6/brian2/tests/test_morphology.py build/lib.linux-x86_64-3.6/brian2/tests/test_parsing.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_stateupdaters.py build/lib.linux-x86_64-3.6/brian2/tests/test_numpy_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_thresholder.py build/lib.linux-x86_64-3.6/brian2/tests/test_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_synapses.py build/lib.linux-x86_64-3.6/brian2/tests/test_equations.py build/lib.linux-x86_64-3.6/brian2/tests/test_network.py build/lib.linux-x86_64-3.6/brian2/tests/test_devices.py build/lib.linux-x86_64-3.6/brian2/tests/test_neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_timedarray.py build/lib.linux-x86_64-3.6/brian2/tests/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_namespaces.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikegenerator.py build/lib.linux-x86_64-3.6/brian2/tests/test_monitor.py build/lib.linux-x86_64-3.6/brian2/tests/test_functions.py build/lib.linux-x86_64-3.6/brian2/tests/test_refractory.py build/lib.linux-x86_64-3.6/brian2/tests/test_memory.py build/lib.linux-x86_64-3.6/brian2/tests/test_clocks.py build/lib.linux-x86_64-3.6/brian2/tests/test_preferences.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikequeue.py build/lib.linux-x86_64-3.6/brian2/importexport/__init__.py build/lib.linux-x86_64-3.6/brian2/importexport/dictlike.py build/lib.linux-x86_64-3.6/brian2/importexport/importexport.py build/lib.linux-x86_64-3.6/brian2/equations/refractory.py build/lib.linux-x86_64-3.6/brian2/equations/__init__.py build/lib.linux-x86_64-3.6/brian2/equations/codestrings.py build/lib.linux-x86_64-3.6/brian2/equations/unitcheck.py build/lib.linux-x86_64-3.6/brian2/equations/equations.py build/lib.linux-x86_64-3.6/brian2/monitors/spikemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/__init__.py build/lib.linux-x86_64-3.6/brian2/monitors/ratemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/statemonitor.py build/lib.linux-x86_64-3.6/brian2/devices/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/device.py build/lib.linux-x86_64-3.6/brian2/codegen/templates.py build/lib.linux-x86_64-3.6/brian2/codegen/targets.py build/lib.linux-x86_64-3.6/brian2/codegen/statements.py build/lib.linux-x86_64-3.6/brian2/codegen/optimisation.py build/lib.linux-x86_64-3.6/brian2/codegen/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/permutation_analysis.py build/lib.linux-x86_64-3.6/brian2/codegen/translation.py build/lib.linux-x86_64-3.6/brian2/codegen/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/cpp_prefs.py build/lib.linux-x86_64-3.6/brian2/codegen/_prefs.py build/lib.linux-x86_64-3.6/brian2/memory/__init__.py build/lib.linux-x86_64-3.6/brian2/memory/dynamicarray.py build/lib.linux-x86_64-3.6/brian2/groups/group.py build/lib.linux-x86_64-3.6/brian2/groups/__init__.py build/lib.linux-x86_64-3.6/brian2/groups/subgroup.py build/lib.linux-x86_64-3.6/brian2/groups/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/features/synapses.py build/lib.linux-x86_64-3.6/brian2/tests/features/input.py build/lib.linux-x86_64-3.6/brian2/tests/features/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/features/speed.py build/lib.linux-x86_64-3.6/brian2/tests/features/base.py build/lib.linux-x86_64-3.6/brian2/tests/features/monitors.py build/lib.linux-x86_64-3.6/brian2/tests/features/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/device.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/numpy_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cpp_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cython_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/base.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/numpy_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/synapse_vectorisation.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/extension_manager.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/cython_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/weave_rt.py
+  Skipping optional fixer: buffer
+  Skipping optional fixer: idioms
+  Skipping optional fixer: set_literal
+  Skipping optional fixer: ws_comma
+  Fixing build/lib.linux-x86_64-3.6/brian2/hears.py build/lib.linux-x86_64-3.6/brian2/numpy_.py build/lib.linux-x86_64-3.6/brian2/__init__.py build/lib.linux-x86_64-3.6/brian2/only.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/morphology.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/spatialneuron.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/__init__.py build/lib.linux-x86_64-3.6/brian2/core/functions.py build/lib.linux-x86_64-3.6/brian2/core/preferences.py build/lib.linux-x86_64-3.6/brian2/core/magic.py build/lib.linux-x86_64-3.6/brian2/core/network.py build/lib.linux-x86_64-3.6/brian2/core/operations.py build/lib.linux-x86_64-3.6/brian2/core/core_preferences.py build/lib.linux-x86_64-3.6/brian2/core/tracking.py build/lib.linux-x86_64-3.6/brian2/core/names.py build/lib.linux-x86_64-3.6/brian2/core/__init__.py build/lib.linux-x86_64-3.6/brian2/core/variables.py build/lib.linux-x86_64-3.6/brian2/core/base.py build/lib.linux-x86_64-3.6/brian2/core/clocks.py build/lib.linux-x86_64-3.6/brian2/core/namespace.py build/lib.linux-x86_64-3.6/brian2/core/spikesource.py build/lib.linux-x86_64-3.6/brian2/random/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exponential_euler.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/explicit.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exact.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/base.py build/lib.linux-x86_64-3.6/brian2/utils/arrays.py build/lib.linux-x86_64-3.6/brian2/utils/filetools.py build/lib.linux-x86_64-3.6/brian2/utils/topsort.py build/lib.linux-x86_64-3.6/brian2/utils/logger.py build/lib.linux-x86_64-3.6/brian2/utils/__init__.py build/lib.linux-x86_64-3.6/brian2/utils/stringtools.py build/lib.linux-x86_64-3.6/brian2/utils/environment.py build/lib.linux-x86_64-3.6/brian2/units/fundamentalunits.py build/lib.linux-x86_64-3.6/brian2/units/allunits.py build/lib.linux-x86_64-3.6/brian2/units/constants.py build/lib.linux-x86_64-3.6/brian2/units/__init__.py build/lib.linux-x86_64-3.6/brian2/units/unitsafefunctions.py build/lib.linux-x86_64-3.6/brian2/units/stdunits.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_reference.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape_sphinx.py build/lib.linux-x86_64-3.6/brian2/sphinxext/examplefinder.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_examples.py build/lib.linux-x86_64-3.6/brian2/sphinxext/briandoc.py build/lib.linux-x86_64-3.6/brian2/sphinxext/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/expressions.py build/lib.linux-x86_64-3.6/brian2/parsing/functions.py build/lib.linux-x86_64-3.6/brian2/parsing/statements.py build/lib.linux-x86_64-3.6/brian2/parsing/rendering.py build/lib.linux-x86_64-3.6/brian2/parsing/dependencies.py build/lib.linux-x86_64-3.6/brian2/parsing/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/sympytools.py build/lib.linux-x86_64-3.6/brian2/parsing/bast.py build/lib.linux-x86_64-3.6/brian2/synapses/parse_synaptic_generator_syntax.py build/lib.linux-x86_64-3.6/brian2/synapses/synapses.py build/lib.linux-x86_64-3.6/brian2/synapses/spikequeue.py build/lib.linux-x86_64-3.6/brian2/synapses/__init__.py build/lib.linux-x86_64-3.6/brian2/input/spikegeneratorgroup.py build/lib.linux-x86_64-3.6/brian2/input/timedarray.py build/lib.linux-x86_64-3.6/brian2/input/poissongroup.py build/lib.linux-x86_64-3.6/brian2/input/__init__.py build/lib.linux-x86_64-3.6/brian2/input/binomial.py build/lib.linux-x86_64-3.6/brian2/input/poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_spatialneuron.py build/lib.linux-x86_64-3.6/brian2/tests/test_cpp_standalone.py build/lib.linux-x86_64-3.6/brian2/tests/test_utils.py build/lib.linux-x86_64-3.6/brian2/tests/test_complex_examples.py build/lib.linux-x86_64-3.6/brian2/tests/test_base.py build/lib.linux-x86_64-3.6/brian2/tests/test_units.py build/lib.linux-x86_64-3.6/brian2/tests/test_variables.py build/lib.linux-x86_64-3.6/brian2/tests/test_subgroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_codestrings.py build/lib.linux-x86_64-3.6/brian2/tests/test_unitarray.py build/lib.linux-x86_64-3.6/brian2/tests/test_morphology.py build/lib.linux-x86_64-3.6/brian2/tests/test_parsing.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_stateupdaters.py build/lib.linux-x86_64-3.6/brian2/tests/test_numpy_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_thresholder.py build/lib.linux-x86_64-3.6/brian2/tests/test_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_synapses.py build/lib.linux-x86_64-3.6/brian2/tests/test_equations.py build/lib.linux-x86_64-3.6/brian2/tests/test_network.py build/lib.linux-x86_64-3.6/brian2/tests/test_devices.py build/lib.linux-x86_64-3.6/brian2/tests/test_neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_timedarray.py build/lib.linux-x86_64-3.6/brian2/tests/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_namespaces.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikegenerator.py build/lib.linux-x86_64-3.6/brian2/tests/test_monitor.py build/lib.linux-x86_64-3.6/brian2/tests/test_functions.py build/lib.linux-x86_64-3.6/brian2/tests/test_refractory.py build/lib.linux-x86_64-3.6/brian2/tests/test_memory.py build/lib.linux-x86_64-3.6/brian2/tests/test_clocks.py build/lib.linux-x86_64-3.6/brian2/tests/test_preferences.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikequeue.py build/lib.linux-x86_64-3.6/brian2/importexport/__init__.py build/lib.linux-x86_64-3.6/brian2/importexport/dictlike.py build/lib.linux-x86_64-3.6/brian2/importexport/importexport.py build/lib.linux-x86_64-3.6/brian2/equations/refractory.py build/lib.linux-x86_64-3.6/brian2/equations/__init__.py build/lib.linux-x86_64-3.6/brian2/equations/codestrings.py build/lib.linux-x86_64-3.6/brian2/equations/unitcheck.py build/lib.linux-x86_64-3.6/brian2/equations/equations.py build/lib.linux-x86_64-3.6/brian2/monitors/spikemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/__init__.py build/lib.linux-x86_64-3.6/brian2/monitors/ratemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/statemonitor.py build/lib.linux-x86_64-3.6/brian2/devices/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/device.py build/lib.linux-x86_64-3.6/brian2/codegen/templates.py build/lib.linux-x86_64-3.6/brian2/codegen/targets.py build/lib.linux-x86_64-3.6/brian2/codegen/statements.py build/lib.linux-x86_64-3.6/brian2/codegen/optimisation.py build/lib.linux-x86_64-3.6/brian2/codegen/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/permutation_analysis.py build/lib.linux-x86_64-3.6/brian2/codegen/translation.py build/lib.linux-x86_64-3.6/brian2/codegen/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/cpp_prefs.py build/lib.linux-x86_64-3.6/brian2/codegen/_prefs.py build/lib.linux-x86_64-3.6/brian2/memory/__init__.py build/lib.linux-x86_64-3.6/brian2/memory/dynamicarray.py build/lib.linux-x86_64-3.6/brian2/groups/group.py build/lib.linux-x86_64-3.6/brian2/groups/__init__.py build/lib.linux-x86_64-3.6/brian2/groups/subgroup.py build/lib.linux-x86_64-3.6/brian2/groups/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/features/synapses.py build/lib.linux-x86_64-3.6/brian2/tests/features/input.py build/lib.linux-x86_64-3.6/brian2/tests/features/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/features/speed.py build/lib.linux-x86_64-3.6/brian2/tests/features/base.py build/lib.linux-x86_64-3.6/brian2/tests/features/monitors.py build/lib.linux-x86_64-3.6/brian2/tests/features/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/device.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/numpy_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cpp_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cython_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/base.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/numpy_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/synapse_vectorisation.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/extension_manager.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/cython_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/weave_rt.py
+  Skipping optional fixer: buffer
+  Skipping optional fixer: idioms
+  Skipping optional fixer: set_literal
+  Skipping optional fixer: ws_comma
+  running build_ext
+  building 'brian2.synapses.cythonspikequeue' extension
+  creating build/temp.linux-x86_64-3.6
+  creating build/temp.linux-x86_64-3.6/brian2
+  creating build/temp.linux-x86_64-3.6/brian2/synapses
+  gcc -pthread -B /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include -I/home/juanluis/miniconda3/envs/hipp_sim/include/python3.6m -c brian2/synapses/cythonspikequeue.cpp -o build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o
+  cc1plus: aviso: command-line option ‘-Wstrict-prototypes’ is valid for C/ObjC but not for C++
+  En el fichero incluido desde /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1788,
+                   desde /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                   desde /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                   desde brian2/synapses/cythonspikequeue.cpp:440:
+  /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: aviso: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+     15 | #warning "Using deprecated NumPy API, disable it by " \
+        |  ^~~~~~~
+  g++ -pthread -shared -B /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat -L/home/juanluis/miniconda3/envs/hipp_sim/lib -Wl,-rpath=/home/juanluis/miniconda3/envs/hipp_sim/lib -Wl,--no-as-needed -Wl,--sysroot=/ build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o -o build/lib.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.cpython-36m-x86_64-linux-gnu.so
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/../../../../lib64/crti.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/../../../../lib64/crti.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/crtbeginS.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/crtbeginS.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libm.so.6: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0008002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libm.so.6: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libm.so.6: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: /lib64/libm.so.6: unknown type [0x13] section `.relr.dyn'
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: skipping incompatible /lib64/libm.so.6 when searching for /lib64/libm.so.6
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: cannot find /lib64/libm.so.6 inside /
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libmvec.so.1: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0008002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libmvec.so.1: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libmvec.so.1: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: /lib64/libmvec.so.1: unknown type [0x13] section `.relr.dyn'
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: skipping incompatible /lib64/libmvec.so.1 when searching for /lib64/libmvec.so.1
+  /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: cannot find /lib64/libmvec.so.1 inside /
+  collect2: error: ld devolvió el estado de salida 1
+  error: command 'g++' failed with exit status 1
+  ----------------------------------------
+  ERROR: Failed building wheel for brian2
+    ERROR: Command errored out with exit status 1:
+     command: /home/juanluis/miniconda3/envs/hipp_sim/bin/python -u -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/setup.py'"'"'; __file__='"'"'/tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' install --record /tmp/pip-record-i2r4dn3l/install-record.txt --single-version-externally-managed --compile --install-headers /home/juanluis/miniconda3/envs/hipp_sim/include/python3.6m/brian2
+         cwd: /tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/
+    Complete output (355 lines):
+    running install
+    running build
+    running build_py
+    creating build
+    creating build/lib.linux-x86_64-3.6
+    creating build/lib.linux-x86_64-3.6/brian2
+    copying brian2/hears.py -> build/lib.linux-x86_64-3.6/brian2
+    copying brian2/numpy_.py -> build/lib.linux-x86_64-3.6/brian2
+    copying brian2/__init__.py -> build/lib.linux-x86_64-3.6/brian2
+    copying brian2/only.py -> build/lib.linux-x86_64-3.6/brian2
+    creating build/lib.linux-x86_64-3.6/brian2/spatialneuron
+    copying brian2/spatialneuron/morphology.py -> build/lib.linux-x86_64-3.6/brian2/spatialneuron
+    copying brian2/spatialneuron/spatialneuron.py -> build/lib.linux-x86_64-3.6/brian2/spatialneuron
+    copying brian2/spatialneuron/__init__.py -> build/lib.linux-x86_64-3.6/brian2/spatialneuron
+    creating build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/functions.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/preferences.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/magic.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/network.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/operations.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/core_preferences.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/tracking.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/names.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/__init__.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/variables.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/base.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/clocks.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/namespace.py -> build/lib.linux-x86_64-3.6/brian2/core
+    copying brian2/core/spikesource.py -> build/lib.linux-x86_64-3.6/brian2/core
+    creating build/lib.linux-x86_64-3.6/brian2/random
+    copying brian2/random/__init__.py -> build/lib.linux-x86_64-3.6/brian2/random
+    creating build/lib.linux-x86_64-3.6/brian2/stateupdaters
+    copying brian2/stateupdaters/exponential_euler.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+    copying brian2/stateupdaters/explicit.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+    copying brian2/stateupdaters/exact.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+    copying brian2/stateupdaters/__init__.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+    copying brian2/stateupdaters/base.py -> build/lib.linux-x86_64-3.6/brian2/stateupdaters
+    creating build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/arrays.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/filetools.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/topsort.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/logger.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/__init__.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/stringtools.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    copying brian2/utils/environment.py -> build/lib.linux-x86_64-3.6/brian2/utils
+    creating build/lib.linux-x86_64-3.6/brian2/units
+    copying brian2/units/fundamentalunits.py -> build/lib.linux-x86_64-3.6/brian2/units
+    copying brian2/units/allunits.py -> build/lib.linux-x86_64-3.6/brian2/units
+    copying brian2/units/constants.py -> build/lib.linux-x86_64-3.6/brian2/units
+    copying brian2/units/__init__.py -> build/lib.linux-x86_64-3.6/brian2/units
+    copying brian2/units/unitsafefunctions.py -> build/lib.linux-x86_64-3.6/brian2/units
+    copying brian2/units/stdunits.py -> build/lib.linux-x86_64-3.6/brian2/units
+    creating build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/docscrape.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/generate_reference.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/docscrape_sphinx.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/examplefinder.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/generate_examples.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/briandoc.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    copying brian2/sphinxext/__init__.py -> build/lib.linux-x86_64-3.6/brian2/sphinxext
+    creating build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/expressions.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/functions.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/statements.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/rendering.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/dependencies.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/__init__.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/sympytools.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    copying brian2/parsing/bast.py -> build/lib.linux-x86_64-3.6/brian2/parsing
+    creating build/lib.linux-x86_64-3.6/brian2/synapses
+    copying brian2/synapses/parse_synaptic_generator_syntax.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+    copying brian2/synapses/synapses.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+    copying brian2/synapses/spikequeue.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+    copying brian2/synapses/__init__.py -> build/lib.linux-x86_64-3.6/brian2/synapses
+    creating build/lib.linux-x86_64-3.6/brian2/input
+    copying brian2/input/spikegeneratorgroup.py -> build/lib.linux-x86_64-3.6/brian2/input
+    copying brian2/input/timedarray.py -> build/lib.linux-x86_64-3.6/brian2/input
+    copying brian2/input/poissongroup.py -> build/lib.linux-x86_64-3.6/brian2/input
+    copying brian2/input/__init__.py -> build/lib.linux-x86_64-3.6/brian2/input
+    copying brian2/input/binomial.py -> build/lib.linux-x86_64-3.6/brian2/input
+    copying brian2/input/poissoninput.py -> build/lib.linux-x86_64-3.6/brian2/input
+    creating build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_poissongroup.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_spatialneuron.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_cpp_standalone.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_utils.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_complex_examples.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_base.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_units.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_variables.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_subgroup.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_codestrings.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_unitarray.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_morphology.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_parsing.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_poissoninput.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_stateupdaters.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_numpy_codegen.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_thresholder.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_codegen.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_synapses.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_equations.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_network.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_devices.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_neurongroup.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_timedarray.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_namespaces.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_spikegenerator.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_monitor.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_functions.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_refractory.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_memory.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_clocks.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_preferences.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    copying brian2/tests/test_spikequeue.py -> build/lib.linux-x86_64-3.6/brian2/tests
+    creating build/lib.linux-x86_64-3.6/brian2/importexport
+    copying brian2/importexport/__init__.py -> build/lib.linux-x86_64-3.6/brian2/importexport
+    copying brian2/importexport/dictlike.py -> build/lib.linux-x86_64-3.6/brian2/importexport
+    copying brian2/importexport/importexport.py -> build/lib.linux-x86_64-3.6/brian2/importexport
+    creating build/lib.linux-x86_64-3.6/brian2/equations
+    copying brian2/equations/refractory.py -> build/lib.linux-x86_64-3.6/brian2/equations
+    copying brian2/equations/__init__.py -> build/lib.linux-x86_64-3.6/brian2/equations
+    copying brian2/equations/codestrings.py -> build/lib.linux-x86_64-3.6/brian2/equations
+    copying brian2/equations/unitcheck.py -> build/lib.linux-x86_64-3.6/brian2/equations
+    copying brian2/equations/equations.py -> build/lib.linux-x86_64-3.6/brian2/equations
+    creating build/lib.linux-x86_64-3.6/brian2/monitors
+    copying brian2/monitors/spikemonitor.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+    copying brian2/monitors/__init__.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+    copying brian2/monitors/ratemonitor.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+    copying brian2/monitors/statemonitor.py -> build/lib.linux-x86_64-3.6/brian2/monitors
+    creating build/lib.linux-x86_64-3.6/brian2/devices
+    copying brian2/devices/__init__.py -> build/lib.linux-x86_64-3.6/brian2/devices
+    copying brian2/devices/device.py -> build/lib.linux-x86_64-3.6/brian2/devices
+    creating build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/templates.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/targets.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/statements.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/optimisation.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/permutation_analysis.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/translation.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/codeobject.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/cpp_prefs.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    copying brian2/codegen/_prefs.py -> build/lib.linux-x86_64-3.6/brian2/codegen
+    creating build/lib.linux-x86_64-3.6/brian2/memory
+    copying brian2/memory/__init__.py -> build/lib.linux-x86_64-3.6/brian2/memory
+    copying brian2/memory/dynamicarray.py -> build/lib.linux-x86_64-3.6/brian2/memory
+    creating build/lib.linux-x86_64-3.6/brian2/groups
+    copying brian2/groups/group.py -> build/lib.linux-x86_64-3.6/brian2/groups
+    copying brian2/groups/__init__.py -> build/lib.linux-x86_64-3.6/brian2/groups
+    copying brian2/groups/subgroup.py -> build/lib.linux-x86_64-3.6/brian2/groups
+    copying brian2/groups/neurongroup.py -> build/lib.linux-x86_64-3.6/brian2/groups
+    creating build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/synapses.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/input.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/speed.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/base.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/monitors.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    copying brian2/tests/features/neurongroup.py -> build/lib.linux-x86_64-3.6/brian2/tests/features
+    creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates
+    copying brian2/tests/test_templates/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates
+    creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2
+    copying brian2/tests/test_templates/fake_package_2/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2
+    creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1
+    copying brian2/tests/test_templates/fake_package_1/__init__.py -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1
+    creating build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+    copying brian2/devices/cpp_standalone/__init__.py -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+    copying brian2/devices/cpp_standalone/device.py -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+    copying brian2/devices/cpp_standalone/codeobject.py -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime
+    copying brian2/codegen/runtime/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/generators
+    copying brian2/codegen/generators/numpy_generator.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+    copying brian2/codegen/generators/cpp_generator.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+    copying brian2/codegen/generators/cython_generator.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+    copying brian2/codegen/generators/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+    copying brian2/codegen/generators/base.py -> build/lib.linux-x86_64-3.6/brian2/codegen/generators
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+    copying brian2/codegen/runtime/numpy_rt/numpy_rt.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+    copying brian2/codegen/runtime/numpy_rt/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+    copying brian2/codegen/runtime/numpy_rt/synapse_vectorisation.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+    copying brian2/codegen/runtime/cython_rt/extension_manager.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+    copying brian2/codegen/runtime/cython_rt/cython_rt.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+    copying brian2/codegen/runtime/cython_rt/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt
+    copying brian2/codegen/runtime/weave_rt/__init__.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt
+    copying brian2/codegen/runtime/weave_rt/weave_rt.py -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt
+    copying brian2/default_preferences -> build/lib.linux-x86_64-3.6/brian2
+    creating build/lib.linux-x86_64-3.6/brian2/random/randomkit
+    copying brian2/random/randomkit/randomkit.c -> build/lib.linux-x86_64-3.6/brian2/random/randomkit
+    copying brian2/random/randomkit/randomkit.h -> build/lib.linux-x86_64-3.6/brian2/random/randomkit
+    copying brian2/synapses/cythonspikequeue.cpp -> build/lib.linux-x86_64-3.6/brian2/synapses
+    copying brian2/synapses/cspikequeue.cpp -> build/lib.linux-x86_64-3.6/brian2/synapses
+    copying brian2/synapses/stdint_compat.h -> build/lib.linux-x86_64-3.6/brian2/synapses
+    creating build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/README -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/ref_branch.0 -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/ref_cable.0 -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/ref_cable.x -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/ref_axon.x.neuron -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/ref_branch.x -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    copying brian2/tests/rallpack_data/ref_axon.0.neuron -> build/lib.linux-x86_64-3.6/brian2/tests/rallpack_data
+    creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/templates
+    copying brian2/tests/test_templates/fake_package_2/templates/D.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/templates
+    copying brian2/tests/test_templates/fake_package_2/templates/A.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/templates
+    creating build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+    copying brian2/tests/test_templates/fake_package_1/templates/D.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+    copying brian2/tests/test_templates/fake_package_1/templates/B.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+    copying brian2/tests/test_templates/fake_package_1/templates/A.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+    copying brian2/tests/test_templates/fake_package_1/templates/C.txt -> build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/templates
+    creating build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/main.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/group_variable_set.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/run.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/stateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/objects.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/spikemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/group_variable_set_conditional.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/network.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/spatialneuron_prepare.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/synapses_initialise_queue.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/spatialstateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/spikegenerator.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/ratemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/threshold.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/statemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/common_synapses.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/summed_variable.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/common_group.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/reset.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/synapses_push_spikes.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/synapses.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/synapses_create_generator.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/synapses_create_array.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/synapses_classes.cpp -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/makefile -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    copying brian2/devices/cpp_standalone/templates/win_makefile -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/templates
+    creating build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+    copying brian2/devices/cpp_standalone/brianlib/dynamic_array.h -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+    copying brian2/devices/cpp_standalone/brianlib/clocks.h -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+    copying brian2/devices/cpp_standalone/brianlib/common_math.h -> build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/brianlib
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/spikegenerator.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/threshold.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/statemonitor.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/synapses_create_generator.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/group_variable_set.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/summed_variable.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/group_variable_set_conditional.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/group_variable_get_conditional.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/reset.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/synapses_push_spikes.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/group_variable_get.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/spikemonitor.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/ratemonitor.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/spatialstateupdate.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/stateupdate.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/synapses_initialise_queue.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/synapses_create_array.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/group_get_indices.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/synapses.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    copying brian2/codegen/runtime/numpy_rt/templates/spatialneuron_prepare.py_ -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/templates
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/synapses_create_array.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/reset.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/group_get_indices.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/group_variable_set.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/common.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/group_variable_get.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/spatialneuron_prepare.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/synapses_create_generator.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/stateupdate.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/spatialstateupdate.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/spikemonitor.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/synapses_initialise_queue.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/group_variable_get_conditional.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/synapses.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/group_variable_set_conditional.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/summed_variable.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/statemonitor.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/spikegenerator.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/threshold.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/synapses_push_spikes.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    copying brian2/codegen/runtime/cython_rt/templates/ratemonitor.pyx -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/templates
+    creating build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/group_variable_set.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/stateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/spikemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/group_variable_set_conditional.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/spatialneuron_prepare.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/synapses_initialise_queue.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/spatialstateupdate.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/group_get_indices.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/spikegenerator.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/group_variable_get.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/ratemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/threshold.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/statemonitor.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/group_variable_get_conditional.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/summed_variable.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/common_group.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/reset.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/synapses_push_spikes.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/synapses.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/synapses_create_generator.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/common_macros.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    copying brian2/codegen/runtime/weave_rt/templates/synapses_create_array.cpp -> build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/templates
+    Fixing build/lib.linux-x86_64-3.6/brian2/hears.py build/lib.linux-x86_64-3.6/brian2/numpy_.py build/lib.linux-x86_64-3.6/brian2/__init__.py build/lib.linux-x86_64-3.6/brian2/only.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/morphology.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/spatialneuron.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/__init__.py build/lib.linux-x86_64-3.6/brian2/core/functions.py build/lib.linux-x86_64-3.6/brian2/core/preferences.py build/lib.linux-x86_64-3.6/brian2/core/magic.py build/lib.linux-x86_64-3.6/brian2/core/network.py build/lib.linux-x86_64-3.6/brian2/core/operations.py build/lib.linux-x86_64-3.6/brian2/core/core_preferences.py build/lib.linux-x86_64-3.6/brian2/core/tracking.py build/lib.linux-x86_64-3.6/brian2/core/names.py build/lib.linux-x86_64-3.6/brian2/core/__init__.py build/lib.linux-x86_64-3.6/brian2/core/variables.py build/lib.linux-x86_64-3.6/brian2/core/base.py build/lib.linux-x86_64-3.6/brian2/core/clocks.py build/lib.linux-x86_64-3.6/brian2/core/namespace.py build/lib.linux-x86_64-3.6/brian2/core/spikesource.py build/lib.linux-x86_64-3.6/brian2/random/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exponential_euler.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/explicit.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exact.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/base.py build/lib.linux-x86_64-3.6/brian2/utils/arrays.py build/lib.linux-x86_64-3.6/brian2/utils/filetools.py build/lib.linux-x86_64-3.6/brian2/utils/topsort.py build/lib.linux-x86_64-3.6/brian2/utils/logger.py build/lib.linux-x86_64-3.6/brian2/utils/__init__.py build/lib.linux-x86_64-3.6/brian2/utils/stringtools.py build/lib.linux-x86_64-3.6/brian2/utils/environment.py build/lib.linux-x86_64-3.6/brian2/units/fundamentalunits.py build/lib.linux-x86_64-3.6/brian2/units/allunits.py build/lib.linux-x86_64-3.6/brian2/units/constants.py build/lib.linux-x86_64-3.6/brian2/units/__init__.py build/lib.linux-x86_64-3.6/brian2/units/unitsafefunctions.py build/lib.linux-x86_64-3.6/brian2/units/stdunits.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_reference.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape_sphinx.py build/lib.linux-x86_64-3.6/brian2/sphinxext/examplefinder.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_examples.py build/lib.linux-x86_64-3.6/brian2/sphinxext/briandoc.py build/lib.linux-x86_64-3.6/brian2/sphinxext/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/expressions.py build/lib.linux-x86_64-3.6/brian2/parsing/functions.py build/lib.linux-x86_64-3.6/brian2/parsing/statements.py build/lib.linux-x86_64-3.6/brian2/parsing/rendering.py build/lib.linux-x86_64-3.6/brian2/parsing/dependencies.py build/lib.linux-x86_64-3.6/brian2/parsing/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/sympytools.py build/lib.linux-x86_64-3.6/brian2/parsing/bast.py build/lib.linux-x86_64-3.6/brian2/synapses/parse_synaptic_generator_syntax.py build/lib.linux-x86_64-3.6/brian2/synapses/synapses.py build/lib.linux-x86_64-3.6/brian2/synapses/spikequeue.py build/lib.linux-x86_64-3.6/brian2/synapses/__init__.py build/lib.linux-x86_64-3.6/brian2/input/spikegeneratorgroup.py build/lib.linux-x86_64-3.6/brian2/input/timedarray.py build/lib.linux-x86_64-3.6/brian2/input/poissongroup.py build/lib.linux-x86_64-3.6/brian2/input/__init__.py build/lib.linux-x86_64-3.6/brian2/input/binomial.py build/lib.linux-x86_64-3.6/brian2/input/poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_spatialneuron.py build/lib.linux-x86_64-3.6/brian2/tests/test_cpp_standalone.py build/lib.linux-x86_64-3.6/brian2/tests/test_utils.py build/lib.linux-x86_64-3.6/brian2/tests/test_complex_examples.py build/lib.linux-x86_64-3.6/brian2/tests/test_base.py build/lib.linux-x86_64-3.6/brian2/tests/test_units.py build/lib.linux-x86_64-3.6/brian2/tests/test_variables.py build/lib.linux-x86_64-3.6/brian2/tests/test_subgroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_codestrings.py build/lib.linux-x86_64-3.6/brian2/tests/test_unitarray.py build/lib.linux-x86_64-3.6/brian2/tests/test_morphology.py build/lib.linux-x86_64-3.6/brian2/tests/test_parsing.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_stateupdaters.py build/lib.linux-x86_64-3.6/brian2/tests/test_numpy_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_thresholder.py build/lib.linux-x86_64-3.6/brian2/tests/test_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_synapses.py build/lib.linux-x86_64-3.6/brian2/tests/test_equations.py build/lib.linux-x86_64-3.6/brian2/tests/test_network.py build/lib.linux-x86_64-3.6/brian2/tests/test_devices.py build/lib.linux-x86_64-3.6/brian2/tests/test_neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_timedarray.py build/lib.linux-x86_64-3.6/brian2/tests/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_namespaces.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikegenerator.py build/lib.linux-x86_64-3.6/brian2/tests/test_monitor.py build/lib.linux-x86_64-3.6/brian2/tests/test_functions.py build/lib.linux-x86_64-3.6/brian2/tests/test_refractory.py build/lib.linux-x86_64-3.6/brian2/tests/test_memory.py build/lib.linux-x86_64-3.6/brian2/tests/test_clocks.py build/lib.linux-x86_64-3.6/brian2/tests/test_preferences.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikequeue.py build/lib.linux-x86_64-3.6/brian2/importexport/__init__.py build/lib.linux-x86_64-3.6/brian2/importexport/dictlike.py build/lib.linux-x86_64-3.6/brian2/importexport/importexport.py build/lib.linux-x86_64-3.6/brian2/equations/refractory.py build/lib.linux-x86_64-3.6/brian2/equations/__init__.py build/lib.linux-x86_64-3.6/brian2/equations/codestrings.py build/lib.linux-x86_64-3.6/brian2/equations/unitcheck.py build/lib.linux-x86_64-3.6/brian2/equations/equations.py build/lib.linux-x86_64-3.6/brian2/monitors/spikemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/__init__.py build/lib.linux-x86_64-3.6/brian2/monitors/ratemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/statemonitor.py build/lib.linux-x86_64-3.6/brian2/devices/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/device.py build/lib.linux-x86_64-3.6/brian2/codegen/templates.py build/lib.linux-x86_64-3.6/brian2/codegen/targets.py build/lib.linux-x86_64-3.6/brian2/codegen/statements.py build/lib.linux-x86_64-3.6/brian2/codegen/optimisation.py build/lib.linux-x86_64-3.6/brian2/codegen/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/permutation_analysis.py build/lib.linux-x86_64-3.6/brian2/codegen/translation.py build/lib.linux-x86_64-3.6/brian2/codegen/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/cpp_prefs.py build/lib.linux-x86_64-3.6/brian2/codegen/_prefs.py build/lib.linux-x86_64-3.6/brian2/memory/__init__.py build/lib.linux-x86_64-3.6/brian2/memory/dynamicarray.py build/lib.linux-x86_64-3.6/brian2/groups/group.py build/lib.linux-x86_64-3.6/brian2/groups/__init__.py build/lib.linux-x86_64-3.6/brian2/groups/subgroup.py build/lib.linux-x86_64-3.6/brian2/groups/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/features/synapses.py build/lib.linux-x86_64-3.6/brian2/tests/features/input.py build/lib.linux-x86_64-3.6/brian2/tests/features/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/features/speed.py build/lib.linux-x86_64-3.6/brian2/tests/features/base.py build/lib.linux-x86_64-3.6/brian2/tests/features/monitors.py build/lib.linux-x86_64-3.6/brian2/tests/features/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/device.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/numpy_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cpp_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cython_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/base.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/numpy_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/synapse_vectorisation.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/extension_manager.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/cython_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/weave_rt.py
+    Skipping optional fixer: buffer
+    Skipping optional fixer: idioms
+    Skipping optional fixer: set_literal
+    Skipping optional fixer: ws_comma
+    Fixing build/lib.linux-x86_64-3.6/brian2/hears.py build/lib.linux-x86_64-3.6/brian2/numpy_.py build/lib.linux-x86_64-3.6/brian2/__init__.py build/lib.linux-x86_64-3.6/brian2/only.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/morphology.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/spatialneuron.py build/lib.linux-x86_64-3.6/brian2/spatialneuron/__init__.py build/lib.linux-x86_64-3.6/brian2/core/functions.py build/lib.linux-x86_64-3.6/brian2/core/preferences.py build/lib.linux-x86_64-3.6/brian2/core/magic.py build/lib.linux-x86_64-3.6/brian2/core/network.py build/lib.linux-x86_64-3.6/brian2/core/operations.py build/lib.linux-x86_64-3.6/brian2/core/core_preferences.py build/lib.linux-x86_64-3.6/brian2/core/tracking.py build/lib.linux-x86_64-3.6/brian2/core/names.py build/lib.linux-x86_64-3.6/brian2/core/__init__.py build/lib.linux-x86_64-3.6/brian2/core/variables.py build/lib.linux-x86_64-3.6/brian2/core/base.py build/lib.linux-x86_64-3.6/brian2/core/clocks.py build/lib.linux-x86_64-3.6/brian2/core/namespace.py build/lib.linux-x86_64-3.6/brian2/core/spikesource.py build/lib.linux-x86_64-3.6/brian2/random/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exponential_euler.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/explicit.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/exact.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/__init__.py build/lib.linux-x86_64-3.6/brian2/stateupdaters/base.py build/lib.linux-x86_64-3.6/brian2/utils/arrays.py build/lib.linux-x86_64-3.6/brian2/utils/filetools.py build/lib.linux-x86_64-3.6/brian2/utils/topsort.py build/lib.linux-x86_64-3.6/brian2/utils/logger.py build/lib.linux-x86_64-3.6/brian2/utils/__init__.py build/lib.linux-x86_64-3.6/brian2/utils/stringtools.py build/lib.linux-x86_64-3.6/brian2/utils/environment.py build/lib.linux-x86_64-3.6/brian2/units/fundamentalunits.py build/lib.linux-x86_64-3.6/brian2/units/allunits.py build/lib.linux-x86_64-3.6/brian2/units/constants.py build/lib.linux-x86_64-3.6/brian2/units/__init__.py build/lib.linux-x86_64-3.6/brian2/units/unitsafefunctions.py build/lib.linux-x86_64-3.6/brian2/units/stdunits.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_reference.py build/lib.linux-x86_64-3.6/brian2/sphinxext/docscrape_sphinx.py build/lib.linux-x86_64-3.6/brian2/sphinxext/examplefinder.py build/lib.linux-x86_64-3.6/brian2/sphinxext/generate_examples.py build/lib.linux-x86_64-3.6/brian2/sphinxext/briandoc.py build/lib.linux-x86_64-3.6/brian2/sphinxext/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/expressions.py build/lib.linux-x86_64-3.6/brian2/parsing/functions.py build/lib.linux-x86_64-3.6/brian2/parsing/statements.py build/lib.linux-x86_64-3.6/brian2/parsing/rendering.py build/lib.linux-x86_64-3.6/brian2/parsing/dependencies.py build/lib.linux-x86_64-3.6/brian2/parsing/__init__.py build/lib.linux-x86_64-3.6/brian2/parsing/sympytools.py build/lib.linux-x86_64-3.6/brian2/parsing/bast.py build/lib.linux-x86_64-3.6/brian2/synapses/parse_synaptic_generator_syntax.py build/lib.linux-x86_64-3.6/brian2/synapses/synapses.py build/lib.linux-x86_64-3.6/brian2/synapses/spikequeue.py build/lib.linux-x86_64-3.6/brian2/synapses/__init__.py build/lib.linux-x86_64-3.6/brian2/input/spikegeneratorgroup.py build/lib.linux-x86_64-3.6/brian2/input/timedarray.py build/lib.linux-x86_64-3.6/brian2/input/poissongroup.py build/lib.linux-x86_64-3.6/brian2/input/__init__.py build/lib.linux-x86_64-3.6/brian2/input/binomial.py build/lib.linux-x86_64-3.6/brian2/input/poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_spatialneuron.py build/lib.linux-x86_64-3.6/brian2/tests/test_cpp_standalone.py build/lib.linux-x86_64-3.6/brian2/tests/test_utils.py build/lib.linux-x86_64-3.6/brian2/tests/test_complex_examples.py build/lib.linux-x86_64-3.6/brian2/tests/test_base.py build/lib.linux-x86_64-3.6/brian2/tests/test_units.py build/lib.linux-x86_64-3.6/brian2/tests/test_variables.py build/lib.linux-x86_64-3.6/brian2/tests/test_subgroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_codestrings.py build/lib.linux-x86_64-3.6/brian2/tests/test_unitarray.py build/lib.linux-x86_64-3.6/brian2/tests/test_morphology.py build/lib.linux-x86_64-3.6/brian2/tests/test_parsing.py build/lib.linux-x86_64-3.6/brian2/tests/test_poissoninput.py build/lib.linux-x86_64-3.6/brian2/tests/test_stateupdaters.py build/lib.linux-x86_64-3.6/brian2/tests/test_numpy_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_thresholder.py build/lib.linux-x86_64-3.6/brian2/tests/test_codegen.py build/lib.linux-x86_64-3.6/brian2/tests/test_synapses.py build/lib.linux-x86_64-3.6/brian2/tests/test_equations.py build/lib.linux-x86_64-3.6/brian2/tests/test_network.py build/lib.linux-x86_64-3.6/brian2/tests/test_devices.py build/lib.linux-x86_64-3.6/brian2/tests/test_neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_timedarray.py build/lib.linux-x86_64-3.6/brian2/tests/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_namespaces.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikegenerator.py build/lib.linux-x86_64-3.6/brian2/tests/test_monitor.py build/lib.linux-x86_64-3.6/brian2/tests/test_functions.py build/lib.linux-x86_64-3.6/brian2/tests/test_refractory.py build/lib.linux-x86_64-3.6/brian2/tests/test_memory.py build/lib.linux-x86_64-3.6/brian2/tests/test_clocks.py build/lib.linux-x86_64-3.6/brian2/tests/test_preferences.py build/lib.linux-x86_64-3.6/brian2/tests/test_spikequeue.py build/lib.linux-x86_64-3.6/brian2/importexport/__init__.py build/lib.linux-x86_64-3.6/brian2/importexport/dictlike.py build/lib.linux-x86_64-3.6/brian2/importexport/importexport.py build/lib.linux-x86_64-3.6/brian2/equations/refractory.py build/lib.linux-x86_64-3.6/brian2/equations/__init__.py build/lib.linux-x86_64-3.6/brian2/equations/codestrings.py build/lib.linux-x86_64-3.6/brian2/equations/unitcheck.py build/lib.linux-x86_64-3.6/brian2/equations/equations.py build/lib.linux-x86_64-3.6/brian2/monitors/spikemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/__init__.py build/lib.linux-x86_64-3.6/brian2/monitors/ratemonitor.py build/lib.linux-x86_64-3.6/brian2/monitors/statemonitor.py build/lib.linux-x86_64-3.6/brian2/devices/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/device.py build/lib.linux-x86_64-3.6/brian2/codegen/templates.py build/lib.linux-x86_64-3.6/brian2/codegen/targets.py build/lib.linux-x86_64-3.6/brian2/codegen/statements.py build/lib.linux-x86_64-3.6/brian2/codegen/optimisation.py build/lib.linux-x86_64-3.6/brian2/codegen/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/permutation_analysis.py build/lib.linux-x86_64-3.6/brian2/codegen/translation.py build/lib.linux-x86_64-3.6/brian2/codegen/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/cpp_prefs.py build/lib.linux-x86_64-3.6/brian2/codegen/_prefs.py build/lib.linux-x86_64-3.6/brian2/memory/__init__.py build/lib.linux-x86_64-3.6/brian2/memory/dynamicarray.py build/lib.linux-x86_64-3.6/brian2/groups/group.py build/lib.linux-x86_64-3.6/brian2/groups/__init__.py build/lib.linux-x86_64-3.6/brian2/groups/subgroup.py build/lib.linux-x86_64-3.6/brian2/groups/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/features/synapses.py build/lib.linux-x86_64-3.6/brian2/tests/features/input.py build/lib.linux-x86_64-3.6/brian2/tests/features/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/features/speed.py build/lib.linux-x86_64-3.6/brian2/tests/features/base.py build/lib.linux-x86_64-3.6/brian2/tests/features/monitors.py build/lib.linux-x86_64-3.6/brian2/tests/features/neurongroup.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_2/__init__.py build/lib.linux-x86_64-3.6/brian2/tests/test_templates/fake_package_1/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/__init__.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/device.py build/lib.linux-x86_64-3.6/brian2/devices/cpp_standalone/codeobject.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/numpy_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cpp_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/cython_generator.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/generators/base.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/numpy_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/numpy_rt/synapse_vectorisation.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/extension_manager.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/cython_rt.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/cython_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/__init__.py build/lib.linux-x86_64-3.6/brian2/codegen/runtime/weave_rt/weave_rt.py
+    Skipping optional fixer: buffer
+    Skipping optional fixer: idioms
+    Skipping optional fixer: set_literal
+    Skipping optional fixer: ws_comma
+    running build_ext
+    building 'brian2.synapses.cythonspikequeue' extension
+    creating build/temp.linux-x86_64-3.6
+    creating build/temp.linux-x86_64-3.6/brian2
+    creating build/temp.linux-x86_64-3.6/brian2/synapses
+    gcc -pthread -B /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat -Wl,--sysroot=/ -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include -I/home/juanluis/miniconda3/envs/hipp_sim/include/python3.6m -c brian2/synapses/cythonspikequeue.cpp -o build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o
+    cc1plus: aviso: command-line option ‘-Wstrict-prototypes’ is valid for C/ObjC but not for C++
+    En el fichero incluido desde /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/ndarraytypes.h:1788,
+                     desde /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/ndarrayobject.h:18,
+                     desde /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/arrayobject.h:4,
+                     desde brian2/synapses/cythonspikequeue.cpp:440:
+    /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages/numpy/core/include/numpy/npy_1_7_deprecated_api.h:15:2: aviso: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+       15 | #warning "Using deprecated NumPy API, disable it by " \
+          |  ^~~~~~~
+    g++ -pthread -shared -B /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat -L/home/juanluis/miniconda3/envs/hipp_sim/lib -Wl,-rpath=/home/juanluis/miniconda3/envs/hipp_sim/lib -Wl,--no-as-needed -Wl,--sysroot=/ build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o -o build/lib.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.cpython-36m-x86_64-linux-gnu.so
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/../../../../lib64/crti.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/../../../../lib64/crti.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/crtbeginS.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /usr/lib/gcc/x86_64-redhat-linux/14/crtbeginS.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: build/temp.linux-x86_64-3.6/brian2/synapses/cythonspikequeue.o: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libm.so.6: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0008002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libm.so.6: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libm.so.6: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: /lib64/libm.so.6: unknown type [0x13] section `.relr.dyn'
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: skipping incompatible /lib64/libm.so.6 when searching for /lib64/libm.so.6
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: cannot find /lib64/libm.so.6 inside /
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libmvec.so.1: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0008002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libmvec.so.1: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010001
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: warning: /lib64/libmvec.so.1: unsupported GNU_PROPERTY_TYPE (5) type: 0xc0010002
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: /lib64/libmvec.so.1: unknown type [0x13] section `.relr.dyn'
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: skipping incompatible /lib64/libmvec.so.1 when searching for /lib64/libmvec.so.1
+    /home/juanluis/miniconda3/envs/hipp_sim/compiler_compat/ld: cannot find /lib64/libmvec.so.1 inside /
+    collect2: error: ld devolvió el estado de salida 1
+    error: command 'g++' failed with exit status 1
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: /home/juanluis/miniconda3/envs/hipp_sim/bin/python -u -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/setup.py'"'"'; __file__='"'"'/tmp/pip-install-9n9ibt0x/brian2_9d160417561d4228b9df3f231c4a3421/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' install --record /tmp/pip-record-i2r4dn3l/install-record.txt --single-version-externally-managed --compile --install-headers /home/juanluis/miniconda3/envs/hipp_sim/include/python3.6m/brian2 Check the logs for full command output.
+
+Ran pip subprocess with arguments:
+['/home/juanluis/miniconda3/envs/hipp_sim/bin/python', '-m', 'pip', 'install', '-U', '-r', '/home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt', '--exists-action=b']
+Pip subprocess output:
+Collecting brian2==2.0.2.1
+  Using cached Brian2-2.0.2.1.zip (1.6 MB)
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting cython==0.28
+  Using cached Cython-0.28-cp36-cp36m-manylinux1_x86_64.whl (3.4 MB)
+Requirement already satisfied: numpy>=1.9 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (1.12.1)
+Requirement already satisfied: sympy>=0.7.6 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (1.4)
+Requirement already satisfied: pyparsing in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (2.4.5)
+Requirement already satisfied: jinja2>=2.7 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (2.10.3)
+Requirement already satisfied: py-cpuinfo>=0.1.6 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (5.0.0)
+Requirement already satisfied: setuptools>=6.0 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (41.6.0.post20191101)
+Requirement already satisfied: MarkupSafe>=0.23 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from jinja2>=2.7->brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (1.1.1)
+Requirement already satisfied: mpmath>=0.19 in /home/juanluis/miniconda3/envs/hipp_sim/lib/python3.6/site-packages (from sympy>=0.7.6->brian2==2.0.2.1->-r /home/juanluis/git-repositories/TFM-BigData/TFM-LennartTollke/LennartTollke-repository/condaenv.wih05am9.requirements.txt (line 1)) (1.1.0)
+Building wheels for collected packages: brian2
+  Building wheel for brian2 (setup.py): started
+  Building wheel for brian2 (setup.py): finished with status 'error'
+  Running setup.py clean for brian2
+Failed to build brian2
+Installing collected packages: cython, brian2
+    Running setup.py install for brian2: started
+    Running setup.py install for brian2: finished with status 'error'
+
+failed
+
+CondaEnvException: Pip failed
+

@@ -145,7 +145,7 @@ def main() -> None:
             single_sim_analysis(str(file_path), True, False)
             
     # Seleccionamos el archivo de resultados propios
-    folder = 'own_results_gach_3'
+    folder = 'own_results_gmaxe_48_2'
     own_results_path = FILE_PATH.parent.parent / folder / 'LFP.txt'
     single_sim_analysis(str(own_results_path), True, False)
     
@@ -154,10 +154,6 @@ def main() -> None:
     print(len(signal))
     
         
-        
-    
-    
-    
        
 if __name__ == '__main__':
     main()
