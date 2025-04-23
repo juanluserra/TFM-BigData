@@ -162,9 +162,10 @@ def main():
     # Graficamos los resultados
     print("Realizando gráficas...")
     for group in parameters_groups.keys():
-        plot_peak_frequencies(all_spectrum_peaks[group], f"group_{group}")
+        plot_peak_frequencies(
+            all_spectrum_peaks[group], f"group_{group}", save=True)
         plot_power_spectral_density_bands(
-            band_spectra[group], f"group_{group}")
+            band_spectra[group], f"group_{group}", save=True)
 
 
 if __name__ == "__main__":
