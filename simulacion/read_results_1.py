@@ -24,9 +24,9 @@ def read_results(file_path: Path) -> np.ndarray:
         # Leemos el contenido y lo separamos por comas
         data = file.read().strip()
         data = data.strip('[]').split(',')
-        
+
         # Convertimos los datos a float
-        for idx,num in enumerate(data):
+        for idx, num in enumerate(data):
             # En el caso de no ser strings vacíos separamos la base y el exponente
             # y convertimos el número a float
             if num != '':
@@ -35,7 +35,7 @@ def read_results(file_path: Path) -> np.ndarray:
             # Si el string es vacío lo eliminamos
             else:
                 data = np.delete(data, idx)
-        
+
         # Devolver los datos en un array de numpy
         return np.array(data.astype(float))
 
@@ -45,40 +45,41 @@ def test_plots(txt_files: dict) -> None:
     for key, file_path in txt_files.items():
         print(key)
         results = read_results(file_path)
-        
+
         plt.plot(results, ".", alpha=0.25)
         plt.show()
         print(FILE_PATH.parent / f"{key}.png")
-        
+
         # Aplicamos la funciónn de detección de eventos
         detection = event_detection(results)
         swrs = detection[1][0]
         print(len(swrs))
-        
+
         # Pintamos cada uno de los SWR detectados
         for swr in swrs:
             plt.plot(swr)
             print(len(swr))
         plt.show()
-        
+
         # Se elimina la media del array de resultados para centrar la señal en cero
         results = results - np.mean(results)
-        
+
         # Se aplica un filtro Savitzky-Golay para suavizar la señal
-        filtered_results = signal.savgol_filter(results, window_length=51, polyorder=3)
+        filtered_results = signal.savgol_filter(
+            results, window_length=51, polyorder=3)
         # Se grafica la señal original y la señal filtrada para comparación
         plt.plot(results, label='Original', alpha=0.5)
         plt.plot(filtered_results, label='Filtered', alpha=0.75)
         plt.legend()
         plt.title('Original and Savitzky-Golay Filtered Results')
         plt.show()
-           
+
         # Se sustrae la señal filtrada de la señal original para resaltar las diferencias
         results = results - filtered_results
         plt.plot(results)
         plt.title('Filtered Results')
         plt.show()
-         
+
         # Se calcula el espectrograma de la señal resultante utilizando una frecuencia de muestreo de 1024 Hz
         f, t, Sxx = signal.spectrogram(results, fs=1024, nperseg=50)
         # Se recalcula el espectrograma sin especificar nperseg para obtener la configuración por defecto
@@ -92,7 +93,7 @@ def test_plots(txt_files: dict) -> None:
         plt.title('Spectrogram')
         plt.colorbar(label='Intensity [dB]')
         plt.show()
-        
+
         # Se calcula la FFT de la suma de la señal original y la filtrada
         fft_results = np.fft.fft(results + filtered_results)
         # Se obtiene el vector de frecuencias correspondiente a la FFT
@@ -110,50 +111,51 @@ def test_plots(txt_files: dict) -> None:
         positive_fft_results = np.abs(fft_results[:len(fft_results)//2])
         # Se añade la gráfica de la FFT de la señal resultante a la misma figura
         plt.plot(positive_freqs, positive_fft_results)
-        
+
         # Se configuran el título y las etiquetas de la gráfica de FFT y se muestra
         plt.title('FFT of Results (0 to Nyquist Frequency)')
         plt.xlabel('Frequency [Hz]')
         plt.ylabel('Amplitude')
         plt.show()
-        
+
         break
-    
+
 
 def main() -> None:
     # Obtenemos la carpeta principal
-    main_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / 'LennartTollke-repository' / 'hippoSimUpdated' / 'sorted_output'
-    
+    main_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / \
+        'LennartTollke-repository' / 'hippoSimUpdated' / 'sorted_output'
+
     # Obtenemos la dirección de la carpeta del TFM de Lennart
-    tfm_folder = FILE_PATH.parent.parent / 'TFM-LennartTollke' / 'LennartTollke-repository'
-    
+    tfm_folder = FILE_PATH.parent.parent / \
+        'TFM-LennartTollke' / 'LennartTollke-repository'
+
     # Creamos un diccionario para guardar todos los archivos de texto
     txt_files = {}
     for txt_file in main_folder.rglob('*.txt'):
         txt_files[txt_file.name] = txt_file
-    
+
     # Probamos algunas gráficas
     # test_plots(txt_files)
-    
+
     # Seleccionamos si queremos realizar el bucle o no para leer los resultados de Lennart
     lennart_results = False
-    
+
     # Realizamos las gráficas de Lennart
     if lennart_results:
         for key, file_path in txt_files.items():
             # Realizamos las gráficas e Lennart
             single_sim_analysis(str(file_path), True, False)
-            
+
     # Seleccionamos el archivo de resultados propios
     folder = 'own_results_gmaxe_48_2'
     own_results_path = FILE_PATH.parent.parent / folder / 'LFP.txt'
     single_sim_analysis(str(own_results_path), True, False)
-    
+
     # Leemos la señal de los resultados
     signal = read_results(own_results_path)
     print(len(signal))
-    
-        
-       
+
+
 if __name__ == '__main__':
     main()

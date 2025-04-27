@@ -1,3 +1,6 @@
 [submodule "TFM-LennartTollke/LennartTollke-repository"]
 	path = TFM-LennartTollke/LennartTollke-repository
 	url = https://github.com/LexuTros/BA_BCIs-to-Mitigate-Cognitive-Warfare.git
+[submodule "bci-tfg"]
+	path = bci-tfg
+	url = https://github.com/enriquetomasmb/bci-tfg.git
