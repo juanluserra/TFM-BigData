@@ -142,6 +142,31 @@ def main():
         else:
             parameters_groups[15].append(idx)
 
+    # Creamos un archivo de texto que guardará el índice del archivo y el nombre  de la carpeta
+    with open(data_folders / "parameters_groups.txt", 'w') as file:
+        for group, idx in parameters_groups.items():
+            # Escribimos el grupo y el índice de los archivos
+            file.write(f"Group {group}: {idx}\n")
+
+        # Escribimos el nombre de las carpetas
+        file.write("-------------------------------\n")
+        file.write("\n")
+        for idx, name in enumerate(folders_name):
+            params = re.split(r"[-_]", name)
+            params = [float(p) for p in params if '0' in p]
+            file.write(f"File {idx}: {params}\n")
+
+        # Escribimos el grupo y los parámetros
+        file.write("-------------------------------\n")
+        file.write("\n")
+        for group, idx in parameters_groups.items():
+            file.write(f"Group {group}: {idx}\n")
+            for i in idx:
+                params = re.split(r"[-_]", folders_name[i])
+                params = [float(p) for p in params if '0' in p]
+                file.write(f"File {i}: {params}\n")
+            file.write("\n")
+
     # Organizamos los resultados para poder graficarlos
     all_spectrum_peaks = {}
     band_spectra = {}
