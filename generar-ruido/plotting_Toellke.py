@@ -280,7 +280,8 @@ def plot_frequency_distribution(frequencies, label, save=False, concatenate=Fals
         plt.show()
 
 
-def plot_peak_frequencies(peak_frequencies, parameter_label="", title="", comp_frequencies=[], axis=0, save=False):
+def plot_peak_frequencies(peak_frequencies, parameter_label="", title="", comp_frequencies=[],
+                          axis=0, figsize=(3, 4), xrotation=0, ylim=(0, 200), save=False):
     """
         Plots peak frequencies with error bars representing standard deviations, including optional comparison frequencies.
 
@@ -310,7 +311,7 @@ def plot_peak_frequencies(peak_frequencies, parameter_label="", title="", comp_f
     # Create figure and axis
     if axis == 0:
         # or (4, 4) Adjust figure size to ensure everything fits well
-        fig, ax = plt.subplots(figsize=(3, 4))
+        fig, ax = plt.subplots(figsize=figsize)
     else:
         ax = axis
 
@@ -327,12 +328,13 @@ def plot_peak_frequencies(peak_frequencies, parameter_label="", title="", comp_f
         ax.set_xlabel(f"{parameter_label}")
     # Ensure ticks are set correctly before setting labels
     ax.set_xticks(range(len(categories)))
-    ax.set_xticklabels(categories)  # Rotate labels to prevent overlap
+    # Rotate labels to prevent overlap
+    ax.set_xticklabels(categories, rotation=xrotation)
 
     # Modify these values to compress or expand the x-axis
     ax.set_xlim(-0.5, len(categories) - 0.5)
-    ax.set_ylim(0, 200)
     ax.set_yticks(np.arange(0, 176, 25))
+    ax.set_ylim(ylim[0], ylim[1])
 
     # Adjust layout to make sure nothing gets cut off
     if save:
@@ -344,7 +346,7 @@ def plot_peak_frequencies(peak_frequencies, parameter_label="", title="", comp_f
         plt.show()
 
 
-def plot_power_spectral_density_bands(psd_bands, label="", title="", axis=0, save=True):
+def plot_power_spectral_density_bands(psd_bands, label="", title="", axis=0, figsize=(4, 4), xrotation=0, save=True):
     """
         Plots the power spectral density (PSD) for different frequency bands (Theta, Gamma, Ripple) with error bars.
 
@@ -373,7 +375,7 @@ def plot_power_spectral_density_bands(psd_bands, label="", title="", axis=0, sav
     # Number of groups
     n_groups = len(categories)
     if axis == 0:
-        fig, ax = plt.subplots(figsize=(4, 4))  # for 1: (3, 4)
+        fig, ax = plt.subplots(figsize=figsize)  # for 1: (3, 4)
     else:
         ax = axis
 
@@ -403,7 +405,8 @@ def plot_power_spectral_density_bands(psd_bands, label="", title="", axis=0, sav
         ax.set_xlabel(f"{label}")
     # Ensure ticks are set correctly before setting labels
     ax.set_xticks(index)
-    ax.set_xticklabels(categories)  # Rotate labels to prevent overlap
+    # Rotate labels to prevent overlap
+    ax.set_xticklabels(categories, rotation=xrotation)
     ax.legend(loc='upper right', fontsize=9, labelspacing=0.15)
 
     # Set Y-axis to log scale to match the original plot scale
