@@ -65,7 +65,8 @@ def frequency_band_analysis(event, low, high, samp_freq):
     """
     try:
         filtered_sig = band_filter(event, low, high, samp_freq)
-        frequencies, power_spectrum = signal.periodogram(filtered_sig, samp_freq / Hz, 'flattop', scaling='spectrum')
+        frequencies, power_spectrum = signal.periodogram(
+            filtered_sig, samp_freq / Hz, 'flattop', scaling='spectrum')
 
         return frequencies, power_spectrum, filtered_sig
     except:
@@ -88,7 +89,8 @@ def sharp_wave_detection(sig, boundary_condition, peak_condition, record_dt):
     # calculation of root-mean-square
     start_plot_time = 50 * msecond
     start_ind = int(start_plot_time / record_dt)
-    sig_rms = window_rms(sig[start_ind:] - mean(sig[start_ind:]), int(10 * ms / record_dt))
+    sig_rms = window_rms(
+        sig[start_ind:] - mean(sig[start_ind:]), int(10 * ms / record_dt))
     sig_std = std(sig_rms)
 
     boundary_value = boundary_condition * sig_std
@@ -162,7 +164,8 @@ def event_detection(sig):
 
     for event in event_signals:
         # filter in broad frequency range
-        frequencies, power_spectrum, filtered_event = frequency_band_analysis(event, 30, 400, sample_frequency)
+        frequencies, power_spectrum, filtered_event = frequency_band_analysis(
+            event, 30, 400, sample_frequency)
         if len(frequencies) != 0 and len(power_spectrum) != 0:
             # collect general event data
             filtered_events.append(filtered_event)
@@ -178,17 +181,21 @@ def event_detection(sig):
                 sharp_wave_ripple_durations.append(duration)
 
         # collect power of frequency bands
-        theta_spectrum.extend(frequency_band_analysis(event, 5, 10, sample_frequency)[1])
-        gamma_spectrum.extend(frequency_band_analysis(event, 30, 100, sample_frequency)[1])
-        ripple_spectrum.extend(frequency_band_analysis(event, 100, 250, sample_frequency)[1])
+        theta_spectrum.extend(frequency_band_analysis(
+            event, 5, 10, sample_frequency)[1])
+        gamma_spectrum.extend(frequency_band_analysis(
+            event, 30, 100, sample_frequency)[1])
+        ripple_spectrum.extend(frequency_band_analysis(
+            event, 100, 250, sample_frequency)[1])
 
     # structure result data
-    all_event_data = [event_signals, filtered_events, all_spectrum_peaks, all_durations]
-    swr_data = [sharp_wave_ripples, sharp_wave_ripple_peaks, sharp_wave_ripple_durations]
+    all_event_data = [event_signals, filtered_events,
+                      all_spectrum_peaks, all_durations]
+    swr_data = [sharp_wave_ripples, sharp_wave_ripple_peaks,
+                sharp_wave_ripple_durations]
     band_spectra = [theta_spectrum, gamma_spectrum, ripple_spectrum]
 
     return all_event_data, swr_data, band_spectra
-
 
 
 # Alternative approach - less accurate:
