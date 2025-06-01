@@ -68,7 +68,7 @@ def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
     return data_dict
                 
 
-def n_detects_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6), ax=None, fig=None) -> None:
+def n_detects_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
     """
     Función para generar los gráficos del número de eventos detectados en las simulaciones.
 
@@ -97,8 +97,7 @@ def n_detects_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: t
     )
     
     # Generamos el gráfico
-    if fig is None or ax is None:
-        fig, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
     ax.bar(
         ["Eventos", "SWRs"],
         means,
@@ -220,8 +219,168 @@ def n_detects_multiple(data_path: List[str] = [], data_dict: List[Dict[str, Any]
     fig.tight_layout()
     fig.show()
     
+
+
+def duration_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
+    """
+    Función para generar los gráficos de las duraciones de los eventos detectados en las simulaciones.
+
+    Args:
+        data_path (str): Ruta de la carpeta que contiene las simulaciones.
+        data_dict (Dict[str, Any]): Diccionario con los datos de las simulaciones. Se ignora si se proporciona `data_path`.
+        figsize (tuple): Tamaño de la figura del gráfico.
+    """
     
-def peak_freqs_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6), ax=None, fig=None) -> None:
+    # Cargamos los datos del diccionario
+    if data_path != "":
+        data_dict = data_to_dict(data_path)
+    elif data_dict == {}:
+        raise ValueError("No se han proporcionado datos para generar los gráficos. Proporcione un diccionario con los datos o una ruta de carpeta válida.")
+    
+    # Generamos los datos a graficar
+    means = (
+        np.mean([np.mean(x) for x in data_dict["event_durations"]]),
+        np.mean([np.mean(x) for x in data_dict["ripple_durations"]])
+    )
+    ste = (
+        np.std([np.mean(x) for x in data_dict["event_durations"]], ddof=0) / np.sqrt(len(data_dict["event_durations"])),
+        np.std([np.mean(x) for x in data_dict["ripple_durations"]], ddof=0) / np.sqrt(len(data_dict["ripple_durations"]))
+    )
+    
+    # Generamos el gráfico
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.errorbar(
+        1,
+        means[0],
+        yerr=ste[0],
+        fmt='o',
+        markersize=10,
+        color='blue',
+        label='Eventos'        
+    )
+    ax.errorbar(
+        1,
+        means[1],
+        yerr=ste[1],
+        fmt='o',
+        markersize=10,
+        color='green',
+        label='SWRs'
+    )
+    ax.set_ylabel("Duración media (ms)")
+    ax.set_xlabel("Tipo de evento")
+    ax.set_title("Duración media de los eventos detectados en las simulaciones")
+    ax.set_xticks([1])
+    ax.set_xticklabels(["Eventos"])
+    ax.legend()
+    fig.show()
+
+
+def duration_multiple(data_path: List[str] = [], data_dict: List[Dict[str, Any]] = [], figsize: tuple = (10, 6)) -> None:
+    """
+    Función para generar los gráficos de las duraciones de los eventos detectados
+    en varias simulaciones, conectando los puntos de 'Eventos' y 'SWRs' con dos líneas.
+
+    Args:
+        data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
+        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
+                                           Se ignora si se proporciona `data_path`.
+        figsize (tuple): Tamaño de la figura del gráfico.
+    """
+    # 1) Cargamos los datos (igual que en la versión "single")
+    if data_path != []:
+        data_dict = [data_to_dict(path) for path in data_path]
+    elif data_dict == []:
+        raise ValueError(
+            "No se han proporcionado datos para generar los gráficos. "
+            "Proporcione una lista de diccionarios con los datos o una lista de rutas de carpetas válidas."
+        )
+
+    # 2) Calculamos medias y errores para cada simulación
+    medias = []  # aquí irá: [(media_eventos, media_swrs), …]
+    estes = []   # aquí irá: [(ste_eventos, ste_swrs), …]
+    for data in data_dict:
+        # Extraer listas de duraciones para cada simulación
+        ed = [np.mean(x) for x in data["event_durations"]]
+        rd = [np.mean(x) for x in data["ripple_durations"]]
+
+        # Media de 'Eventos' y 'SWRs'
+        media_eventos = np.mean(ed)
+        media_swrs = np.mean(rd)
+
+        # STE de 'Eventos' y 'SWRs'
+        ste_eventos = np.std(ed, ddof=0) / np.sqrt(len(ed))
+        ste_swrs = np.std(rd, ddof=0) / np.sqrt(len(rd))
+
+        medias.append((media_eventos, media_swrs))
+        estes.append((ste_eventos, ste_swrs))
+
+    n_sims = len(medias)
+    # Convertimos a arrays de forma (n_sims, 2)
+    medias_arr = np.array(medias)  # cada fila: [media_eventos, media_swrs]
+    estes_arr = np.array(estes)    # cada fila: [ste_eventos,   ste_swrs ]
+
+    # Definimos posiciones en el eje x para cada simulación
+    x = np.arange(n_sims)  # [0, 1, 2, …, n_sims-1]
+
+    # Separamos los valores para facilitar la llamada a errorbar
+    y_eventos = medias_arr[:, 0]
+    y_swrs = medias_arr[:, 1]
+    err_eventos = estes_arr[:, 0]
+    err_swrs = estes_arr[:, 1]
+
+    # Creamos figura y ejes
+    fig, ax = plt.subplots(figsize=figsize)
+
+    # Dibujamos la línea de 'Eventos' con puntos y barras de error
+    ax.errorbar(
+        x,
+        y_eventos,
+        yerr=err_eventos,
+        fmt='-o',
+        markersize=8,
+        color='blue',
+        label='Eventos',
+        capsize=3,
+        zorder=3
+    )
+
+    # Dibujamos la línea de 'SWRs' con puntos y barras de error
+    ax.errorbar(
+        x,
+        y_swrs,
+        yerr=err_swrs,
+        fmt='-o',
+        markersize=8,
+        color='green',
+        label='SWRs',
+        capsize=3,
+        zorder=3
+    )
+
+    # Etiquetas del eje x: "Sim 1", "Sim 2", …
+    ax.set_xticks(x)
+    ax.set_xticklabels([f"Sim {i+1}" for i in x])
+    ax.set_xlabel("Simulación")
+    ax.set_ylabel("Duración media (ms)")
+    ax.set_title("Duración media de los eventos detectados\n(en varias simulaciones)")
+
+    # Calculamos límites de y
+    all_sums = medias_arr.flatten() + estes_arr.flatten()
+    # Límite inferior: mitad de la mínima suma (media + ste), truncado
+    y_min = np.trunc(np.min(all_sums) / 2)
+    if y_min < 0:
+        y_min = 0
+    # Límite superior: máxima suma (media + ste) + 1
+    y_max = np.max(all_sums) + 1
+    ax.set_ylim(y_min, y_max)
+
+    ax.legend(title="Categoría")
+    fig.tight_layout()
+    fig.show()
+
+    
+def peak_freqs_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
     """
     Función para generar los gráficos de las frecuencias pico de los eventos detectados en las simulaciones.
 
@@ -248,8 +407,7 @@ def peak_freqs_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: 
     )
     
     # Generamos el gráfico
-    if fig is None or ax is None:
-        fig, ax = plt.subplots(figsize=figsize)
+    fig, ax = plt.subplots(figsize=figsize)
     ax.errorbar(
         1,
         means[0],
