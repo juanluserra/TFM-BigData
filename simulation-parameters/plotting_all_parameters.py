@@ -1,4 +1,4 @@
-from plotting_Toellke import *
+from LennartToellke_files.plotting_Toellke import *
 from pathlib import Path
 import numpy as np
 from typing import Tuple, List, Dict

@@ -2,9 +2,9 @@ from pathlib import Path
 import numpy as np
 import sys
 import matplotlib.pyplot as plt
-from Event_detection_Toellke import *
+from LennartToellke_files.Event_detection_Toellke import *
 import scipy.signal as signal
-from plotting_Toellke import *
+from LennartToellke_files.plotting_Toellke import *
 FILE_PATH: Path = Path(__file__).resolve()
 
 
