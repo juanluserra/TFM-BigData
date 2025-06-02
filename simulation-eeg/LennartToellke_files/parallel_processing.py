@@ -10,11 +10,11 @@ from joblib import Parallel, delayed
 import multiprocessing
 import os
 
-from model_files.global_vars_and_eqs import *
-from model_files.single_process import *
+from .model_files.global_vars_and_eqs import *
+from .model_files.single_process import *
 #from model_files.analysis_functions import *
-from model_files.annex_functions import *
-from model_files.set_vars_and_process import *
+from .model_files.annex_functions import *
+from .model_files.set_vars_and_process import *
 
 import time
 import ntpath
