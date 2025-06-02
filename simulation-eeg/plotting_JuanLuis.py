@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from brian2 import *
-from Event_detection_Toellke import event_detection
-from plotting_Toellke import create_list_from_timeSeries
+from LennartToellke_files.Event_detection_Toellke import event_detection
+from LennartToellke_files.plotting_Toellke import create_list_from_timeSeries
 from pathlib import Path
 from typing import *
 import itertools

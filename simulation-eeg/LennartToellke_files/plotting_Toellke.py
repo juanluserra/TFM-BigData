@@ -3,7 +3,7 @@ import ast
 import matplotlib.pyplot as plt
 import numpy as np
 from brian2 import *
-from Event_detection_Toellke import *
+from .Event_detection_Toellke import *
 import os
 
 
