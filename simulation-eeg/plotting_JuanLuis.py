@@ -145,13 +145,19 @@ def n_detects_multiple(
         counts = [len(x) for x in data["event_list"]]
         ripple_counts = [len(x) for x in data["ripple_list"]]
 
-        # Media de "Eventos" y media de "SWRs"
-        media_eventos = np.mean(counts)
-        media_swrs = np.mean(ripple_counts)
-
-        # STE de "Eventos" y STE de "SWRs"
-        ste_eventos = np.std(counts, ddof=0) / np.sqrt(len(counts))
-        ste_swrs = np.std(ripple_counts, ddof=0) / np.sqrt(len(ripple_counts))
+        if counts != [] and ripple_counts != []:
+            # Media de "Eventos" y media de "SWRs"
+            media_eventos = np.mean(counts)
+            media_swrs = np.mean(ripple_counts)
+            # STE de "Eventos" y STE de "SWRs"
+            ste_eventos = np.std(counts, ddof=0) / np.sqrt(len(counts))
+            ste_swrs = np.std(ripple_counts, ddof=0) / np.sqrt(len(ripple_counts))
+        if len(counts) == 0:
+            media_eventos = 0.0
+            ste_eventos = 0.0
+        if len(ripple_counts) == 0:
+            media_swrs = 0.0
+            ste_swrs = 0.0
 
         medias.append((media_eventos, media_swrs))
         estes.append((ste_eventos, ste_swrs))
@@ -165,7 +171,7 @@ def n_detects_multiple(
 
     # Etiquetas de las dos categorías
     categorias = ["Eventos", "SWRs"]
-    n_cats = len(categorias)  # == 2
+    n_cats = len(categorias)
 
     # Anchura total disponible (80% del espacio) para las barras de cada grupo de categoría
     total_bar_width = 0.8
@@ -219,7 +225,6 @@ def n_detects_multiple(
 
     # Límite superior: máximo de (media+ste) + 1
     y_max = np.max(todas_medias + todos_ste) + 1
-
     ax.set_ylim(y_min, y_max)
 
     # Mostramos leyenda (una entrada por cada simulación)
