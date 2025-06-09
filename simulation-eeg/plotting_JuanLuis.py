@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from brian2 import *
-from LennartToellke_files.Event_detection_Toellke import event_detection
+from event_detection_JuanLuis import event_detection
 from LennartToellke_files.plotting_Toellke import create_list_from_timeSeries
 from pathlib import Path
 from typing import *
@@ -34,6 +34,12 @@ def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
         "event_list_filtered": [],
         "event_peak_frequencies": [],
         "event_durations": [],
+        "theta_list": [],
+        "theta_peak_frequencies": [],
+        "theta_durations": [],
+        "gamma_list": [],
+        "gamma_peak_frequencies": [],
+        "gamma_durations": [],
         "ripple_list": [],
         "ripple_peak_frequencies": [],
         "ripple_durations": [],
@@ -52,12 +58,18 @@ def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
                 # Cargamos los datos del archivo LFP.txt en un array
                 data = create_list_from_timeSeries(lfp_file)
                 # Sacamos las características de la simulación
-                event_characteristics, ripple_characteristics, psd_characteristics = event_detection(data)
+                event_characteristics, theta_characteristics, gamma_characteristics, ripple_characteristics, psd_characteristics = event_detection(data)
                 # Guardamos las características en el diccionario
                 data_dict["event_list"].append(event_characteristics[0])
                 data_dict["event_list_filtered"].append(event_characteristics[1])
                 data_dict["event_peak_frequencies"].append(event_characteristics[2])
                 data_dict["event_durations"].append(event_characteristics[3])
+                data_dict["theta_list"].append(theta_characteristics[0])
+                data_dict["theta_peak_frequencies"].append(theta_characteristics[1])
+                data_dict["theta_durations"].append(theta_characteristics[2])
+                data_dict["gamma_list"].append(gamma_characteristics[0])
+                data_dict["gamma_peak_frequencies"].append(gamma_characteristics[1])
+                data_dict["gamma_durations"].append(gamma_characteristics[2])
                 data_dict["ripple_list"].append(ripple_characteristics[0])
                 data_dict["ripple_peak_frequencies"].append(ripple_characteristics[1])
                 data_dict["ripple_durations"].append(ripple_characteristics[2])
@@ -68,134 +80,98 @@ def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
     return data_dict
                 
 
-def n_detects_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
-    """
-    Función para generar los gráficos del número de eventos detectados en las simulaciones.
-
-    Args:
-        data_path (str): Ruta de la carpeta que contiene las simulaciones.
-        data_dict (Dict[str, Any]): Diccionario con los datos de las simulaciones. Se ignora si se proporciona `data_path`.
-        figsize (tuple): Tamaño de la figura del gráfico.
-    """
-    
-    # Cargamos los datos del diccionario
-    if data_path != "":
-        data_dict = data_to_dict(data_path)
-    elif data_dict == {}:
-        raise ValueError("No se han proporcionado datos para generar los gráficos. Proporcione un diccionario con los datos o una ruta de carpeta válida.")
-    
-    # Calculamos los datos a graficar
-    counts = [len(x) for x in data_dict["event_list"]]
-    ripple_counts = [len(x) for x in data_dict["ripple_list"]]
-    means = (
-        np.mean(counts),
-        np.mean(ripple_counts)
-    )
-    ste = (
-        np.std(counts, ddof=0) / np.sqrt(len(counts)),
-        np.std(ripple_counts, ddof=0) / np.sqrt(len(ripple_counts))
-    )
-    
-    # Generamos el gráfico
-    fig, ax = plt.subplots(figsize=figsize)
-    ax.bar(
-        ["Eventos", "SWRs"],
-        means,
-        yerr=ste,
-        color=["blue", "green"],
-        width=1.0,
-        align="center",
-        error_kw={'zorder': 2}, zorder=3
-    )
-    ax.set_ylabel("Número medio de eventos")
-    ax.set_xlabel("Tipo de evento")
-    ax.set_title("Número medio de eventos detectados en las simulaciones")
-    ax.set_ylim(np.trunc(np.min(means + ste)/2), np.max(means + ste)+1)
-    fig.tight_layout()
-    fig.show()
-    
-def n_detects_multiple(
+def n_detects_plot(
     data_path: List[str] = [], 
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
-    figsize: tuple = (10, 6)
-    ) -> None:
+    figsize: tuple = (10, 6),
+    lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
+    return_lims: bool = False
+) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
-    Función para generar los gráficos del número de eventos detectados en varias simulaciones.
+    Función para generar los gráficos del número de eventos detectados en varias simulaciones,
+    opcionalmente calculando y retornando límites automáticos, y/o dibujando líneas horizontales en lims.
 
     Args:
-        data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
-        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones. 
-                                           Se ignora si se proporciona `data_path`.
-        figsize (tuple): Tamaño de la figura del gráfico.
+        data_path (List[str]): Lista de rutas de carpetas con las simulaciones.
+        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
+        labels (List[str]): Etiquetas para cada simulación.
+        figsize (tuple): Tamaño de la figura.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales para cada banda:
+            (
+              [l_inf_theta, l_sup_theta],
+              [l_inf_gamma, l_sup_gamma],
+              [l_inf_ripple, l_sup_ripple]
+            )
+        return_lims (bool): Si True, calcula y devuelve límites automáticos.
+
+    Returns:
+        Si return_lims=True, devuelve:
+            (
+              [min_theta, max_theta],
+              [min_gamma, max_gamma],
+              [min_ripple, max_ripple]
+            )
+        En otro caso, devuelve None.
     """
-    # Cargamos los datos (igual que en tu función single)
-    if data_path != []:
+    # --- Carga de datos ---
+    if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
-    elif data_dict == []:
+    elif not data_dict:
         raise ValueError(
             "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione una lista de diccionarios con los datos o una lista de rutas de carpetas válidas."
+            "Proporcione data_dict o data_path."
         )
-    
-    # Calculamos medias y errores para cada simulación
-    medias = []
-    estes = []
+
+    # --- Cálculo de medias y errores ---
+    medias, estes = [], []
     for data in data_dict:
-        counts = [len(x) for x in data["event_list"]]
+        theta_counts  = [len(x) for x in data["theta_list"]]
+        gamma_counts  = [len(x) for x in data["gamma_list"]]
         ripple_counts = [len(x) for x in data["ripple_list"]]
 
-        if counts != [] and ripple_counts != []:
-            # Media de "Eventos" y media de "SWRs"
-            media_eventos = np.mean(counts)
-            media_swrs = np.mean(ripple_counts)
-            # STE de "Eventos" y STE de "SWRs"
-            ste_eventos = np.std(counts, ddof=0) / np.sqrt(len(counts))
-            ste_swrs = np.std(ripple_counts, ddof=0) / np.sqrt(len(ripple_counts))
-        if len(counts) == 0:
-            media_eventos = 0.0
-            ste_eventos = 0.0
-        if len(ripple_counts) == 0:
-            media_swrs = 0.0
-            ste_swrs = 0.0
+        media_theta = np.mean(theta_counts)
+        media_gamma = np.mean(gamma_counts)
+        media_ripple = np.mean(ripple_counts)
 
-        medias.append((media_eventos, media_swrs))
-        estes.append((ste_eventos, ste_swrs))
+        ste_theta  = np.std(theta_counts,  ddof=0) / np.sqrt(len(theta_counts))
+        ste_gamma  = np.std(gamma_counts,  ddof=0) / np.sqrt(len(gamma_counts))
+        ste_ripple = np.std(ripple_counts, ddof=0) / np.sqrt(len(ripple_counts))
 
-    # Número de simulaciones
-    n_sims = len(medias)
+        medias.append((media_theta, media_gamma, media_ripple))
+        estes.append((ste_theta,   ste_gamma,   ste_ripple))
 
-    # Convertimos a arrays de forma (n_sims, 2)
-    medias_arr = np.array(medias)
-    estes_arr = np.array(estes)
+    means_arr = np.array(medias)  # shape (n_sims, 3)
+    stes_arr  = np.array(estes)   # shape (n_sims, 3)
+    n_sims    = len(medias)
+    bandas    = ["Theta", "Gamma", "Ripple"]
 
-    # Etiquetas de las dos categorías
-    categorias = ["Eventos", "SWRs"]
-    n_cats = len(categorias)
+    # --- Cálculo de lims automáticos si se pide ---
+    auto_lims = None
+    if return_lims:
+        mins = means_arr - stes_arr
+        maxs = means_arr + stes_arr
+        auto_lims = (
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],  # theta
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],  # gamma
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],  # ripple
+        )
 
-    # Anchura total disponible (80% del espacio) para las barras de cada grupo de categoría
+    # --- Preparación para las barras ---
     total_bar_width = 0.8
-    bar_width = total_bar_width / n_sims
+    bar_width       = total_bar_width / n_sims
+    x_base          = np.arange(len(bandas))
 
-    # Posiciones base para las dos barras (0 y 1)
-    x_base = np.arange(n_cats)  # array([0, 1])
-
-    # Creamos figura y ejes
-    fig, ax = plt.subplots(figsize=figsize)
-
-    # Etiquetas de las simulaciones
-    if labels == []:
+    if not labels:
         labels = [f"Sim {i+1}" for i in range(n_sims)]
-        
-    # Dibujamos las barras de cada simulación
+
+    # --- Generación del gráfico de barras ---
+    fig, ax = plt.subplots(figsize=figsize)
     for i in range(n_sims):
-        # Desplazamiento centrado:
-        desplazamiento = (i - (n_sims - 1) / 2) * bar_width
-        x_positions = x_base + desplazamiento
-
-        alturas = medias_arr[i]   # [media_eventos, media_swrs]
-        errores = estes_arr[i]    # [ste_eventos,   ste_swrs  ]
-
+        offset      = (i - (n_sims - 1) / 2) * bar_width
+        x_positions = x_base + offset
+        alturas     = means_arr[i]
+        errores     = stes_arr[i]
         ax.bar(
             x_positions,
             alturas,
@@ -203,537 +179,417 @@ def n_detects_multiple(
             yerr=errores,
             capsize=3,
             label=labels[i],
-            error_kw={'zorder': 2}, zorder=3
+            error_kw={'zorder': 3},
+            zorder=2
         )
 
-    # Ajustes de ejes y etiquetas
+    # --- Etiquetas y título ---
     ax.set_xticks(x_base)
-    ax.set_xticklabels(categorias)
+    ax.set_xticklabels(bandas)
     ax.set_ylabel("Número medio de eventos")
     ax.set_xlabel("Tipo de evento")
     ax.set_title("Número medio de eventos detectados en las simulaciones")
 
-    # Calculamos límites de y similares a tu single, pero usando todos los datos
-    todas_medias = medias_arr.flatten()
-    todos_ste = estes_arr.flatten()
-
-    # Límite inferior: mitad de la mínima (media+ste) (truncado)
+    # --- Límites de eje y existentes ---
+    todas_medias = means_arr.flatten()
+    todos_ste    = stes_arr.flatten()
     y_min = np.trunc(np.min(todas_medias + todos_ste) / 2)
-    # Si por alguna razón y_min da < 0, lo forzamos a 0
-    if y_min < 0:
-        y_min = 0
-
-    # Límite superior: máximo de (media+ste) + 1
+    y_min = max(y_min, 0)
     y_max = np.max(todas_medias + todos_ste) + 1
     ax.set_ylim(y_min, y_max)
 
-    # Mostramos leyenda (una entrada por cada simulación)
+    # --- Dibujar líneas rojas discontinuas en lims ---
+    line_colors = ["blue", "orange", "green"]
+    if lims is not None:
+        for idx, color in enumerate(line_colors):
+            low, high = lims[idx]
+            ax.axhline(low,  linestyle='--', color=color, label='_nolegend_')
+            ax.axhline(high, linestyle='--', color=color, label='_nolegend_')
+
     ax.legend(title="Simulaciones")
-
     fig.tight_layout()
-    fig.show()
+    plt.show()
+
+    # --- Retorno opcional de lims ---
+    if return_lims:
+        return auto_lims
+
+    return None
     
 
 
-def duration_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
-    """
-    Función para generar los gráficos de las duraciones de los eventos detectados en las simulaciones.
-
-    Args:
-        data_path (str): Ruta de la carpeta que contiene las simulaciones.
-        data_dict (Dict[str, Any]): Diccionario con los datos de las simulaciones. Se ignora si se proporciona `data_path`.
-        figsize (tuple): Tamaño de la figura del gráfico.
-    """
-    
-    # Cargamos los datos del diccionario
-    if data_path != "":
-        data_dict = data_to_dict(data_path)
-    elif data_dict == {}:
-        raise ValueError("No se han proporcionado datos para generar los gráficos. Proporcione un diccionario con los datos o una ruta de carpeta válida.")
-    
-    # Generamos los datos a graficar
-    means = (
-        np.mean([np.mean(x) for x in data_dict["event_durations"]]),
-        np.mean([np.mean(x) for x in data_dict["ripple_durations"]])
-    )
-    ste = (
-        np.std([np.mean(x) for x in data_dict["event_durations"]], ddof=0) / np.sqrt(len(data_dict["event_durations"])),
-        np.std([np.mean(x) for x in data_dict["ripple_durations"]], ddof=0) / np.sqrt(len(data_dict["ripple_durations"]))
-    )
-    
-    # Generamos el gráfico
-    fig, ax = plt.subplots(figsize=figsize)
-    ax.errorbar(
-        1,
-        means[0],
-        yerr=ste[0],
-        fmt='o',
-        markersize=10,
-        color='blue',
-        label='Eventos'        
-    )
-    ax.errorbar(
-        1,
-        means[1],
-        yerr=ste[1],
-        fmt='o',
-        markersize=10,
-        color='green',
-        label='SWRs'
-    )
-    ax.set_ylabel("Duración media (ms)")
-    ax.set_xlabel("Tipo de evento")
-    ax.set_title("Duración media de los eventos detectados en las simulaciones")
-    ax.set_xticks([1])
-    ax.set_xticklabels(["Eventos"])
-    ax.legend()
-    fig.show()
-
-
-def duration_multiple(
+def durations_plot(
     data_path: List[str] = [], 
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
-    figsize: tuple = (10, 6)
-    ) -> None:
+    figsize: tuple = (10, 6),
+    lims: Optional[Tuple[list, list, list]] = None,
+    return_lims: bool = False,
+    ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las duraciones de los eventos detectados
-    en varias simulaciones, conectando los puntos de 'Eventos' y 'SWRs' con dos líneas.
+    en varias simulaciones, y opcionalmente calcular límites automáticos.
 
     Args:
         data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
         data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
                                            Se ignora si se proporciona `data_path`.
+        labels (List[str]): Etiquetas para cada simulación.
         figsize (tuple): Tamaño de la figura del gráfico.
+        lims (Optional[Tuple[list, list, list]]): Límites manuales para cada categoría:
+            (
+              [l_inf_theta, l_sup_theta],
+              [l_inf_gamma, l_sup_gamma],
+              [l_inf_ripple, l_sup_ripple]
+            )
+        return_lims (bool): Si True, calcula y retorna los límites automáticos.
+
+    Returns:
+        Si return_lims=True, devuelve:
+            (
+              [min_theta, max_theta],
+              [min_gamma, max_gamma],
+              [min_ripple, max_ripple]
+            )
+        En otro caso, devuelve None.
     """
-    # Cargamos los datos (igual que en la versión "single")
-    if data_path != []:
+    # --- Carga de datos ---
+    if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
-    elif data_dict == []:
+    elif not data_dict:
         raise ValueError(
             "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione una lista de diccionarios con los datos o una lista de rutas de carpetas válidas."
+            "Proporcione data_dict o data_path."
         )
 
-    # Calculamos medias y errores para cada simulación
-    medias = []  # aquí irá: [(media_eventos, media_swrs), …]
-    estes = []   # aquí irá: [(ste_eventos, ste_swrs), …]
+    # --- Cálculo de medias y errores ---
+    medias, estes = [], []
     for data in data_dict:
-        # Listas de arrays para cada simulación
-        evs = data["event_durations"]
-        rips = data["ripple_durations"]
+        theta = data["theta_durations"]
+        gamma = data["gamma_durations"]
+        rips  = data["ripple_durations"]
 
-        # Media de medias (una media por simulación)
-        media_eventos = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in evs])
-        media_swrs    = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in rips])
+        media_theta = np.mean([np.mean(x) if len(x) else 0.0 for x in theta])
+        media_gamma = np.mean([np.mean(x) if len(x) else 0.0 for x in gamma])
+        media_swrs  = np.mean([np.mean(x) if len(x) else 0.0 for x in rips])
 
-        # Error estándar global: sqrt( Σ (σ_k/√n_k)² ) / N_sim
-        # Si len(x) == 1, np.std(x, ddof=0) == 0, así que SEM_k = 0/1 = 0.
-        # Para mayor robustez, comprobamos explícitamente len(x) > 1.
-        ste_eventos = (
-            np.sqrt(
-                sum(
-                    (np.std(x, ddof=0) / np.sqrt(len(x)))**2
-                    if len(x) > 1 else 0.0
-                    for x in evs
-                )
-            ) / len(evs)
+        def comp_ste(arrays):
+            sems_sq = [
+                (np.std(x, ddof=0) / np.sqrt(len(x)))**2 if len(x) > 1 else 0.0
+                for x in arrays
+            ]
+            return np.sqrt(sum(sems_sq)) / len(arrays)
+
+        ste_theta = comp_ste(theta)
+        ste_gamma = comp_ste(gamma)
+        ste_swrs  = comp_ste(rips)
+
+        medias.append((media_theta, media_gamma, media_swrs))
+        estes.append((ste_theta,   ste_gamma,   ste_swrs))
+
+    medias_arr = np.array(medias)  # shape (n_sims, 3)
+    estes_arr  = np.array(estes)   # shape (n_sims, 3)
+    n_sims     = len(medias)
+    x          = np.arange(n_sims)
+
+    # --- Cálculo de lims automáticos si se pide ---
+    auto_lims = None
+    if return_lims:
+        mins = medias_arr - estes_arr   # matrix of (media - ste)
+        maxs = medias_arr + estes_arr   # matrix of (media + ste)
+        auto_lims = (
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],  # theta
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],  # gamma
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],  # ripple
         )
-        ste_swrs = (
-            np.sqrt(
-                sum(
-                    (np.std(x, ddof=0) / np.sqrt(len(x)))**2
-                    if len(x) > 1 else 0.0
-                    for x in rips
-                )
-            ) / len(rips)
-        )
-        medias.append((media_eventos, media_swrs))
-        estes.append((ste_eventos, ste_swrs))
 
-    n_sims = len(medias)
-    # Convertimos a arrays de forma (n_sims, 2)
-    medias_arr = np.array(medias)  # cada fila: [media_eventos, media_swrs]
-    estes_arr = np.array(estes)    # cada fila: [ste_eventos,   ste_swrs ]
+    # --- Preparación de categorías y colores ---
+    categorias = {
+        "Theta":  (medias_arr[:, 0], estes_arr[:, 0], "blue"),
+        "Gamma":  (medias_arr[:, 1], estes_arr[:, 1], "orange"),
+        "Ripple": (medias_arr[:, 2], estes_arr[:, 2], "green"),
+    }
+    limits_map = {}
+    if lims is not None:
+        limits_map = {
+            "Theta":  lims[0],
+            "Gamma":  lims[1],
+            "Ripple": lims[2],
+        }
 
-    # Definimos posiciones en el eje x para cada simulación
-    x = np.arange(n_sims)  # [0, 1, 2, …, n_sims-1]
-
-    # Separamos los valores para facilitar la llamada a errorbar
-    y_eventos = medias_arr[:, 0]
-    y_swrs = medias_arr[:, 1]
-    err_eventos = estes_arr[:, 0]
-    err_swrs = estes_arr[:, 1]
-
-    # Etiquetas de las  simulacines
-    if labels == []:
+    # --- Etiquetas X ---
+    if not labels:
         labels = [f"Sim {i+1}" for i in range(n_sims)]
-    
-    # Creamos figura y ejes
-    fig, ax = plt.subplots(figsize=figsize)
 
-    # Dibujamos la línea de 'Eventos' con puntos y barras de error
-    ax.errorbar(
-        x,
-        y_eventos,
-        yerr=err_eventos,
-        fmt='-o',
-        markersize=8,
-        color='blue',
-        label='Eventos',
-        capsize=3,
-        zorder=3
-    )
+    # --- Dibujado de gráficas ---
+    for nombre, (y_vals, y_errs, color) in categorias.items():
+        fig, ax = plt.subplots(figsize=figsize)
+        ax.errorbar(
+            x, y_vals, yerr=y_errs,
+            fmt='-o', markersize=8,
+            color=color, label=nombre,
+            capsize=3, zorder=3
+        )
 
-    # Dibujamos la línea de 'SWRs' con puntos y barras de error
-    ax.errorbar(
-        x,
-        y_swrs,
-        yerr=err_swrs,
-        fmt='-o',
-        markersize=8,
-        color='green',
-        label='SWRs',
-        capsize=3,
-        zorder=3
-    )
+        # Líneas de límite si existen
+        if nombre in limits_map:
+            low, high = limits_map[nombre]
+            ax.axhline(low,  linestyle='--', color='red',   label='_nolegend_')
+            ax.axhline(high, linestyle='--', color='red',   label='_nolegend_')
 
-    # Etiquetas del eje x: "Sim 1", "Sim 2", …
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels)
-    ax.set_xlabel("Simulación")
-    ax.set_ylabel("Duración media (ms)")
-    ax.set_title("Duración media de los eventos detectados\n(en varias simulaciones)")
-    ax.legend(title="Categoría")
-    fig.tight_layout()
-    fig.show()
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels)
+        ax.set_xlabel("Simulación")
+        ax.set_ylabel("Duración media (ms)")
+        ax.set_title(f"Duración media de {nombre}\n(en varias simulaciones)")
+        ax.legend(title="Categoría")
+        fig.tight_layout()
+        plt.show()
 
-    
-def peak_freqs_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
-    """
-    Función para generar los gráficos de las frecuencias pico de los eventos detectados en las simulaciones.
+    # --- Retorno opcional de lims ---
+    if return_lims:
+        return auto_lims
 
-    Args:
-        data_path (str): Ruta de la carpeta que contiene las simulaciones.
-        data_dict (Dict[str, Any]): Diccionario con los datos de las simulaciones. Se ignora si se proporciona `data_path`.
-        figsize (tuple): Tamaño de la figura del gráfico.
-    """
-    
-    # Cargamos los datos del diccionario
-    if data_path != "":
-        data_dict = data_to_dict(data_path)
-    elif data_dict == {}:
-        raise ValueError("No se han proporcionado datos para generar los gráficos. Proporcione un diccionario con los datos o una ruta de carpeta válida.")
-    
-    # Generamos los datos a graficar
-    means = (
-        np.mean([np.mean(x) for x in data_dict["event_peak_frequencies"]]),
-        np.mean([np.mean(x) for x in data_dict["ripple_peak_frequencies"]])
-    )
-    ste = (
-        np.std([np.mean(x) for x in data_dict["event_peak_frequencies"]], ddof=0) / np.sqrt(len(data_dict["event_peak_frequencies"])),
-        np.std([np.mean(x) for x in data_dict["ripple_peak_frequencies"]], ddof=0) / np.sqrt(len(data_dict["ripple_peak_frequencies"]))
-    )
-    
-    # Generamos el gráfico
-    fig, ax = plt.subplots(figsize=figsize)
-    ax.errorbar(
-        1,
-        means[0],
-        yerr=ste[0],
-        fmt='o',
-        markersize=10,
-        color='blue',
-        label='Eventos'        
-    )
-    ax.errorbar(
-        1,
-        means[1],
-        yerr=ste[1],
-        fmt='o',
-        markersize=10,
-        color='green',
-        label='SWRs'
-    )
-    ax.set_ylabel("Frecuencia pico (Hz)")
-    ax.set_xlabel("Tipo de evento")
-    ax.set_title("Frecuencia pico media de los eventos detectados en las simulaciones")
-    ax.set_xticks([1])
-    ax.set_xticklabels(["Eventos"])
-    ax.legend()
-    fig.show()
+    return None
 
 
-def peak_freqs_multiple(
+def peak_freqs_plot(
     data_path: List[str] = [],
     data_dict: List[Dict[str, Any]] = [],
     labels: List[str] = [],
-    figsize: tuple = (10, 6)
-) -> None:
+    figsize: tuple = (10, 6),
+    lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
+    return_lims: bool = False
+) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las frecuencias pico de los eventos detectados
-    en varias simulaciones, conectando los puntos de 'Eventos' y 'SWRs' con dos líneas.
+    en varias simulaciones, y opcionalmente calcular límites automáticos.
 
     Args:
         data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
         data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
                                            Se ignora si se proporciona `data_path`.
+        labels (List[str]): Etiquetas para cada simulación.
         figsize (tuple): Tamaño de la figura del gráfico.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales para cada categoría:
+            (
+              [l_inf_theta, l_sup_theta],
+              [l_inf_gamma, l_sup_gamma],
+              [l_inf_swr,    l_sup_swr]
+            )
+        return_lims (bool): Si True, calcula y retorna los límites automáticos.
+
+    Returns:
+        Si return_lims=True, devuelve:
+            (
+              [min_theta, max_theta],
+              [min_gamma, max_gamma],
+              [min_swr,   max_swr]
+            )
+        En otro caso, devuelve None.
     """
-    # Cargamos los datos (igual que en la versión "single")
-    if data_path != []:
+    # --- Carga de datos ---
+    if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
-    elif data_dict == []:
+    elif not data_dict:
         raise ValueError(
             "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione una lista de diccionarios con los datos o una lista de rutas de carpetas válidas."
+            "Proporcione data_dict o data_path."
         )
 
-    # Calculamos medias y errores para cada simulación
-    medias = []  # [(media_eventos, media_swrs), …]
-    estes = []   # [(ste_eventos, ste_swrs), …]
-
+    # --- Cálculo de medias y errores ---
+    medias, estes = [], []
     for data in data_dict:
-        # Listas de arrays para cada simulación
-        evpf = data.get("event_peak_frequencies", [])
+        tpf = data.get("theta_peak_frequencies", [])
+        gpf = data.get("gamma_peak_frequencies", [])
         rpf = data.get("ripple_peak_frequencies", [])
 
-        # 2.1) Media de medias (una media por grabación)
-        if len(evpf) > 0:
-            media_eventos = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in evpf])
-        else:
-            media_eventos = 0.0
+        # medias de medias
+        media_theta = np.mean([np.mean(x) if len(x) else 0.0 for x in tpf]) if tpf else 0.0
+        media_gamma = np.mean([np.mean(x) if len(x) else 0.0 for x in gpf]) if gpf else 0.0
+        media_swr   = np.mean([np.mean(x) if len(x) else 0.0 for x in rpf]) if rpf else 0.0
 
-        if len(rpf) > 0:
-            media_swrs = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in rpf])
-        else:
-            media_swrs = 0.0
+        # función auxiliar para STE compuesto
+        def comp_ste(arrays):
+            sems_sq = [
+                (np.std(x, ddof=0) / np.sqrt(len(x)))**2 if len(x) > 1 else 0.0
+                for x in arrays
+            ]
+            return np.sqrt(sum(sems_sq)) / len(arrays) if arrays else 0.0
 
-        # Error estándar global: sqrt( Σ (σ_k/√n_k)² ) / N_grabaciones
-        if len(evpf) > 0:
-            ste_eventos = (
-                np.sqrt(
-                    sum(
-                        (np.std(x, ddof=0) / np.sqrt(len(x)))**2
-                        if len(x) > 1 else 0.0
-                        for x in evpf
-                    )
-                ) / len(evpf)
-            )
-        else:
-            ste_eventos = 0.0
+        ste_theta = comp_ste(tpf)
+        ste_gamma = comp_ste(gpf)
+        ste_swr   = comp_ste(rpf)
 
-        if len(rpf) > 0:
-            ste_swrs = (
-                np.sqrt(
-                    sum(
-                        (np.std(x, ddof=0) / np.sqrt(len(x)))**2
-                        if len(x) > 1 else 0.0
-                        for x in rpf
-                    )
-                ) / len(rpf)
-            )
-        else:
-            ste_swrs = 0.0
+        medias.append((media_theta, media_gamma, media_swr))
+        estes.append((ste_theta,   ste_gamma,   ste_swr))
 
-        medias.append((media_eventos, media_swrs))
-        estes.append((ste_eventos, ste_swrs))
+    medias_arr = np.array(medias)  # shape (n_sims, 3)
+    estes_arr  = np.array(estes)   # shape (n_sims, 3)
+    n_sims     = len(medias)
+    x          = np.arange(n_sims)
 
-    # Graficamos los resultados
-    n_sims = len(medias)
-    medias_arr = np.array(medias)  # cada fila: [media_eventos, media_swrs]
-    estes_arr = np.array(estes)    # cada fila: [ste_eventos,   ste_swrs ]
+    # --- Cálculo de lims automáticos si se pide ---
+    auto_lims = None
+    if return_lims:
+        mins = medias_arr - estes_arr
+        maxs = medias_arr + estes_arr
+        auto_lims = (
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],  # theta
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],  # gamma
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],  # swr
+        )
 
-    # Posiciones en el eje x para cada simulación
-    x = np.arange(n_sims)  # [0, 1, 2, …, n_sims-1]
+    # --- Preparación de categorías y colores ---
+    categorias = {
+        "Theta": (medias_arr[:, 0], estes_arr[:, 0], "blue"),
+        "Gamma": (medias_arr[:, 1], estes_arr[:, 1], "orange"),
+        "SWRs":  (medias_arr[:, 2], estes_arr[:, 2], "green"),
+    }
+    limits_map = {}
+    if lims is not None:
+        limits_map = {
+            "Theta": lims[0],
+            "Gamma": lims[1],
+            "SWRs":  lims[2],
+        }
 
-    # Valores y errores por categoría
-    y_eventos = medias_arr[:, 0]
-    y_swrs = medias_arr[:, 1]
-    err_eventos = estes_arr[:, 0]
-    err_swrs = estes_arr[:, 1]
-
-    # Etiquetas de las simulaciones
-    if labels == []:
+    # --- Etiquetas X ---
+    if not labels:
         labels = [f"Sim {i+1}" for i in range(n_sims)]
-    
-    # Crear figura y ejes
-    fig, ax = plt.subplots(figsize=figsize)
 
-    # Línea de 'Eventos' con puntos y barras de error
-    ax.errorbar(
-        x,
-        y_eventos,
-        yerr=err_eventos,
-        fmt='-o',
-        markersize=8,
-        color='blue',
-        label='Eventos',
-        capsize=3,
-        zorder=3
-    )
+    # --- Dibujado de gráficas ---
+    for nombre, (y_vals, y_errs, color) in categorias.items():
+        fig, ax = plt.subplots(figsize=figsize)
+        ax.errorbar(
+            x, y_vals, yerr=y_errs,
+            fmt='-o', markersize=8,
+            color=color, label=nombre,
+            capsize=3, zorder=3
+        )
 
-    # Línea de 'SWRs' con puntos y barras de error
-    ax.errorbar(
-        x,
-        y_swrs,
-        yerr=err_swrs,
-        fmt='-o',
-        markersize=8,
-        color='green',
-        label='SWRs',
-        capsize=3,
-        zorder=3
-    )
+        # Líneas de límite si existen
+        if nombre in limits_map:
+            low, high = limits_map[nombre]
+            ax.axhline(low,  linestyle='--', color='red',   label='_nolegend_')
+            ax.axhline(high, linestyle='--', color='red',   label='_nolegend_')
 
-    # Etiquetas del eje x: "Sim 1", "Sim 2", …
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels)
-    ax.set_xlabel("Simulación")
-    ax.set_ylabel("Frecuencia pico (Hz)")
-    ax.set_title("Frecuencia pico media de los eventos detectados\n(en varias simulaciones)")
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels)
+        ax.set_xlabel("Simulación")
+        ax.set_ylabel("Frecuencia pico (Hz)")
+        ax.set_title(f"Frecuencia pico media de {nombre}\n(en varias simulaciones)")
+        ax.legend(title="Categoría")
+        fig.tight_layout()
+        plt.show()
 
-    # Cálculo de límites de y si se necesitara (opcional):
-    all_sums = medias_arr.flatten() + estes_arr.flatten()
+    # --- Retorno opcional de lims ---
+    if return_lims:
+        return auto_lims
 
-    ax.legend(title="Categoría")
-    fig.tight_layout()
-    fig.show()
+    return None
 
 
-def psd_plots_single(data_path: str="", data_dict: Dict[str, Any]={}, figsize: tuple=(10,6)) -> None:
+def psd_plot(
+    data_path: List[str] = [], 
+    data_dict: List[Dict[str, Any]] = [], 
+    labels: List[str] = [],
+    figsize: tuple = (10, 6),
+    lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
+    return_lims: bool = False
+) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
-    Función para generar los gráficos de las densidades espectrales de potencia (PSD) de las simulaciones.
+    Función para generar los gráficos de las densidades espectrales de potencia (PSD) de las simulaciones,
+    opcionalmente calculando retornando límites automáticos y/o dibujando líneas horizontales en lims.
 
     Args:
-        data_path (str): Ruta de la carpeta que contiene las simulaciones.
-        data_dict (Dict[str, Any]): Diccionario con los datos de las simulaciones. Se ignora si se proporciona `data_path`.
-        figsize (tuple): Tamaño de la figura del gráfico.
-    """
-    
-    # Definimos los colores para cada tipo de PSD
-    colors = {
-        "theta": "orange",
-        "gamma": "green",
-        "ripple": "blue"
-    }
-    
-    # Cargamos los datos del diccionario
-    if data_path != "":
-        data_dict = data_to_dict(data_path)
-    elif data_dict == {}:
-        raise ValueError("No se han proporcionado datos para generar los gráficos. Proporcione un diccionario con los datos o una ruta de carpeta válida.")
-    
-    # Generamos los datos a graficar
-    means = (
-        np.mean([np.mean(x) for x in data_dict["psd_theta"]]),
-        np.mean([np.mean(x) for x in data_dict["psd_gamma"]]),
-        np.mean([np.mean(x) for x in data_dict["psd_ripple"]])
-    )
-    ste = (
-        np.sqrt(np.sum([(np.std(x)/np.sqrt(len(x)))**2 for x in data_dict["psd_theta"]])) / len(data_dict["psd_theta"]),
-        np.sqrt(np.sum([(np.std(x)/np.sqrt(len(x)))**2 for x in data_dict["psd_gamma"]])) / len(data_dict["psd_gamma"]),
-        np.sqrt(np.sum([(np.std(x)/np.sqrt(len(x)))**2 for x in data_dict["psd_ripple"]])) / len(data_dict["psd_ripple"])
-    )
-    
-    # Generamos el gráfico
-    fig, ax = plt.subplots(figsize=figsize)
-    ax.bar(
-        ["Theta", "Gamma", "Ripple"],
-        means,
-        yerr=ste,
-        color=[colors["theta"], colors["gamma"], colors["ripple"]],
-        width=1.0,
-        align="center",
-        error_kw={'zorder': 2}, zorder=3
-    )
-    ax.set_ylabel("Potencia media (uV^2/Hz)")
-    ax.set_xlabel("Banda de frecuencia")
-    ax.set_title("Densidad espectral de potencia media de las simulaciones")
-    ax.set_yscale("log")
-    ax.set_ylim(np.min(means)*1e-2, np.max(means + ste)*10)
-    fig.tight_layout()
-    fig.show()
+        data_path (List[str]): Lista de rutas de carpetas con las simulaciones.
+        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
+        labels (List[str]): Etiquetas para cada simulación.
+        figsize (tuple): Tamaño de la figura.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales para cada banda:
+            (
+              [l_inf_theta, l_sup_theta],
+              [l_inf_gamma, l_sup_gamma],
+              [l_inf_ripple, l_sup_ripple]
+            )
+        return_lims (bool): Si True, calcula y retorna límites automáticos.
 
-
-def psd_plots_multiple(
-    data_path: List[str]=[], 
-    data_dict: List[Dict[str, Any]]=[], 
-    labels: List[str]=[],
-    figsize: tuple=(10,6)
-    ) -> None:
+    Returns:
+        Si return_lims=True, devuelve tupla de listas:
+            (
+              [min_theta, max_theta],
+              [min_gamma, max_gamma],
+              [min_ripple, max_ripple]
+            )
+        En otro caso, devuelve None.
     """
-    Función para generar los gráficos de las densidades espectrales de potencia (PSD) de las simulaciones.
-
-    Args:
-        data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
-        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones. Se ignora si se proporciona `data_path`.
-        figsize (tuple): Tamaño de la figura del gráfico.
-    """
-    
-    # Definimos los colores para cada tipo de PSD
-    colors = {
-        "theta": "orange",
-        "gamma": "green",
-        "ripple": "blue"
-    }
-    
-    if data_path != []:
+    # --- Carga de datos ---
+    if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
-    elif data_dict == []:
-        raise ValueError("No se han proporcionado datos para generar los gráficos. Proporcione una lista de diccionarios con los datos o una lista de rutas de carpetas válidas.")
-    
-    # Generamos los datos a graficar
-    means = []
-    stes = []
+    elif not data_dict:
+        raise ValueError(
+            "No se han proporcionado datos para generar los gráficos. "
+            "Proporcione data_dict o data_path."
+        )
+
+    # --- Cálculo de medias y errores ---
+    means, stes = [], []
     for data in data_dict:
-        means.append((
-            np.mean([np.mean(x) for x in data["psd_theta"]]),
-            np.mean([np.mean(x) for x in data["psd_gamma"]]),
-            np.mean([np.mean(x) for x in data["psd_ripple"]])
-        ))
-        stes.append((
-            np.sqrt(np.sum([(np.std(x)/np.sqrt(len(x)))**2 for x in data["psd_theta"]])) / len(data["psd_theta"]),
-            np.sqrt(np.sum([(np.std(x)/np.sqrt(len(x)))**2 for x in data["psd_gamma"]])) / len(data["psd_gamma"]),
-            np.sqrt(np.sum([(np.std(x)/np.sqrt(len(x)))**2 for x in data["psd_ripple"]])) / len(data["psd_ripple"])
-        ))
-    
-    # Generamos el gráfico de barras
-    n_sims = len(means)
-    means_arr = np.array(means)
-    stes_arr  = np.array(stes) 
-    
-    # Nombre de las tres bandas
-    bandas = ["Theta", "Gamma", "Ripple"]
-    n_bandas = len(bandas)
-    
-    # Definimos el ancho de barra para cada simulación dentro de cada banda
-    # Dejamos un 80% de espacio total para las barras, y el resto (20%) para separación
+        theta_psd  = data.get("psd_theta", [])
+        gamma_psd  = data.get("psd_gamma", [])
+        ripple_psd = data.get("psd_ripple", [])
+
+        mean_theta  = np.mean([np.mean(x) for x in theta_psd])  if theta_psd  else 0.0
+        mean_gamma  = np.mean([np.mean(x) for x in gamma_psd])  if gamma_psd  else 0.0
+        mean_ripple = np.mean([np.mean(x) for x in ripple_psd]) if ripple_psd else 0.0
+
+        def comp_ste(arrays):
+            sems_sq = [
+                (np.std(x, ddof=0) / np.sqrt(len(x)))**2
+                for x in arrays
+                if len(x) > 0
+            ]
+            return np.sqrt(sum(sems_sq)) / len(arrays) if arrays else 0.0
+
+        ste_theta  = comp_ste(theta_psd)
+        ste_gamma  = comp_ste(gamma_psd)
+        ste_ripple = comp_ste(ripple_psd)
+
+        means.append((mean_theta, mean_gamma, mean_ripple))
+        stes.append((ste_theta,  ste_gamma,  ste_ripple))
+
+    means_arr = np.array(means)  # shape (n_sims, 3)
+    stes_arr  = np.array(stes)   # shape (n_sims, 3)
+    n_sims    = len(means)
+    bandas    = ["Theta", "Gamma", "Ripple"]
+
+    # --- Cálculo de lims automáticos si se pide ---
+    auto_lims = None
+    if return_lims:
+        mins = means_arr - stes_arr
+        maxs = means_arr + stes_arr
+        auto_lims = (
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
+        )
+
+    # --- Preparación de valores para barras ---
     total_bar_width = 0.8
     bar_width = total_bar_width / n_sims
-    
-    # Posiciones base para los tres grupos (una posición por banda)
-    x_base = np.arange(n_bandas)
-    
-    # Etiquetas de las simulaciones
-    if labels == []:
+    x_base = np.arange(len(bandas))
+
+    if not labels:
         labels = [f"Sim {i+1}" for i in range(n_sims)]
-    
-    # Creamos la figura y los ejes
+
+    # --- Generación del gráfico de barras ---
     fig, ax = plt.subplots(figsize=figsize)
-    
-    # Para cada simulación, dibujamos sus 3 barras (una por banda), desplazadas adecuadamente
     for i in range(n_sims):
-        # Calculamos el desplazamiento de la i-ésima simulación dentro de cada grupo de banda
-        # Centrado en el tick de x_base:
-        desplazamiento = (i - (n_sims - 1) / 2) * bar_width
-        x_positions = x_base + desplazamiento
-        
-        # Alturas (medias) y errores estándar de la simulación i
+        offset = (i - (n_sims - 1) / 2) * bar_width
+        x_positions = x_base + offset
         alturas = means_arr[i]
         errores = stes_arr[i]
-        
-        # Dibujamos las barras: le damos un color distinto a cada simulación (ciclo por defecto de Matplotlib)
         ax.bar(
             x_positions,
             alturas,
@@ -741,30 +597,38 @@ def psd_plots_multiple(
             yerr=errores,
             capsize=3,
             label=labels[i],
-            error_kw={'zorder': 2}, zorder=3
+            error_kw={'zorder': 3},
+            zorder=2
         )
-    
-    # Ajustes de ejes y etiquetas
+
     ax.set_xticks(x_base)
     ax.set_xticklabels(bandas)
     ax.set_ylabel("Potencia media (uV^2/Hz)")
     ax.set_xlabel("Banda de frecuencia")
     ax.set_title("Densidad espectral de potencia media de las simulaciones")
     ax.set_yscale("log")
-    
-    # Definimos el límite inferior y superior usando todos los datos
+
+    # --- Límites de eje y existentes ---
     todas_medias = means_arr.flatten()
     todos_ste   = stes_arr.flatten()
-    # Para el límite inferior: tomamos el valor mínimo de medias y lo multiplicamos por 1e-2
     y_min = np.min(todas_medias) * 1e-2
-    # Para el límite superior: valor máximo de (media + ste) multiplicado por 10
     y_max = np.max(todas_medias + todos_ste) * 10
     ax.set_ylim(y_min, y_max)
-    
-    # Mostramos la leyenda (una entrada por cada simulación)
+
+    # --- Dibujar líneas rojas discontinuas en lims ---
+    colors = ['blue', 'orange', 'green'] 
+    if lims is not None:
+        for i, (band, color) in enumerate(zip(bandas, colors)):
+            low, high = lims[i]
+            ax.axhline(low,  linestyle='--', color=color)
+            ax.axhline(high, linestyle='--', color=color)
+
     ax.legend(title="Simulaciones")
-    
     fig.tight_layout()
-    fig.show()
-    
+    plt.show()
+
+    if return_lims:
+        return auto_lims
+
+    return None
     

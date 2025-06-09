@@ -1,0 +1,5 @@
+# Gráficas
+- Números de gráficas (ticks) más grandes para mayor comprensión
+- Los labels deben ser más grandes que los ticks y estar en negrita
+- Labels en inglés
+
