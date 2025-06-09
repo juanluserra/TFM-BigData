@@ -54,7 +54,7 @@ def event_detection(sig: np.ndarray) -> Tuple[List[np.ndarray], List[np.ndarray]
     for event in event_signals:
         # filter in broad frequency range
         frequencies, power_spectrum, filtered_event = frequency_band_analysis(
-            event, 1, 500, sample_frequency)
+            event, 1, 400, sample_frequency)
         if len(frequencies) != 0 and len(power_spectrum) != 0:
             # collect general event data
             filtered_events.append(filtered_event)

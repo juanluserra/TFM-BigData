@@ -5,7 +5,8 @@ from event_detection_JuanLuis import event_detection
 from LennartToellke_files.plotting_Toellke import create_list_from_timeSeries
 from pathlib import Path
 from typing import *
-import itertools
+import seaborn as sns
+import pandas as pd
 
 def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
     """
@@ -89,39 +90,13 @@ def n_detects_plot(
     return_lims: bool = False
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
-    Función para generar los gráficos del número de eventos detectados en varias simulaciones,
-    opcionalmente calculando y retornando límites automáticos, y/o dibujando líneas horizontales en lims.
-
-    Args:
-        data_path (List[str]): Lista de rutas de carpetas con las simulaciones.
-        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
-        labels (List[str]): Etiquetas para cada simulación.
-        figsize (tuple): Tamaño de la figura.
-        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales para cada banda:
-            (
-              [l_inf_theta, l_sup_theta],
-              [l_inf_gamma, l_sup_gamma],
-              [l_inf_ripple, l_sup_ripple]
-            )
-        return_lims (bool): Si True, calcula y devuelve límites automáticos.
-
-    Returns:
-        Si return_lims=True, devuelve:
-            (
-              [min_theta, max_theta],
-              [min_gamma, max_gamma],
-              [min_ripple, max_ripple]
-            )
-        En otro caso, devuelve None.
+    Igual que antes, pero usando seaborn para el gráfico de barras.
     """
     # --- Carga de datos ---
     if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
     elif not data_dict:
-        raise ValueError(
-            "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione data_dict o data_path."
-        )
+        raise ValueError("No se han proporcionado datos para generar los gráficos.")
 
     # --- Cálculo de medias y errores ---
     medias, estes = [], []
@@ -130,20 +105,20 @@ def n_detects_plot(
         gamma_counts  = [len(x) for x in data["gamma_list"]]
         ripple_counts = [len(x) for x in data["ripple_list"]]
 
-        media_theta = np.mean(theta_counts)
-        media_gamma = np.mean(gamma_counts)
-        media_ripple = np.mean(ripple_counts)
+        medias.append((
+            np.mean(theta_counts),
+            np.mean(gamma_counts),
+            np.mean(ripple_counts)
+        ))
+        estes.append((
+            np.std(theta_counts, ddof=0)/np.sqrt(len(theta_counts)),
+            np.std(gamma_counts, ddof=0)/np.sqrt(len(gamma_counts)),
+            np.std(ripple_counts, ddof=0)/np.sqrt(len(ripple_counts))
+        ))
 
-        ste_theta  = np.std(theta_counts,  ddof=0) / np.sqrt(len(theta_counts))
-        ste_gamma  = np.std(gamma_counts,  ddof=0) / np.sqrt(len(gamma_counts))
-        ste_ripple = np.std(ripple_counts, ddof=0) / np.sqrt(len(ripple_counts))
-
-        medias.append((media_theta, media_gamma, media_ripple))
-        estes.append((ste_theta,   ste_gamma,   ste_ripple))
-
-    means_arr = np.array(medias)  # shape (n_sims, 3)
-    stes_arr  = np.array(estes)   # shape (n_sims, 3)
-    n_sims    = len(medias)
+    means_arr = np.array(medias)
+    stes_arr  = np.array(estes)
+    n_sims    = len(means_arr)
     bandas    = ["Theta", "Gamma", "Ripple"]
 
     # --- Cálculo de lims automáticos si se pide ---
@@ -152,65 +127,81 @@ def n_detects_plot(
         mins = means_arr - stes_arr
         maxs = means_arr + stes_arr
         auto_lims = (
-            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],  # theta
-            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],  # gamma
-            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],  # ripple
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
+        if lims is None:
+            lims = auto_lims
 
-    # --- Preparación para las barras ---
+    # --- Preparar DataFrame para seaborn ---
+    records = []
+    for sim_idx in range(n_sims):
+        sim_label = labels[sim_idx] if labels else f"Sim {sim_idx+1}"
+        for band_idx, banda in enumerate(bandas):
+            records.append({
+                "Simulación": sim_label,
+                "Banda": banda,
+                "Media": means_arr[sim_idx, band_idx],
+                "STE": stes_arr[sim_idx, band_idx]
+            })
+    df = pd.DataFrame.from_records(records)
+
+    # --- Plot con seaborn ---
+    sns.set_style("whitegrid")
+    sns.set_palette("colorblind")
+    plt.figure(figsize=figsize)
+    ax = sns.barplot(
+        data=df,
+        x="Banda", y="Media", hue="Simulación",
+        ci=None, dodge=True
+    )
+
+    # --- Añadir barras de error manualmente ---
+    # calcular offsets
     total_bar_width = 0.8
-    bar_width       = total_bar_width / n_sims
-    x_base          = np.arange(len(bandas))
+    bar_width = total_bar_width / n_sims
+    x_base = np.arange(len(bandas))
+    offsets = (np.arange(n_sims) - (n_sims-1)/2) * bar_width
 
-    if not labels:
-        labels = [f"Sim {i+1}" for i in range(n_sims)]
-
-    # --- Generación del gráfico de barras ---
-    fig, ax = plt.subplots(figsize=figsize)
-    for i in range(n_sims):
-        offset      = (i - (n_sims - 1) / 2) * bar_width
-        x_positions = x_base + offset
-        alturas     = means_arr[i]
-        errores     = stes_arr[i]
-        ax.bar(
-            x_positions,
-            alturas,
-            width=bar_width,
-            yerr=errores,
-            capsize=3,
-            label=labels[i],
-            error_kw={'zorder': 3},
-            zorder=2
+    for i, sim_label in enumerate(df["Simulación"].unique()):
+        sub = df[df["Simulación"] == sim_label]
+        errs = sub["STE"].values
+        xpos = x_base + offsets[i]
+        ax.errorbar(
+            xpos, sub["Media"].values,
+            yerr=errs,
+            fmt='none', capsize=3, ecolor='black', zorder=2
         )
-
-    # --- Etiquetas y título ---
-    ax.set_xticks(x_base)
-    ax.set_xticklabels(bandas)
-    ax.set_ylabel("Número medio de eventos")
-    ax.set_xlabel("Tipo de evento")
-    ax.set_title("Número medio de eventos detectados en las simulaciones")
 
     # --- Límites de eje y existentes ---
     todas_medias = means_arr.flatten()
     todos_ste    = stes_arr.flatten()
-    y_min = np.trunc(np.min(todas_medias + todos_ste) / 2)
-    y_min = max(y_min, 0)
+    y_min = max(np.trunc(np.min(todas_medias + todos_ste) / 2), 0)
     y_max = np.max(todas_medias + todos_ste) + 1
     ax.set_ylim(y_min, y_max)
 
-    # --- Dibujar líneas rojas discontinuas en lims ---
-    line_colors = ["blue", "orange", "green"]
+    # --- Relleno y líneas en lims restringidas a cada banda ---
     if lims is not None:
-        for idx, color in enumerate(line_colors):
-            low, high = lims[idx]
-            ax.axhline(low,  linestyle='--', color=color, label='_nolegend_')
-            ax.axhline(high, linestyle='--', color=color, label='_nolegend_')
+        center_offset = (n_sims / 2) * bar_width * 1.15
+        for idx, (low, high) in enumerate(lims):
+            xmin = idx - center_offset
+            xmax = idx + center_offset
+            ax.fill_betweenx(
+                [low, high],
+                xmin, xmax,
+                color='red', alpha=0.25, zorder=1
+            )
+            ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
+            ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
-    ax.legend(title="Simulaciones")
-    fig.tight_layout()
+    ax.set_title("Número medio de eventos detectados en las simulaciones")
+    ax.set_ylabel("Número medio de eventos")
+    ax.set_xlabel("Tipo de evento")
+    ax.legend(title="Simulaciones", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
     plt.show()
 
-    # --- Retorno opcional de lims ---
     if return_lims:
         return auto_lims
 
@@ -218,49 +209,24 @@ def n_detects_plot(
     
 
 
-def durations_plot(
+def durations_plot_points(
     data_path: List[str] = [], 
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
     figsize: tuple = (10, 6),
-    lims: Optional[Tuple[list, list, list]] = None,
+    lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False,
-    ) -> Optional[Tuple[List[float], List[float], List[float]]]:
+) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las duraciones de los eventos detectados
-    en varias simulaciones, y opcionalmente calcular límites automáticos.
-
-    Args:
-        data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
-        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
-                                           Se ignora si se proporciona `data_path`.
-        labels (List[str]): Etiquetas para cada simulación.
-        figsize (tuple): Tamaño de la figura del gráfico.
-        lims (Optional[Tuple[list, list, list]]): Límites manuales para cada categoría:
-            (
-              [l_inf_theta, l_sup_theta],
-              [l_inf_gamma, l_sup_gamma],
-              [l_inf_ripple, l_sup_ripple]
-            )
-        return_lims (bool): Si True, calcula y retorna los límites automáticos.
-
-    Returns:
-        Si return_lims=True, devuelve:
-            (
-              [min_theta, max_theta],
-              [min_gamma, max_gamma],
-              [min_ripple, max_ripple]
-            )
-        En otro caso, devuelve None.
+    en varias simulaciones, usando seaborn para estilizar, y opcionalmente
+    calculando y retornando límites automáticos, y/o dibujando rellenos y líneas en lims.
     """
     # --- Carga de datos ---
     if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
     elif not data_dict:
-        raise ValueError(
-            "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione data_dict o data_path."
-        )
+        raise ValueError("No se han proporcionado datos para generar los gráficos.")
 
     # --- Cálculo de medias y errores ---
     medias, estes = [], []
@@ -269,61 +235,58 @@ def durations_plot(
         gamma = data["gamma_durations"]
         rips  = data["ripple_durations"]
 
-        media_theta = np.mean([np.mean(x) if len(x) else 0.0 for x in theta])
-        media_gamma = np.mean([np.mean(x) if len(x) else 0.0 for x in gamma])
-        media_swrs  = np.mean([np.mean(x) if len(x) else 0.0 for x in rips])
-
+        medias.append((
+            np.mean([np.mean(x) if len(x) else 0.0 for x in theta]),
+            np.mean([np.mean(x) if len(x) else 0.0 for x in gamma]),
+            np.mean([np.mean(x) if len(x) else 0.0 for x in rips])
+        ))
         def comp_ste(arrays):
             sems_sq = [
-                (np.std(x, ddof=0) / np.sqrt(len(x)))**2 if len(x) > 1 else 0.0
+                (np.std(x, ddof=0)/np.sqrt(len(x)))**2 if len(x)>1 else 0.0
                 for x in arrays
             ]
-            return np.sqrt(sum(sems_sq)) / len(arrays)
+            return np.sqrt(sum(sems_sq))/len(arrays)
+        estes.append((
+            comp_ste(theta),
+            comp_ste(gamma),
+            comp_ste(rips)
+        ))
 
-        ste_theta = comp_ste(theta)
-        ste_gamma = comp_ste(gamma)
-        ste_swrs  = comp_ste(rips)
-
-        medias.append((media_theta, media_gamma, media_swrs))
-        estes.append((ste_theta,   ste_gamma,   ste_swrs))
-
-    medias_arr = np.array(medias)  # shape (n_sims, 3)
-    estes_arr  = np.array(estes)   # shape (n_sims, 3)
-    n_sims     = len(medias)
+    medias_arr = np.array(medias)  # (n_sims,3)
+    estes_arr  = np.array(estes)
+    n_sims     = len(medias_arr)
     x          = np.arange(n_sims)
+    categorias = {
+        "Theta":  (medias_arr[:,0], estes_arr[:,0], "blue"),
+        "Gamma":  (medias_arr[:,1], estes_arr[:,1], "orange"),
+        "Ripple": (medias_arr[:,2], estes_arr[:,2], "green"),
+    }
 
     # --- Cálculo de lims automáticos si se pide ---
     auto_lims = None
     if return_lims:
-        mins = medias_arr - estes_arr   # matrix of (media - ste)
-        maxs = medias_arr + estes_arr   # matrix of (media + ste)
+        mins = medias_arr - estes_arr
+        maxs = medias_arr + estes_arr
         auto_lims = (
-            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],  # theta
-            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],  # gamma
-            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],  # ripple
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
-
-    # --- Preparación de categorías y colores ---
-    categorias = {
-        "Theta":  (medias_arr[:, 0], estes_arr[:, 0], "blue"),
-        "Gamma":  (medias_arr[:, 1], estes_arr[:, 1], "orange"),
-        "Ripple": (medias_arr[:, 2], estes_arr[:, 2], "green"),
-    }
-    limits_map = {}
-    if lims is not None:
-        limits_map = {
-            "Theta":  lims[0],
-            "Gamma":  lims[1],
-            "Ripple": lims[2],
-        }
+        if lims is None:
+            lims = auto_lims
 
     # --- Etiquetas X ---
     if not labels:
         labels = [f"Sim {i+1}" for i in range(n_sims)]
 
+    # --- Seaborn styling ---
+    sns.set_style("whitegrid")
+    sns.set_palette("colorblind")
+
     # --- Dibujado de gráficas ---
     for nombre, (y_vals, y_errs, color) in categorias.items():
         fig, ax = plt.subplots(figsize=figsize)
+        # Plot manual de líneas con puntos y errores
         ax.errorbar(
             x, y_vals, yerr=y_errs,
             fmt='-o', markersize=8,
@@ -331,11 +294,17 @@ def durations_plot(
             capsize=3, zorder=3
         )
 
-        # Líneas de límite si existen
-        if nombre in limits_map:
-            low, high = limits_map[nombre]
-            ax.axhline(low,  linestyle='--', color='red',   label='_nolegend_')
-            ax.axhline(high, linestyle='--', color='red',   label='_nolegend_')
+        # Si hay límites, rellenar y dibujar líneas
+        if lims is not None:
+            low, high = lims[ list(categorias).index(nombre) ]
+            xmin, xmax = x[0] - 0.5, x[-1] + 0.5
+            ax.fill_betweenx(
+                [low, high],
+                xmin, xmax,
+                color='red', alpha=0.25, zorder=1
+            )
+            ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
+            ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
         ax.set_xticks(x)
         ax.set_xticklabels(labels)
@@ -346,11 +315,123 @@ def durations_plot(
         fig.tight_layout()
         plt.show()
 
-    # --- Retorno opcional de lims ---
     if return_lims:
         return auto_lims
 
     return None
+
+
+def durations_plot(
+    data_path: List[str] = [], 
+    data_dict: List[Dict[str, Any]] = [], 
+    labels: List[str] = [],
+    figsize: tuple = (10, 6),
+    lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
+    return_lims: bool = False,
+) -> Optional[Tuple[List[float], List[float], List[float]]]:
+    """
+    Función para generar diagramas de barras de las duraciones medias de eventos
+    (‘Theta’, ‘Gamma’, ‘Ripple’) en varias simulaciones, usando seaborn, con
+    errores estándar y opcionalmente rellenos y líneas de límite.
+    """
+    # --- Carga de datos ---
+    if data_path:
+        data_dict = [data_to_dict(path) for path in data_path]
+    elif not data_dict:
+        raise ValueError("No se han proporcionado datos para generar los gráficos.")
+
+    # --- Cálculo de medias y errores ---
+    records = []
+    for sim_idx, data in enumerate(data_dict):
+        sim_label = labels[sim_idx] if labels else f"Sim {sim_idx+1}"
+        theta = data["theta_durations"]
+        gamma = data["gamma_durations"]
+        ripple = data["ripple_durations"]
+
+        mean_vals = [
+            np.mean([np.mean(x) if len(x) else 0.0 for x in theta]),
+            np.mean([np.mean(x) if len(x) else 0.0 for x in gamma]),
+            np.mean([np.mean(x) if len(x) else 0.0 for x in ripple])
+        ]
+        def comp_ste(arrays):
+            sems_sq = [
+                (np.std(x, ddof=0)/np.sqrt(len(x)))**2 if len(x)>1 else 0.0
+                for x in arrays
+            ]
+            return np.sqrt(sum(sems_sq))/len(arrays)
+        ste_vals = [
+            comp_ste(theta),
+            comp_ste(gamma),
+            comp_ste(ripple)
+        ]
+
+        for banda, mean_v, ste_v in zip(["Theta","Gamma","Ripple"], mean_vals, ste_vals):
+            records.append({
+                "Simulación": sim_label,
+                "Banda": banda,
+                "Media (ms)": mean_v,
+                "STE": ste_v
+            })
+
+    df = pd.DataFrame(records)
+    n_sims = df["Simulación"].nunique()
+
+    # --- Cálculo de lims automáticos ---
+    auto_lims = None
+    if return_lims:
+        # para cada banda recoger medias±STE
+        mins = df["Media (ms)"] - df["STE"]
+        maxs = df["Media (ms)"] + df["STE"]
+        auto_lims = tuple(
+            [float(mins[df["Banda"]==b].min()), float(maxs[df["Banda"]==b].max())]
+            for b in ["Theta","Gamma","Ripple"]
+        )
+        if lims is None:
+            lims = auto_lims
+
+    # --- Plot con seaborn ---
+    sns.set_style("whitegrid")
+    sns.set_palette("colorblind")
+    plt.figure(figsize=figsize)
+    ax = sns.barplot(
+        data=df, x="Banda", y="Media (ms)", hue="Simulación",
+        ci=None, dodge=True
+    )
+
+    # --- Añadir barras de error manualmente ---
+    total_bar_width = 0.8
+    bar_width = total_bar_width / n_sims
+    x_base = np.arange(3)
+    offsets = (np.arange(n_sims) - (n_sims-1)/2) * bar_width
+
+    for i, sim_label in enumerate(df["Simulación"].unique()):
+        sub = df[df["Simulación"] == sim_label]
+        xpos = x_base + offsets[i]
+        ax.errorbar(
+            xpos, sub["Media (ms)"].values,
+            yerr=sub["STE"].values,
+            fmt='none', capsize=3, ecolor='black', zorder=2
+        )
+
+    ax.set_xlabel("Simulación")
+    ax.set_ylabel("Duración media (ms)")
+    ax.set_title("Duración media de eventos detectados\n(en varias simulaciones)")
+
+    # --- Relleno y líneas en lims ---
+    if lims is not None:
+        center_offset = (n_sims/2) * bar_width * 1.15
+        for idx, (low, high) in enumerate(lims):
+            xmin = idx - center_offset
+            xmax = idx + center_offset
+            ax.fill_betweenx([low, high], xmin, xmax, color='red', alpha=0.25, zorder=1)
+            ax.hlines(low, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
+            ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
+
+    ax.legend(title="Simulaciones", bbox_to_anchor=(1.05,1), loc='upper left')
+    plt.tight_layout()
+    plt.show()
+
+    return auto_lims if return_lims else None
 
 
 def peak_freqs_plot(
@@ -363,24 +444,24 @@ def peak_freqs_plot(
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las frecuencias pico de los eventos detectados
-    en varias simulaciones, y opcionalmente calcular límites automáticos.
+    en varias simulaciones, opcionalmente calculando y retornando límites automáticos,
+    y/o dibujando rellenos y líneas horizontales en lims.
 
     Args:
         data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
         data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
-                                           Se ignora si se proporciona `data_path`.
         labels (List[str]): Etiquetas para cada simulación.
-        figsize (tuple): Tamaño de la figura del gráfico.
-        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales para cada categoría:
+        figsize (tuple): Tamaño de la figura.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales:
             (
               [l_inf_theta, l_sup_theta],
               [l_inf_gamma, l_sup_gamma],
               [l_inf_swr,    l_sup_swr]
             )
-        return_lims (bool): Si True, calcula y retorna los límites automáticos.
+        return_lims (bool): Si True, calcula y retorna límites automáticos.
 
     Returns:
-        Si return_lims=True, devuelve:
+        Si return_lims=True, devuelve una tupla de listas de límites:
             (
               [min_theta, max_theta],
               [min_gamma, max_gamma],
@@ -392,10 +473,7 @@ def peak_freqs_plot(
     if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
     elif not data_dict:
-        raise ValueError(
-            "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione data_dict o data_path."
-        )
+        raise ValueError("No se han proporcionado datos para generar los gráficos.")
 
     # --- Cálculo de medias y errores ---
     medias, estes = [], []
@@ -404,16 +482,14 @@ def peak_freqs_plot(
         gpf = data.get("gamma_peak_frequencies", [])
         rpf = data.get("ripple_peak_frequencies", [])
 
-        # medias de medias
-        media_theta = np.mean([np.mean(x) if len(x) else 0.0 for x in tpf]) if tpf else 0.0
-        media_gamma = np.mean([np.mean(x) if len(x) else 0.0 for x in gpf]) if gpf else 0.0
-        media_swr   = np.mean([np.mean(x) if len(x) else 0.0 for x in rpf]) if rpf else 0.0
+        media_theta = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in tpf]) if tpf else 0.0
+        media_gamma = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in gpf]) if gpf else 0.0
+        media_swr   = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in rpf]) if rpf else 0.0
 
-        # función auxiliar para STE compuesto
         def comp_ste(arrays):
             sems_sq = [
-                (np.std(x, ddof=0) / np.sqrt(len(x)))**2 if len(x) > 1 else 0.0
-                for x in arrays
+                (np.std(x, ddof=0) / np.sqrt(len(x)))**2
+                for x in arrays if len(x) > 1
             ]
             return np.sqrt(sum(sems_sq)) / len(arrays) if arrays else 0.0
 
@@ -422,11 +498,11 @@ def peak_freqs_plot(
         ste_swr   = comp_ste(rpf)
 
         medias.append((media_theta, media_gamma, media_swr))
-        estes.append((ste_theta,   ste_gamma,   ste_swr))
+        estes.append((ste_theta, ste_gamma, ste_swr))
 
-    medias_arr = np.array(medias)  # shape (n_sims, 3)
-    estes_arr  = np.array(estes)   # shape (n_sims, 3)
-    n_sims     = len(medias)
+    medias_arr = np.array(medias)
+    estes_arr  = np.array(estes)
+    n_sims     = len(medias_arr)
     x          = np.arange(n_sims)
 
     # --- Cálculo de lims automáticos si se pide ---
@@ -435,12 +511,12 @@ def peak_freqs_plot(
         mins = medias_arr - estes_arr
         maxs = medias_arr + estes_arr
         auto_lims = (
-            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],  # theta
-            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],  # gamma
-            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],  # swr
+            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],
+            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
+            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
 
-    # --- Preparación de categorías y colores ---
+    # --- Preparación de categorías ---
     categorias = {
         "Theta": (medias_arr[:, 0], estes_arr[:, 0], "blue"),
         "Gamma": (medias_arr[:, 1], estes_arr[:, 1], "orange"),
@@ -461,6 +537,8 @@ def peak_freqs_plot(
     # --- Dibujado de gráficas ---
     for nombre, (y_vals, y_errs, color) in categorias.items():
         fig, ax = plt.subplots(figsize=figsize)
+
+        # Errorbar
         ax.errorbar(
             x, y_vals, yerr=y_errs,
             fmt='-o', markersize=8,
@@ -468,11 +546,23 @@ def peak_freqs_plot(
             capsize=3, zorder=3
         )
 
-        # Líneas de límite si existen
+        # Relleno y líneas en lims para esta categoría
         if nombre in limits_map:
             low, high = limits_map[nombre]
-            ax.axhline(low,  linestyle='--', color='red',   label='_nolegend_')
-            ax.axhline(high, linestyle='--', color='red',   label='_nolegend_')
+            xmin, xmax = x[0] - 0.5, x[-1] + 0.5
+
+            # Relleno semitransparente
+            ax.fill_betweenx(
+                [low, high],
+                xmin, xmax,
+                color='red',
+                alpha=0.25,
+                zorder=1
+            )
+
+            # Líneas horizontales
+            ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
+            ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
         ax.set_xticks(x)
         ax.set_xticklabels(labels)
@@ -500,38 +590,13 @@ def psd_plot(
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las densidades espectrales de potencia (PSD) de las simulaciones,
-    opcionalmente calculando retornando límites automáticos y/o dibujando líneas horizontales en lims.
-
-    Args:
-        data_path (List[str]): Lista de rutas de carpetas con las simulaciones.
-        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
-        labels (List[str]): Etiquetas para cada simulación.
-        figsize (tuple): Tamaño de la figura.
-        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales para cada banda:
-            (
-              [l_inf_theta, l_sup_theta],
-              [l_inf_gamma, l_sup_gamma],
-              [l_inf_ripple, l_sup_ripple]
-            )
-        return_lims (bool): Si True, calcula y retorna límites automáticos.
-
-    Returns:
-        Si return_lims=True, devuelve tupla de listas:
-            (
-              [min_theta, max_theta],
-              [min_gamma, max_gamma],
-              [min_ripple, max_ripple]
-            )
-        En otro caso, devuelve None.
+    usando seaborn y aplicando rellenos y líneas de límite como en n_detects_plot.
     """
     # --- Carga de datos ---
     if data_path:
         data_dict = [data_to_dict(path) for path in data_path]
     elif not data_dict:
-        raise ValueError(
-            "No se han proporcionado datos para generar los gráficos. "
-            "Proporcione data_dict o data_path."
-        )
+        raise ValueError("No se han proporcionado datos para generar los gráficos.")
 
     # --- Cálculo de medias y errores ---
     means, stes = [], []
@@ -547,8 +612,7 @@ def psd_plot(
         def comp_ste(arrays):
             sems_sq = [
                 (np.std(x, ddof=0) / np.sqrt(len(x)))**2
-                for x in arrays
-                if len(x) > 0
+                for x in arrays if len(x) > 0
             ]
             return np.sqrt(sum(sems_sq)) / len(arrays) if arrays else 0.0
 
@@ -559,9 +623,9 @@ def psd_plot(
         means.append((mean_theta, mean_gamma, mean_ripple))
         stes.append((ste_theta,  ste_gamma,  ste_ripple))
 
-    means_arr = np.array(means)  # shape (n_sims, 3)
-    stes_arr  = np.array(stes)   # shape (n_sims, 3)
-    n_sims    = len(means)
+    means_arr = np.array(means)  # (n_sims, 3)
+    stes_arr  = np.array(stes)
+    n_sims    = len(means_arr)
     bandas    = ["Theta", "Gamma", "Ripple"]
 
     # --- Cálculo de lims automáticos si se pide ---
@@ -574,57 +638,75 @@ def psd_plot(
             [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
             [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
+        if lims is None:
+            lims = auto_lims
 
-    # --- Preparación de valores para barras ---
+    # --- Preparar DataFrame para seaborn ---
+    records = []
+    for sim_idx in range(n_sims):
+        sim_label = labels[sim_idx] if labels else f"Sim {sim_idx+1}"
+        for band_idx, banda in enumerate(bandas):
+            records.append({
+                "Simulación": sim_label,
+                "Banda": banda,
+                "Media": means_arr[sim_idx, band_idx],
+                "STE": stes_arr[sim_idx, band_idx]
+            })
+    df = pd.DataFrame.from_records(records)
+
+    # --- Plot con seaborn ---
+    sns.set_style("whitegrid")
+    sns.set_palette("colorblind")
+    plt.figure(figsize=figsize)
+    ax = sns.barplot(
+        data=df,
+        x="Banda", y="Media", hue="Simulación",
+        ci=None, dodge=True
+    )
+
+    # --- Añadir barras de error manualmente ---
     total_bar_width = 0.8
     bar_width = total_bar_width / n_sims
     x_base = np.arange(len(bandas))
+    offsets = (np.arange(n_sims) - (n_sims-1)/2) * bar_width
 
-    if not labels:
-        labels = [f"Sim {i+1}" for i in range(n_sims)]
-
-    # --- Generación del gráfico de barras ---
-    fig, ax = plt.subplots(figsize=figsize)
-    for i in range(n_sims):
-        offset = (i - (n_sims - 1) / 2) * bar_width
-        x_positions = x_base + offset
-        alturas = means_arr[i]
-        errores = stes_arr[i]
-        ax.bar(
-            x_positions,
-            alturas,
-            width=bar_width,
-            yerr=errores,
-            capsize=3,
-            label=labels[i],
-            error_kw={'zorder': 3},
-            zorder=2
+    for i, sim_label in enumerate(df["Simulación"].unique()):
+        sub = df[df["Simulación"] == sim_label]
+        errs = sub["STE"].values
+        xpos = x_base + offsets[i]
+        ax.errorbar(
+            xpos, sub["Media"].values,
+            yerr=errs,
+            fmt='none', capsize=3, ecolor='black', zorder=2
         )
-
-    ax.set_xticks(x_base)
-    ax.set_xticklabels(bandas)
-    ax.set_ylabel("Potencia media (uV^2/Hz)")
-    ax.set_xlabel("Banda de frecuencia")
-    ax.set_title("Densidad espectral de potencia media de las simulaciones")
-    ax.set_yscale("log")
 
     # --- Límites de eje y existentes ---
     todas_medias = means_arr.flatten()
-    todos_ste   = stes_arr.flatten()
-    y_min = np.min(todas_medias) * 1e-2
-    y_max = np.max(todas_medias + todos_ste) * 10
-    ax.set_ylim(y_min, y_max)
+    todos_ste    = stes_arr.flatten()
+    # y_min = np.min(todas_medias) * 0.1
+    # y_max = np.max(todas_medias + todos_ste) * 10
+    # ax.set_ylim(y_min, y_max)
+    ax.set_yscale("log")
 
-    # --- Dibujar líneas rojas discontinuas en lims ---
-    colors = ['blue', 'orange', 'green'] 
+    # --- Relleno y líneas en lims restringidas a cada banda ---
     if lims is not None:
-        for i, (band, color) in enumerate(zip(bandas, colors)):
-            low, high = lims[i]
-            ax.axhline(low,  linestyle='--', color=color)
-            ax.axhline(high, linestyle='--', color=color)
+        center_offset = (n_sims / 2) * bar_width * 1.15
+        for idx, (low, high) in enumerate(lims):
+            xmin = idx - center_offset
+            xmax = idx + center_offset
+            ax.fill_betweenx(
+                [low, high],
+                xmin, xmax,
+                color='red', alpha=0.25, zorder=1
+            )
+            ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
+            ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
-    ax.legend(title="Simulaciones")
-    fig.tight_layout()
+    ax.set_title("Densidad espectral de potencia media de las simulaciones")
+    ax.set_ylabel("Potencia media (uV^2/Hz)")
+    ax.set_xlabel("Banda de frecuencia")
+    ax.legend(title="Simulaciones", bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
     plt.show()
 
     if return_lims:
