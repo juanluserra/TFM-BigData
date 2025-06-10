@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import *
 import seaborn as sns
 import pandas as pd
+import math
 
 def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
     """
@@ -86,11 +87,23 @@ def n_detects_plot(
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
     figsize: tuple = (10, 6),
+    xrotation: int = 0,
+    ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
-    Igual que antes, pero usando seaborn para el gráfico de barras.
+    Función para generar un gráfico de barras con la media y el error estándar de las
+    densidades espectrales de potencia de las simulaciones.
+    Args:
+        data_path (List[str]): Lista de rutas a las carpetas que contienen los datos de las simulaciones.
+        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
+        labels (List[str]): Lista de etiquetas para las simulaciones.
+        figsize (tuple): Tamaño de la figura del gráfico.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites para rellenar en el gráfico.
+        return_lims (bool): Si se deben devolver los límites calculados automáticamente.
+    Returns:
+        Optional[Tuple[List[float], List[float], List[float]]]: Si `return_lims` es True, devuelve los límites calculados automáticamente.
     """
     # --- Carga de datos ---
     if data_path:
@@ -131,8 +144,6 @@ def n_detects_plot(
             [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
             [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
-        if lims is None:
-            lims = auto_lims
 
     # --- Preparar DataFrame para seaborn ---
     records = []
@@ -195,10 +206,22 @@ def n_detects_plot(
             ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
             ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
-    ax.set_title("Número medio de eventos detectados en las simulaciones")
-    ax.set_ylabel("Número medio de eventos")
-    ax.set_xlabel("Tipo de evento")
-    ax.legend(title="Simulaciones", bbox_to_anchor=(1.05, 1), loc='upper left')
+    label_font = {'fontweight': 'bold', 'fontsize': 14}
+    ax.set_xlabel("Frequency band", **label_font)
+    ax.set_ylabel("Mean number of events", **label_font)
+    ax.tick_params(axis='both', labelsize=13)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
+    handles, labels = ax.get_legend_handles_labels()
+    leg = ax.legend(
+        handles, labels,
+        ncol=ncol,
+        title="Experiments",
+        title_fontsize=13,
+        prop={"size": 13},
+        frameon=True,
+        framealpha=0.9
+    )
+    leg.get_title().set_fontweight('bold')
     plt.tight_layout()
     plt.show()
 
@@ -214,6 +237,8 @@ def durations_plot_points(
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
     figsize: tuple = (10, 6),
+    xrotation: int = 0,
+    ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False,
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
@@ -272,8 +297,6 @@ def durations_plot_points(
             [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
             [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
-        if lims is None:
-            lims = auto_lims
 
     # --- Etiquetas X ---
     if not labels:
@@ -305,13 +328,25 @@ def durations_plot_points(
             )
             ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
             ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
-
+        
         ax.set_xticks(x)
         ax.set_xticklabels(labels)
-        ax.set_xlabel("Simulación")
-        ax.set_ylabel("Duración media (ms)")
-        ax.set_title(f"Duración media de {nombre}\n(en varias simulaciones)")
-        ax.legend(title="Categoría")
+        label_font = {'fontweight': 'bold', 'fontsize': 14}
+        ax.set_xlabel("Frequency band", **label_font)
+        ax.set_ylabel("Mean duration of events", **label_font)
+        ax.tick_params(axis='both', labelsize=13)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
+        handles, labels = ax.get_legend_handles_labels()
+        leg = ax.legend(
+            handles, labels,
+            ncol=ncol,
+            title="Experiments",
+            title_fontsize=13,
+            prop={"size": 13},
+            frameon=True,
+            framealpha=0.9
+        )
+        leg.get_title().set_fontweight('bold')
         fig.tight_layout()
         plt.show()
 
@@ -326,13 +361,25 @@ def durations_plot(
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
     figsize: tuple = (10, 6),
+    xrotation: int = 0,
+    ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False,
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
-    Función para generar diagramas de barras de las duraciones medias de eventos
-    (‘Theta’, ‘Gamma’, ‘Ripple’) en varias simulaciones, usando seaborn, con
-    errores estándar y opcionalmente rellenos y líneas de límite.
+    Función para generar los gráficos de las duraciones de los eventos detectados
+    en varias simulaciones, usando seaborn para estilizar, y opcionalmente
+    calculando y retornando límites automáticos, y/o dibujando rellenos y líneas en lims.
+    
+    Args:
+        data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
+        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
+        labels (List[str]): Etiquetas para cada simulación.
+        figsize (tuple): Tamaño de la figura del gráfico.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites para rellenar y dibujar líneas horizontales.
+        return_lims (bool): Si es True, retorna los límites calculados automáticamente.
+    Returns:
+        Optional[Tuple[List[float], List[float], List[float]]]: Si return_lims es True, retorna los límites calculados automáticamente.
     """
     # --- Carga de datos ---
     if data_path:
@@ -386,8 +433,6 @@ def durations_plot(
             [float(mins[df["Banda"]==b].min()), float(maxs[df["Banda"]==b].max())]
             for b in ["Theta","Gamma","Ripple"]
         )
-        if lims is None:
-            lims = auto_lims
 
     # --- Plot con seaborn ---
     sns.set_style("whitegrid")
@@ -413,9 +458,11 @@ def durations_plot(
             fmt='none', capsize=3, ecolor='black', zorder=2
         )
 
-    ax.set_xlabel("Simulación")
-    ax.set_ylabel("Duración media (ms)")
-    ax.set_title("Duración media de eventos detectados\n(en varias simulaciones)")
+    label_font = {'fontweight': 'bold', 'fontsize': 14}
+    ax.set_xlabel("Frequency band", **label_font)
+    ax.set_ylabel("Mean duration of events $[ms]$", **label_font)
+    ax.tick_params(axis='both', labelsize=13)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
 
     # --- Relleno y líneas en lims ---
     if lims is not None:
@@ -427,7 +474,17 @@ def durations_plot(
             ax.hlines(low, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
             ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
-    ax.legend(title="Simulaciones", bbox_to_anchor=(1.05,1), loc='upper left')
+    handles, labels = ax.get_legend_handles_labels()
+    leg = ax.legend(
+        handles, labels,
+        ncol=ncol,
+        title="Experiments",
+        title_fontsize=13,
+        prop={"size": 13},
+        frameon=True,
+        framealpha=0.9
+    )
+    leg.get_title().set_fontweight('bold')
     plt.tight_layout()
     plt.show()
 
@@ -439,6 +496,8 @@ def peak_freqs_plot(
     data_dict: List[Dict[str, Any]] = [],
     labels: List[str] = [],
     figsize: tuple = (10, 6),
+    xrotation: int = 0,
+    ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
@@ -517,10 +576,11 @@ def peak_freqs_plot(
         )
 
     # --- Preparación de categorías ---
+    colorblind = sns.color_palette("colorblind", 8)
     categorias = {
-        "Theta": (medias_arr[:, 0], estes_arr[:, 0], "blue"),
-        "Gamma": (medias_arr[:, 1], estes_arr[:, 1], "orange"),
-        "SWRs":  (medias_arr[:, 2], estes_arr[:, 2], "green"),
+        "Theta": (medias_arr[:, 0], estes_arr[:, 0], colorblind[0]),
+        "Gamma": (medias_arr[:, 1], estes_arr[:, 1], colorblind[1]),
+        "SWRs":  (medias_arr[:, 2], estes_arr[:, 2], colorblind[2]),
     }
     limits_map = {}
     if lims is not None:
@@ -566,13 +626,25 @@ def peak_freqs_plot(
 
         ax.set_xticks(x)
         ax.set_xticklabels(labels)
-        ax.set_xlabel("Simulación")
-        ax.set_ylabel("Frecuencia pico (Hz)")
-        ax.set_title(f"Frecuencia pico media de {nombre}\n(en varias simulaciones)")
-        ax.legend(title="Categoría")
+        label_font = {'fontweight': 'bold', 'fontsize': 14}
+        ax.set_xlabel("Experiments", **label_font)
+        ax.set_ylabel("Mean peak frequency of events $[Hz]$", **label_font)
+        ax.tick_params(axis='both', labelsize=13)
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
+        handles, labels = ax.get_legend_handles_labels()
+        leg = ax.legend(
+            handles, labels,
+            ncol=ncol,
+            title="Experiments",
+            title_fontsize=13,
+            prop={"size": 13},
+            frameon=True,
+            framealpha=0.9
+        )
+        leg.get_title().set_fontweight('bold')
         fig.tight_layout()
         plt.show()
-
+        
     # --- Retorno opcional de lims ---
     if return_lims:
         return auto_lims
@@ -585,12 +657,35 @@ def psd_plot(
     data_dict: List[Dict[str, Any]] = [], 
     labels: List[str] = [],
     figsize: tuple = (10, 6),
+    xrotation: int = 0,
+    ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
-    Función para generar los gráficos de las densidades espectrales de potencia (PSD) de las simulaciones,
-    usando seaborn y aplicando rellenos y líneas de límite como en n_detects_plot.
+    Función para generar los gráficos de la densidad espectral de potencia media
+    de las simulaciones, usando seaborn para estilizar, y opcionalmente
+    calculando y retornando límites automáticos, y/o dibujando rellenos y líneas horizontales en lims.
+    Args:
+        data_path (List[str]): Lista de rutas de carpetas que contienen las simulaciones.
+        data_dict (List[Dict[str, Any]]): Lista de diccionarios con los datos de las simulaciones.
+        labels (List[str]): Etiquetas para cada simulación.
+        figsize (tuple): Tamaño de la figura del gráfico.
+        lims (Optional[Tuple[List[float], List[float], List[float]]]): Límites manuales:
+            (
+              [l_inf_theta, l_sup_theta],
+              [l_inf_gamma, l_sup_gamma],
+              [l_inf_swr,    l_sup_swr]
+            )
+        return_lims (bool): Si True, calcula y retorna límites automáticos.
+    Returns:
+        Si return_lims=True, devuelve una tupla de listas de límites:
+            (
+              [min_theta, max_theta],
+              [min_gamma, max_gamma],
+              [min_swr,   max_swr]
+            )
+        En otro caso, devuelve None.
     """
     # --- Carga de datos ---
     if data_path:
@@ -638,8 +733,6 @@ def psd_plot(
             [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
             [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
         )
-        if lims is None:
-            lims = auto_lims
 
     # --- Preparar DataFrame para seaborn ---
     records = []
@@ -702,13 +795,27 @@ def psd_plot(
             ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
             ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
-    ax.set_title("Densidad espectral de potencia media de las simulaciones")
     ax.set_ylabel("Potencia media (uV^2/Hz)")
-    ax.set_xlabel("Banda de frecuencia")
-    ax.legend(title="Simulaciones", bbox_to_anchor=(1.05, 1), loc='upper left')
+    label_font = {'fontweight': 'bold', 'fontsize': 14}
+    ax.set_xlabel("Frequency band", **label_font)
+    ax.set_ylabel("Mean PSD $[V²/Hz]$", **label_font)
+    ax.tick_params(axis='both', labelsize=13)
+    handles, labels = ax.get_legend_handles_labels()
+    leg = ax.legend(
+        handles, labels,
+        ncol=ncol,
+        title="Experiments",
+        title_fontsize=13,
+        prop={"size": 13},
+        frameon=True,
+        framealpha=0.9
+    )
+    leg.get_title().set_fontweight('bold')
+    leg.get_title().set_fontweight('bold')
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
     plt.tight_layout()
     plt.show()
-
+    
     if return_lims:
         return auto_lims
 
