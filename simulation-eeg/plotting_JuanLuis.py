@@ -631,9 +631,9 @@ def peak_freqs_plot(
         ax.set_ylabel("Mean peak frequency of events $[Hz]$", **label_font)
         ax.tick_params(axis='both', labelsize=13)
         ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
-        handles, labels = ax.get_legend_handles_labels()
+        handles, labs = ax.get_legend_handles_labels()
         leg = ax.legend(
-            handles, labels,
+            handles, labs,
             ncol=ncol,
             title="Experiments",
             title_fontsize=13,
@@ -659,6 +659,7 @@ def psd_plot(
     figsize: tuple = (10, 6),
     xrotation: int = 0,
     ncol: int = 1,
+    y_lims: Optional[Tuple[float, float]] = None,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
@@ -795,11 +796,12 @@ def psd_plot(
             ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
             ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
 
-    ax.set_ylabel("Potencia media (uV^2/Hz)")
     label_font = {'fontweight': 'bold', 'fontsize': 14}
     ax.set_xlabel("Frequency band", **label_font)
     ax.set_ylabel("Mean PSD $[V²/Hz]$", **label_font)
     ax.tick_params(axis='both', labelsize=13)
+    if y_lims is not None:
+        ax.set_ylim(y_lims[0], y_lims[1])
     handles, labels = ax.get_legend_handles_labels()
     leg = ax.legend(
         handles, labels,
