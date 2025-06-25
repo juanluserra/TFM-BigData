@@ -229,7 +229,6 @@ def n_detects_plot(
         return auto_lims
 
     return None
-    
 
 
 def durations_plot_points(

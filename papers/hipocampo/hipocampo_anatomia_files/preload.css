@@ -1,0 +1,79 @@
+/* ================================================
+   Preloader UAEH
+   ================================================ */
+
+/* --- Preloader container (sólo en páginas con logo) --- */
+body.has_site_logo #uaeh-preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #801000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: uaeh-fadeOut 1s ease-out 1.5s forwards;
+}
+
+/* --- Logo dentro del preloader --- */
+body.has_site_logo #uaeh-preloader-logo {
+  width: 70vw;
+  max-width: 500px;
+  height: auto;
+  opacity: 0;
+  transform: scale(2.5);
+  animation: uaeh-logoSequence 2.5s ease-in-out forwards;
+}
+
+/* --- Animación de escala y opacidad del logo --- */
+@keyframes uaeh-logoSequence {
+  0% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* --- Animación de desvanecimiento del preloader --- */
+@keyframes uaeh-fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* --- Fade-in del contenido principal (.pkp_structure_page) --- */
+body.has_site_logo .pkp_structure_page {
+  opacity: 0;
+  animation: uaeh-fadeInPage 1s ease 1.8s forwards;
+}
+
+/* --- Keyframes para el fade-in del contenido --- */
+@keyframes uaeh-fadeInPage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- (Opcional) Asegura que no se muestre nada si no tiene logo --- */
+body:not(.has_site_logo) #uaeh-preloader {
+  display: none !important;
+}

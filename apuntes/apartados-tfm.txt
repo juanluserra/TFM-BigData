@@ -1,0 +1,28 @@
+2. BACKGROUND
+  2.1. Aprendizaje y Memoria
+  2.2. Hipocampo
+  2.3. Guerra cognitiva
+  2.4. BCIs
+
+3. ESTADO DEL ARTE
+  3.1. 1er paper sergio
+  3.2. 2o paper sergio
+  3.3. 1er paper vicky
+  3.4. Tesis Lennart
+
+4. OBJETIVOS Y METODOLOGÍA.
+  4.1. Objetivos
+    4.1.1. Revisar el estado del arte de los BCIs.
+    4.1.2. Poder replicar los resultados de Lennart.
+    4.1.3. Usar un nuevo enfoque de alteración de los archivos EEG para simular ataques.
+    4.1.4. Obtener e interpretar las consecuencias de los ataques.
+  4.2. Metodología
+    4.2.1. Revisión del Estado del Arte de los Neurostrikes y los BCIs.
+    4.2.2. Replicación de los resultados de Lennart.
+    4.2.3. Evaluación de la estabilidad de las simulaciones.
+    4.2.4. Plantear nuevos ataques que perturban los datos EEG.
+    4.2.5. Generación de métricas y gráficas para evaluar daños de ataques.
+    4.2.6. Búsqueda de las consecuencias en la memoria de los ataques.
+
+5. DISEÑO DE LA SOLUCIÓN
+

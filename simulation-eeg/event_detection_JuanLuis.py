@@ -155,7 +155,7 @@ def event_detection(
             peak_frequency = frequencies[argmax(power_spectrum)]
             all_spectrum_peaks.append(peak_frequency)
 
-            # identify sharp wave ripples
+            # identify waves
             if 5 <= peak_frequency <= 10:
                 theta_waves.append(event)
                 theta_wave_peaks.append(peak_frequency)

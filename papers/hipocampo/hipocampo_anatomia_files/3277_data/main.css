@@ -1,0 +1,132 @@
+/* ePUB base v2.0 epubgratis.me*/
+
+/* -------- BODY y P PARA EPUB -------- */
+/*body { font-family:"Times New Roman", Times, serif; margin:1em; }
+p {
+	margin: 0;
+	text-align: justify;
+	text-indent: 1.5em;
+	line-height: 1.3em;
+	font-family: "PT Serif", serif;
+}
+a { text-decoration:none; }*/
+
+sup, sub { font-size:0.75em; line-height:normal; }
+/* ----------------------------------------- */
+
+/* encabezados  para EPUB*/
+h1, h2, h3, h4, h5, h6 { margin-top:10%; text-align:center; text-indent:0; -webkit-hyphens:none; adobe-hyphenate:none; -moz-hyphens:none; hyphens:none; }
+	h1 { font-size:1.7em; }
+	h2 { font-size:1.6em; }
+	h3 { font-size:1.5em; }
+	h4 { font-size:1.4em; }
+	h5 { font-size:1.3em; }
+	h6 { font-size:1.2em; }
+
+/* tipografía */
+.sans, .sans em, .sans strong { font-family:"Helvetica Neue", Helvetica, Verdana, Arial, "Trebuchet MS", Trebuchet, sans-serif; }
+.mono, .mono em, .mono strong { font-family:"Courier New", Courier, monospace; }
+
+.cursiva { font-style:italic; }
+.negrita { font-weight:bold; }
+.tachado { text-decoration:line-through; }
+.subrayado { text-decoration:underline; }
+.normal { font-style:normal; font-weight:normal; text-decoration:none; }
+#contenido .pie_foto, .pie_foto { font-size:0.8em; font-style:italic; text-align: center; }
+#contenido .pie_video, .pie_video { margin-top:2%; font-size:0.9em; font-style:italic; text-align: center; }
+.centrado {text-align: center;}
+#contenido {padding-left: 20%; padding-right: 20%; padding-bottom: 20%;}
+#contenido p{text-align: justify;}
+
+.tabla { font-size:0.8em; margin: 0 auto; width:50%;}
+.tabla_30 { font-size:0.8em; margin: 0 auto; width:30%;}
+.tabla_70 { font-size:0.8em; margin: 0 auto; width:70%;}
+.tabla_100 { font-size:0.8em; margin: 0 auto; width:100%;}
+.tabla_borde_inf { border-bottom: 1px solid black;}
+.tabla_borde_sup { border-top: 1px solid black;}
+.tabla_titulo{ text-transform:uppercase; font-size:11px; height:30px;}
+.tabla_titulo_negro{ text-transform:uppercase; font-size:11px; height:30px; background-color:#000; color:#FFF; font-weight:bold;}
+.tabla_titulo_gris{ text-transform:uppercase; font-size:11px; height:30px; background-color: #CCC; color:#FFF; font-weight:bold;}
+.tabla_titulo_verde{ text-transform:uppercase; font-size:11px; height:30px; background-color: #52A83D; color:#FFF; font-weight:bold;}
+.tabla_titulo_amarillo{ text-transform:uppercase; font-size:11px; height:30px; background-color:orange; color:#FFF; font-weight:bold;}
+.tabla_titulo_azul{ text-transform:uppercase; font-size:11px; height:30px; background-color:skyblue; color:black; font-weight:bold;}
+.tabla_gris{ font-size:11px; height:30px; background-color: #CCC;}
+.tabla_fila_verde{ text-transform:uppercase; font-size:11px; height:30px; background-color: #DCF1D7; color: #000000; font-weight:bold;}
+.tabla_bordeada table{
+	border: 1px solid black;
+}
+.tabla_bordeada td{
+	border: 1px solid black;
+}
+.tabla_bordeada tr{
+	border: 1px solid black;
+}
+.tabla_bordeada th{
+	border: 1px solid black;
+}
+
+.versalita { font-size:0.8em; } /* para texto en mayúsculas cuyo tamaño, sin embargo, es similar al de las minúsculas */
+
+/* alineación */
+.izquierda, .izquierda p { text-align:left; }
+.derecha, .derecha p { text-align:right; text-indent:0; }
+.centrado, .centrado p { text-align:center; text-indent:0; }
+.justificado, .justificado p { text-align:justify; }
+.asangre, .asangre p { text-indent:0; }
+.francesa {text-indent: -30px; padding-left: 40px; }
+/* saltos */
+.saltoinicio { margin-top:33%; }
+.salto25 { padding-top:2.5em; }
+.salto10 { padding-top:1em; }
+
+/* bloques */
+.sinmargen { margin:0; }
+.cita { margin:1.5em; }
+.bloque { page-break-inside:avoid; } /* evita que un elemento se divida entre dos páginas en algunos lectores */
+.banner { margin:1.5em 12%; padding:0.5em 1em; text-align:center; text-indent:0; border:2px solid black; border-left:none; border-right:none; }
+.banner p { text-align:center; text-indent:0; }
+#contenido .banner{ text-align:center; text-indent:0; }
+#content .banner{ text-align:center; text-indent:0; }
+.citar { margin:0.5em 12%; padding:0.5em 1em; text-align:justify; text-indent:0; border-top:none; border-left:none; border-right:none; border-bottom:none; font-size:0.9em; }
+.citar_corta { margin:0.5em 5%; padding:0em 0em 0em 10em; text-align:justify; text-indent:0; border-top:none; border-left:none; border-right:none; border-bottom:none; font-size:1em; }
+.citar p { text-align:justify; text-indent:0; }
+
+/*Colores para texto */
+.t_verde{
+	color:#090;
+}
+.t_azul{
+	color:#06F;
+}
+.t_rojo{
+	color:#990000;
+}
+.t_piel{
+	color:#FF9999;
+}
+.t_cafe{
+	color:#996600;
+}
+.t_amarillo{
+	color:#FC0
+}
+.t_gris{
+	color:#999999;
+}
+.t_morado{
+	color:#63C;
+}
+.subrayado{
+	text-decoration:underline;
+}
+
+
+/* listas */
+li { text-align:justify; line-height:1.3em; }
+        
+/* ------------- AÑADE AQUÍ TUS PROPIOS ESTILOS -------------  */
+
+p.sgc-1 {text-align: justify}
+div.sgc-2 {text-align: center}
+
+.tx1{font-size:11px;}
