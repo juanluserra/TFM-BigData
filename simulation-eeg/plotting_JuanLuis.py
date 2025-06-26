@@ -9,7 +9,7 @@ import seaborn as sns
 import pandas as pd
 import math
 
-def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
+def data_to_dict(folder_path: str, scaling: str="density") -> Dict[str, List[Any]]:
     """
     Función para generar un diccionario con todas las características de las diferentes simulaciones
     que hay dentro de una carpeta. Se buscarán archivos LFP.txt.
@@ -25,6 +25,7 @@ def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
 
     Args:
         folder_path (str): Ruta de la carpeta que contiene las carpetas de las simulaciones.
+        scaling (str): Método de escalado para el espectro de potencia ("density", "spectrum").
 
     Returns:
         Dict[str, List[Any]]: Diccionario con las características de las simulaciones.
@@ -60,7 +61,7 @@ def data_to_dict(folder_path: str) -> Dict[str, List[Any]]:
                 # Cargamos los datos del archivo LFP.txt en un array
                 data = create_list_from_timeSeries(lfp_file)
                 # Sacamos las características de la simulación
-                event_characteristics, theta_characteristics, gamma_characteristics, ripple_characteristics, psd_characteristics = event_detection(data)
+                event_characteristics, theta_characteristics, gamma_characteristics, ripple_characteristics, psd_characteristics = event_detection(data, scaling=scaling)
                 # Guardamos las características en el diccionario
                 data_dict["event_list"].append(event_characteristics[0])
                 data_dict["event_list_filtered"].append(event_characteristics[1])
@@ -90,7 +91,9 @@ def n_detects_plot(
     xrotation: int = 0,
     ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
-    return_lims: bool = False
+    return_lims: bool = False,
+    y_lims: Optional[Tuple[float, float]] = None,
+    save_path: Optional[str] = None
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar un gráfico de barras con la media y el error estándar de las
@@ -188,9 +191,8 @@ def n_detects_plot(
     # --- Límites de eje y existentes ---
     todas_medias = means_arr.flatten()
     todos_ste    = stes_arr.flatten()
-    y_min = max(np.trunc(np.min(todas_medias + todos_ste) / 2), 0)
-    y_max = np.max(todas_medias + todos_ste) + 1
-    ax.set_ylim(y_min, y_max)
+    if y_lims is not None:
+        ax.set_ylim(y_lims)
 
     # --- Relleno y líneas en lims restringidas a cada banda ---
     if lims is not None:
@@ -223,6 +225,15 @@ def n_detects_plot(
     )
     leg.get_title().set_fontweight('bold')
     plt.tight_layout()
+    
+    # --- Guardar figura si se especifica ---
+    if save_path:
+        save_path = Path(save_path)
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        if save_path.exists():
+            save_path.unlink()
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.close()
     plt.show()
 
     if return_lims:
@@ -230,129 +241,6 @@ def n_detects_plot(
 
     return None
 
-
-def durations_plot_points(
-    data_path: List[str] = [], 
-    data_dict: List[Dict[str, Any]] = [], 
-    labels: List[str] = [],
-    figsize: tuple = (10, 6),
-    xrotation: int = 0,
-    ncol: int = 1,
-    lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
-    return_lims: bool = False,
-) -> Optional[Tuple[List[float], List[float], List[float]]]:
-    """
-    Función para generar los gráficos de las duraciones de los eventos detectados
-    en varias simulaciones, usando seaborn para estilizar, y opcionalmente
-    calculando y retornando límites automáticos, y/o dibujando rellenos y líneas en lims.
-    """
-    # --- Carga de datos ---
-    if data_path:
-        data_dict = [data_to_dict(path) for path in data_path]
-    elif not data_dict:
-        raise ValueError("No se han proporcionado datos para generar los gráficos.")
-
-    # --- Cálculo de medias y errores ---
-    medias, estes = [], []
-    for data in data_dict:
-        theta = data["theta_durations"]
-        gamma = data["gamma_durations"]
-        rips  = data["ripple_durations"]
-
-        medias.append((
-            np.mean([np.mean(x) if len(x) else 0.0 for x in theta]),
-            np.mean([np.mean(x) if len(x) else 0.0 for x in gamma]),
-            np.mean([np.mean(x) if len(x) else 0.0 for x in rips])
-        ))
-        def comp_ste(arrays):
-            sems_sq = [
-                (np.std(x, ddof=0)/np.sqrt(len(x)))**2 if len(x)>1 else 0.0
-                for x in arrays
-            ]
-            return np.sqrt(sum(sems_sq))/len(arrays)
-        estes.append((
-            comp_ste(theta),
-            comp_ste(gamma),
-            comp_ste(rips)
-        ))
-
-    medias_arr = np.array(medias)  # (n_sims,3)
-    estes_arr  = np.array(estes)
-    n_sims     = len(medias_arr)
-    x          = np.arange(n_sims)
-    categorias = {
-        "Theta":  (medias_arr[:,0], estes_arr[:,0], "blue"),
-        "Gamma":  (medias_arr[:,1], estes_arr[:,1], "orange"),
-        "Ripple": (medias_arr[:,2], estes_arr[:,2], "green"),
-    }
-
-    # --- Cálculo de lims automáticos si se pide ---
-    auto_lims = None
-    if return_lims:
-        mins = medias_arr - estes_arr
-        maxs = medias_arr + estes_arr
-        auto_lims = (
-            [float(np.min(mins[:,0])), float(np.max(maxs[:,0]))],
-            [float(np.min(mins[:,1])), float(np.max(maxs[:,1]))],
-            [float(np.min(mins[:,2])), float(np.max(maxs[:,2]))],
-        )
-
-    # --- Etiquetas X ---
-    if not labels:
-        labels = [f"Sim {i+1}" for i in range(n_sims)]
-
-    # --- Seaborn styling ---
-    sns.set_style("whitegrid")
-    sns.set_palette("colorblind")
-
-    # --- Dibujado de gráficas ---
-    for nombre, (y_vals, y_errs, color) in categorias.items():
-        fig, ax = plt.subplots(figsize=figsize)
-        # Plot manual de líneas con puntos y errores
-        ax.errorbar(
-            x, y_vals, yerr=y_errs,
-            fmt='-o', markersize=8,
-            color=color, label=nombre,
-            capsize=3, zorder=3
-        )
-
-        # Si hay límites, rellenar y dibujar líneas
-        if lims is not None:
-            low, high = lims[ list(categorias).index(nombre) ]
-            xmin, xmax = x[0] - 0.5, x[-1] + 0.5
-            ax.fill_betweenx(
-                [low, high],
-                xmin, xmax,
-                color='red', alpha=0.25, zorder=1
-            )
-            ax.hlines(low,  xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
-            ax.hlines(high, xmin, xmax, linestyles='-', colors='red', label='_nolegend_')
-        
-        ax.set_xticks(x)
-        ax.set_xticklabels(labels)
-        label_font = {'fontweight': 'bold', 'fontsize': 14}
-        ax.set_xlabel("Frequency band", **label_font)
-        ax.set_ylabel("Mean duration of events", **label_font)
-        ax.tick_params(axis='both', labelsize=13)
-        ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
-        handles, labels = ax.get_legend_handles_labels()
-        leg = ax.legend(
-            handles, labels,
-            ncol=ncol,
-            title="Experiments",
-            title_fontsize=13,
-            prop={"size": 13},
-            frameon=True,
-            framealpha=0.9
-        )
-        leg.get_title().set_fontweight('bold')
-        fig.tight_layout()
-        plt.show()
-
-    if return_lims:
-        return auto_lims
-
-    return None
 
 
 def durations_plot(
@@ -364,6 +252,8 @@ def durations_plot(
     ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
     return_lims: bool = False,
+    y_lims: Optional[Tuple[float, float]] = None,
+    save_path: Optional[str] = None
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las duraciones de los eventos detectados
@@ -462,6 +352,8 @@ def durations_plot(
     ax.set_ylabel("Mean duration of events $[ms]$", **label_font)
     ax.tick_params(axis='both', labelsize=13)
     ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
+    if y_lims is not None:
+        ax.set_ylim(y_lims)
 
     # --- Relleno y líneas en lims ---
     if lims is not None:
@@ -485,6 +377,15 @@ def durations_plot(
     )
     leg.get_title().set_fontweight('bold')
     plt.tight_layout()
+    
+    # --- Guardar figura si se especifica ---
+    if save_path:
+        save_path = Path(save_path)
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        if save_path.exists():
+            save_path.unlink()
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.close()
     plt.show()
 
     return auto_lims if return_lims else None
@@ -498,7 +399,8 @@ def peak_freqs_plot(
     xrotation: int = 0,
     ncol: int = 1,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
-    return_lims: bool = False
+    return_lims: bool = False,
+    save_path: Optional[str] = None
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de las frecuencias pico de los eventos detectados
@@ -535,14 +437,22 @@ def peak_freqs_plot(
 
     # --- Cálculo de medias y errores ---
     medias, estes = [], []
+    # print()
+    # print("--- Cálculo de medias y errores ---")
     for data in data_dict:
+        # print()
         tpf = data.get("theta_peak_frequencies", [])
         gpf = data.get("gamma_peak_frequencies", [])
         rpf = data.get("ripple_peak_frequencies", [])
+        # print("Número de simulaciones:", len(tpf), len(gpf), len(rpf))
+        # print("N theta:", [len(x) for x in tpf])
+        # print("N gamma:", [len(x) for x in gpf])
+        # print("N ripple:", [len(x) for x in rpf])
 
         media_theta = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in tpf]) if tpf else 0.0
         media_gamma = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in gpf]) if gpf else 0.0
         media_swr   = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in rpf]) if rpf else 0.0
+        # print("Medias:", media_theta, media_gamma, media_swr)
 
         def comp_ste(arrays):
             sems_sq = [
@@ -554,6 +464,7 @@ def peak_freqs_plot(
         ste_theta = comp_ste(tpf)
         ste_gamma = comp_ste(gpf)
         ste_swr   = comp_ste(rpf)
+        # print("STEs:", ste_theta, ste_gamma, ste_swr)
 
         medias.append((media_theta, media_gamma, media_swr))
         estes.append((ste_theta, ste_gamma, ste_swr))
@@ -642,8 +553,23 @@ def peak_freqs_plot(
         )
         leg.get_title().set_fontweight('bold')
         fig.tight_layout()
-        plt.show()
         
+        # --- Guardar figura si se especifica ---
+        if save_path:
+            if nombre == "Theta":
+                save_path_new = save_path.replace(".png", "_t.png")
+            elif nombre == "Gamma":
+                save_path_new = save_path.replace(".png", "_g.png")
+            elif nombre == "SWRs":
+                save_path_new = save_path.replace(".png", "_r.png")
+            save_path_new = Path(save_path_new)
+            save_path_new.parent.mkdir(parents=True, exist_ok=True)
+            if save_path_new.exists():
+                save_path_new.unlink()
+            fig.savefig(str(save_path_new), dpi=300, bbox_inches='tight')
+            plt.close(fig)
+        plt.show()
+
     # --- Retorno opcional de lims ---
     if return_lims:
         return auto_lims
@@ -660,7 +586,9 @@ def psd_plot(
     ncol: int = 1,
     y_lims: Optional[Tuple[float, float]] = None,
     lims: Optional[Tuple[List[float], List[float], List[float]]] = None,
-    return_lims: bool = False
+    return_lims: bool = False,
+    scaling: str = "density",
+    save_path: Optional[str] = None
 ) -> Optional[Tuple[List[float], List[float], List[float]]]:
     """
     Función para generar los gráficos de la densidad espectral de potencia media
@@ -678,6 +606,11 @@ def psd_plot(
               [l_inf_swr,    l_sup_swr]
             )
         return_lims (bool): Si True, calcula y retorna límites automáticos.
+        y_lims (Optional[Tuple[float, float]]): Límites del eje y del gráfico.
+        labels (List[str]): Etiquetas para las simulaciones.
+        figsize (tuple): Tamaño de la figura del gráfico.
+        scaling (str): Método de escalado para el espectro de potencia ("density", "spectrum").
+    
     Returns:
         Si return_lims=True, devuelve una tupla de listas de límites:
             (
@@ -689,7 +622,7 @@ def psd_plot(
     """
     # --- Carga de datos ---
     if data_path:
-        data_dict = [data_to_dict(path) for path in data_path]
+        data_dict = [data_to_dict(path, scaling=scaling) for path in data_path]
     elif not data_dict:
         raise ValueError("No se han proporcionado datos para generar los gráficos.")
 
@@ -797,7 +730,10 @@ def psd_plot(
 
     label_font = {'fontweight': 'bold', 'fontsize': 14}
     ax.set_xlabel("Frequency band", **label_font)
-    ax.set_ylabel("Mean PSD $[V²/Hz]$", **label_font)
+    if scaling == "density":
+        ax.set_ylabel("Mean PSD $[V^2/Hz]$", **label_font)
+    elif scaling == "spectrum":
+        ax.set_ylabel("Mean PSD $[V^2]$", **label_font)
     ax.tick_params(axis='both', labelsize=13)
     if y_lims is not None:
         ax.set_ylim(y_lims[0], y_lims[1])
@@ -815,6 +751,16 @@ def psd_plot(
     leg.get_title().set_fontweight('bold')
     ax.set_xticklabels(ax.get_xticklabels(), rotation=xrotation)
     plt.tight_layout()
+    
+    # --- Guardar figura si se especifica ---
+    if save_path:
+        save_path = Path(save_path)
+        # Asegura que exista el directorio contenedor
+        save_path.parent.mkdir(parents=True, exist_ok=True)
+        if save_path.exists():
+            save_path.unlink()
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.close()
     plt.show()
     
     if return_lims:

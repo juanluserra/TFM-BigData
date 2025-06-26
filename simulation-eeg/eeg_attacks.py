@@ -3,73 +3,6 @@ import matplotlib.pyplot as plt
 from typing import *
 
 
-def white_noise(size: int, mu: float = 0, sigma: float = 1) -> np.ndarray:
-    """
-    Genera ruido blanco gaussiano.
-
-    Args:
-        size (int): Número de muestras de ruido a generar.
-        mu (float, optional): Media del ruido. Defaults to 0.
-        sigma (float, optional): Desviación estándar del ruido. Defaults to 1.
-
-    Returns:
-        np.ndarray: Ruido blanco gaussiano generado.
-    """
-    return np.random.normal(mu, sigma, size)
-
-
-def gaussian_pulse(fs: float, t: np.ndarray, f_carrier: float, amp: float, center: float, sigma: float) -> np.ndarray:
-    """
-    Genera un pulso gaussiano modulado en frecuencia.
-    Este pulso es una envolvente gaussiana multiplicada por un pulso sinusoidal.
-
-    Args:
-        fs (float): Frecuencia de muestreo.
-        t (np.ndarray): Vector de tiempo.
-        f_carrier (float): Frecuencia portadora del pulso.
-        amp (float): Amplitud del pulso.
-        center (float): Centro de la envolvente gaussiana.
-        sigma (float): Desviación estándar de la envolvente gaussiana.
-
-    Returns:
-        np.ndarray: Pulso gaussiano modulado en frecuencia generado.
-    """
-    # Creamos la envolvente gaussiana
-    envelope = np.exp(-0.5 * ((t - center) / sigma) ** 2)
-    # Generamos el pulso sinusoidal
-    carrier = amp * np.sin(2 * np.pi * f_carrier * t)
-    # Multiplicamos la envolvente por el pulso
-    pulse = envelope * carrier
-
-    return pulse
-
-
-def multiple_guassian_pulses(fs: float, t: np.ndarray, f_carrier: float, amp: float, centers: list, sigmas: list) -> np.ndarray:
-    """
-    Genera múltiples pulsos gaussianos modulado en frecuencia.
-    Este método combina varios pulsos gaussianos en una sola señal.
-
-    Args:
-        fs (float): Frecuencia de muestreo.
-        t (np.ndarray): Vector de tiempo.
-        f_carrier (float): Frecuencia portadora de los pulsos.
-        amp (float): Amplitud de los pulsos.
-        centers (list): Centros de las envolventes gaussianas para cada pulso.
-        sigmas (list): Desviaciones estándar de las envolventes gaussianas para cada pulso.
-
-    Returns:
-        np.ndarray: Señal compuesta de múltiples pulsos gaussianos modulado en frecuencia generados.
-    """
-    # Inicializamos el vector de pulsos
-    pulses = np.zeros_like(t)
-
-    # Recorremos los centros y sigmas para generar los pulsos y sumarlos
-    for center, sigma in zip(centers, sigmas):
-        pulses += gaussian_pulse(fs, t, f_carrier, amp, center, sigma)
-
-    return pulses
-
-
 def flooding_jamming_attack(
     signal: np.ndarray,
     t: np.ndarray,
@@ -102,7 +35,7 @@ def flooding_jamming_attack(
 
 
 
-def scanning_attack(
+def scanning_forwarding_attack(
     signal: np.ndarray,
     fs: float,
     t: np.ndarray,
