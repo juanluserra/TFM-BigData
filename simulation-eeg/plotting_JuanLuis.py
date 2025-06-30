@@ -285,9 +285,9 @@ def durations_plot(
         ripple = data["ripple_durations"]
 
         mean_vals = [
-            np.mean([np.mean(x) if len(x) else 0.0 for x in theta]),
-            np.mean([np.mean(x) if len(x) else 0.0 for x in gamma]),
-            np.mean([np.mean(x) if len(x) else 0.0 for x in ripple])
+            np.mean([np.mean(x) for x in theta if len(x)])  if np.sum(theta) else 0.0,
+            np.mean([np.mean(x) for x in gamma if len(x)])  if np.sum(gamma) else 0.0,
+            np.mean([np.mean(x) for x in ripple if len(x)]) if np.sum(ripple) else 0.0
         ]
         def comp_ste(arrays):
             sems_sq = [
@@ -440,7 +440,7 @@ def peak_freqs_plot(
     # print()
     # print("--- Cálculo de medias y errores ---")
     for data in data_dict:
-        # print()
+        print()
         tpf = data.get("theta_peak_frequencies", [])
         gpf = data.get("gamma_peak_frequencies", [])
         rpf = data.get("ripple_peak_frequencies", [])
@@ -448,10 +448,13 @@ def peak_freqs_plot(
         # print("N theta:", [len(x) for x in tpf])
         # print("N gamma:", [len(x) for x in gpf])
         # print("N ripple:", [len(x) for x in rpf])
+        # print(tpf)
+        # print(gpf)
+        # print(rpf)
 
-        media_theta = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in tpf]) if tpf else 0.0
-        media_gamma = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in gpf]) if gpf else 0.0
-        media_swr   = np.mean([np.mean(x) if len(x) > 0 else 0.0 for x in rpf]) if rpf else 0.0
+        media_theta = np.mean([np.mean(x) for x in tpf if len(x)]) if np.sum(tpf) else 0.0
+        media_gamma = np.mean([np.mean(x) for x in gpf if len(x)]) if np.sum(gpf) else 0.0
+        media_swr   = np.mean([np.mean(x) for x in rpf if len(x)]) if np.sum(rpf) else 0.0
         # print("Medias:", media_theta, media_gamma, media_swr)
 
         def comp_ste(arrays):
@@ -633,9 +636,9 @@ def psd_plot(
         gamma_psd  = data.get("psd_gamma", [])
         ripple_psd = data.get("psd_ripple", [])
 
-        mean_theta  = np.mean([np.mean(x) for x in theta_psd])  if theta_psd  else 0.0
-        mean_gamma  = np.mean([np.mean(x) for x in gamma_psd])  if gamma_psd  else 0.0
-        mean_ripple = np.mean([np.mean(x) for x in ripple_psd]) if ripple_psd else 0.0
+        mean_theta  = np.mean([np.mean(x) for x in theta_psd  if len(x)]) if np.sum(theta_psd) else 0.0
+        mean_gamma  = np.mean([np.mean(x) for x in gamma_psd  if len(x)]) if np.sum(gamma_psd) else 0.0
+        mean_ripple = np.mean([np.mean(x) for x in ripple_psd if len(x)]) if np.sum(ripple_psd) else 0.0
 
         def comp_ste(arrays):
             sems_sq = [
